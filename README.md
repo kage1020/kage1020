@@ -1,4 +1,35 @@
-# Improvement of QOL...
+# Hi! I'm kage1020
+
+<p align="left"> 
+  <a href="https://github.com/kage1020/kage1020/">
+    <img src="https://komarev.com/ghpvc/?username=kage1020" alt="yutkat" />
+  </a>
+  <a href="http://twitter.com/kage1020">
+    <img height="20" src="https://img.shields.io/twitter/follow/kage1020?label=Twitter&logo=twitter&style=flat" />
+  </a>
+  <a href="https://zenn.dev/kage1020">
+    <img height="20" src="https://zenn.badge.nikaera.com/s/kage1020/likes" />
+  </a>
+  <a href="https://zenn.dev/kage1020">
+    <img height="20" src="https://zenn.badge.nikaera.com/s/kage1020/articles" />
+  </a>
+  <a href="http://qiita.com/kage1020">
+    <img height="20" src="https://qiita-badge.apiapi.app/s/kage1020/posts.svg" />
+  </a>
+  <a href="http://qiita.com/kage1020">
+    <img height="20" src="https://qiita-badge.apiapi.app/s/kage1020/contributions.svg" />
+  </a>
+</p>
+<p>
+  <span>
+    <img height="20" src="https://img.shields.io/badge/editor-VScode-blue" />
+  </span>
+  <span>
+    <img height="20" src="https://img.shields.io/badge/os-Windows 11-blue" />
+  </span>
+</p>
+
+## Improvement of QOL...
 
 Next.jsをこよなく愛するその辺にいそうな東京の大学生です．フロントエンドが好きですが，いつかバックエンドにも足を踏み入れたい好奇心のかたまりです．ITにより少しでもQOLが上がるサービスを提供したいという想いに突き動かされて開発をしています．私は尽きることのないモチベを手に入れた！
 
@@ -33,6 +64,7 @@ https://kage1020.vercel.app/
 <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/></a>
 <a href="https://www.python.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/></a>
 <a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/></a>
+<a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/></a>
 <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/></a>
 
 ## GitHub Stats
@@ -46,3 +78,5 @@ https://kage1020.vercel.app/
   <img alt="GitHub stats" height="200px" src="https://github-readme-stats.vercel.app/api?username=kage1020&count_private=true&show_icons=true&theme=tokyonight" />
   <img alt="Top Langs" height="200px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=kage1020&layout=compact" />
 </p>
+
+[![trophy](https://github-profile-trophy.vercel.app/?username=kage1020&row=1&theme=tokyonight)](https://github.com/ryo-ma/github-profile-trophy)
