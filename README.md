@@ -19,7 +19,7 @@ https://kage1020.vercel.app/
 * Next.js大好き
 * 経営ストラテジーシミュレーションゲーム(？)[Traffic Ltd.](https://github.com/kage1020/TrafficLtd)を開発中
 * [Twitter](https://twitter.com/kage1020) がんばる
-* DXの壁に頭ぶつけて錯乱状態
+* DXの壁に頭ぶつけてめまいをおこしてる
 
 ## Skills
 
