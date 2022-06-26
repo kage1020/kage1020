@@ -2,7 +2,7 @@
 
 Next.jsをこよなく愛するその辺にいそうな東京の大学生です．フロントエンドが好きですが，いつかバックエンドにも足を踏み入れたい好奇心のかたまりです．ITにより少しでもQOLが上がるサービスを提供したいという想いに突き動かされて開発をしています．私は尽きることのないモチベを手に入れた！
 
-I'm a college student in Tokyo who loves Next.js.I like the front-end, but I'm curious to get into the back-end someday.I am doing development motivated by the desire to provide a service that raises QOL as much as possible through IT. I have a never-ending motivation!
+I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm curious to get into the back-end someday. I am doing development motivated by the desire to provide a service that raises QOL as much as possible through IT. I have a never-ending motivation!
 
 ポートフォリオはこちらから
 
