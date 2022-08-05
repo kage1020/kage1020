@@ -2,7 +2,7 @@
 
 <p align="left"> 
   <a href="https://github.com/kage1020/kage1020/">
-    <img src="https://komarev.com/ghpvc/?username=kage1020" alt="yutkat" />
+    <img src="https://komarev.com/ghpvc/?username=kage1020" alt="kage1020" />
   </a>
   <a href="http://twitter.com/kage1020">
     <img height="20" src="https://img.shields.io/twitter/follow/kage1020?label=Twitter&logo=twitter&style=flat" />
