@@ -13,6 +13,9 @@
   <a href="https://zenn.dev/kage1020">
     <img height="20" src="https://zenn.badge.nikaera.com/s/kage1020/articles" />
   </a>
+  <a href="https://zenn.dev/kage1020?tab=scraps">
+    <img height="20" src="https://zenn.badge.nikaera.com/s/kage1020/scraps" />
+  </a>
   <a href="http://qiita.com/kage1020">
     <img height="20" src="https://qiita-badge.apiapi.app/s/kage1020/posts.svg" />
   </a>
