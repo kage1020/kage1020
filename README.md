@@ -1,110 +1,188 @@
 # Hi! I'm kage1020
 
-<p align="left"> 
-  <a href="https://github.com/kage1020/kage1020/">
-    <img src="https://komarev.com/ghpvc/?username=kage1020" alt="kage1020" />
-  </a>
-  <a href="http://twitter.com/kage1020">
-    <img height="20" src="https://img.shields.io/twitter/follow/kage1020?label=Twitter&logo=twitter&style=flat" />
-  </a>
-  <a href="https://zenn.dev/kage1020">
-    <img height="20" src="https://zenn.badge.nikaera.com/s/kage1020/likes" />
-  </a>
-  <a href="https://zenn.dev/kage1020">
-    <img height="20" src="https://zenn.badge.nikaera.com/s/kage1020/articles" />
-  </a>
-  <a href="https://zenn.dev/kage1020?tab=scraps">
-    <img height="20" src="https://zenn.badge.nikaera.com/s/kage1020/scraps" />
-  </a>
-  <a href="http://qiita.com/kage1020">
-    <img height="20" src="https://qiita-badge.apiapi.app/s/kage1020/posts.svg" />
-  </a>
-  <a href="http://qiita.com/kage1020">
-    <img height="20" src="https://qiita-badge.apiapi.app/s/kage1020/contributions.svg" />
-  </a>
-</p>
-<p>
-  <span>
-    <img height="20" src="https://img.shields.io/badge/editor-VScode-blue" />
-  </span>
-  <span>
-    <img height="20" src="https://img.shields.io/badge/os-Windows 11-blue" />
-  </span>
-</p>
+Next.jsをこよなく愛するその辺にいそうな東京の大学生です．フロントエンドが好きですが，いつかバックエンドにも足を踏み入れたい好奇心のかたまりです．
 
-## Improvement of QOL...
+I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm curious to get into the back-end someday.
 
-Next.jsをこよなく愛するその辺にいそうな東京の大学生です．フロントエンドが好きですが，いつかバックエンドにも足を踏み入れたい好奇心のかたまりです．ITにより少しでもQOLが上がるサービスを提供したいという想いに突き動かされて開発をしています．私は尽きることのないモチベを手に入れた！
+<br />
 
-I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm curious to get into the back-end someday. I am doing development motivated by the desire to provide a service that raises QOL as much as possible through IT. I have a never-ending motivation!
-
-ポートフォリオはこちらから
-
-https://kage1020.vercel.app/
-
-各種SNSはこちら
-
-* <a href="https://twitter.com/kage1020" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="kage1020" height="30" width="40" />とぅいったー</a>
-* [Zenn](https://zenn.dev/kage1020)
-* [Qiita](https://qiita.com/kage1020)
+<div>
+<a href="https://kage1020.com">
+<img src="https://img.shields.io/badge/-kage1020.com-000000.svg?style=for-the-badge&logoColor=ffffff" />
+</a>
+<a href="https://twitter.com/kage1020" target="_blank" rel="noreferrer noopener">
+<img src="https://img.shields.io/badge/-x-000000.svg?logo=x&style=for-the-badge&logoColor=ffffff" />
+</a>
+<a href="https://bsky.app/profile/kage1020.bsky.social" target="_blank" rel="noreferrer noopener">
+<img src="https://img.shields.io/badge/-bluesky-0285FF.svg?logo=bluesky&style=for-the-badge&logoColor=ffffff" />
+</a>
+<a href="https://qiita.com">
+<img src="https://img.shields.io/badge/-qiita-55C500.svg?logo=qiita&style=for-the-badge&logoColor=ffffff" />
+</a>
+<a href="https://zenn.dev/kage1020">
+<img src="https://img.shields.io/badge/-zenn-3EA8FF.svg?logo=zenn&style=for-the-badge&logoColor=ffffff" />
+</a>
+</div>
 
 ## 近況
 
-* Next.js大好き
-* 経営ストラテジーシミュレーションゲーム(？)[Traffic Ltd.](https://github.com/kage1020/TrafficLtd)を開発中
-* [Twitter](https://twitter.com/kage1020) がんばる
-* DXの壁に頭ぶつけてめまいをおこしてる
+- Next.js大好き
+- 就活中
 
 ## Skills
 
-<a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/></a>
-<a href="https://www.w3schools.com/css/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="css3" width="40" height="40"/></a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/></a>
-<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/></a>
-<a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/></a>
-<a href="https://redux.js.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/></a>
-<a href="https://nextjs.org/" target="_blank" rel="noreferrer" bgcolor="#fff"><img src="https://cdn.worldvectorlogo.com/logos/nextjs-2.svg" alt="nextjs" width="40" height="40"/></a>
-<a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" alt="tailwind" width="40" height="40"/></a>
-<a href="https://www.python.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/></a>
-<a href="https://www.cprogramming.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="c" width="40" height="40"/></a>
-<a href="https://www.w3schools.com/cpp/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="cplusplus" width="40" height="40"/></a>
-<a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg" alt="mysql" width="40" height="40"/></a>
-<a href="https://www.sqlite.org/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/sqlite/sqlite-icon.svg" alt="sqlite" width="40" height="40"/></a>
+### Languages
+
+<div>
+<img src="https://img.shields.io/badge/-html5-E34F26.svg?logo=html5&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-css3-1572B6.svg?logo=css3&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-javascript-F7DF1E.svg?logo=javascript&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-typescript-3178C6.svg?logo=typescript&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-python-3776AB.svg?logo=python&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-c-A8B9CC.svg?logo=c&style=for-the-badge&color=000000" />
+<img src="https://img.shields.io/badge/-c++-00599C.svg?logo=cplusplus&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-php-777BB4.svg?logo=php&style=for-the-badge&logoColor=ffffff" />
+</div>
+
+### Databases / Hosting
+
+<div>
+<img src="https://img.shields.io/badge/-mysql-4479A1.svg?logo=mysql&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-planetscale-000000.svg?logo=planetscale&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-netlify-00C7B7.svg?logo=netlify&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-sqlite-003B57.svg?logo=sqlite&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-vercel-000000.svg?logo=vercel&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-supabase-3FCF8E.svg?logo=supabase&style=for-the-badge&logoColor=ffffff" />
+</div>
+
+### Frameworks
+
+<div>
+<img src="https://img.shields.io/badge/-react-61DAFB.svg?logo=react&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-vue.js-4FC08D.svg?logo=vuedotjs&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-next.js-000000.svg?logo=nextdotjs&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-nuxt.js-00DC82.svg?logo=nuxtdotjs&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-remix-000000.svg?logo=remix&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-astro-BC52EE.svg?logo=astro&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-gatsby-663399.svg?logo=gatsby&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-solid-2C4F7C.svg?logo=solid&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-svelte-FF3E00.svg?logo=svelte&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-tailwind_css-06B6D4.svg?logo=tailwindcss&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-electron-47848F.svg?logo=electron&style=for-the-badge&logoColor=ffffff" />
+</div>
+
+### UI Libraries
+
+<div>
+<img src="https://img.shields.io/badge/-headless_ui-66E3FF.svg?logo=headlessui&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-mui-007FFF.svg?logo=mui&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-nextui-000000.svg?logo=nextui&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-radix_ui-161618.svg?logo=radixui&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-shadcn/ui-000000.svg?logo=shadcnui&style=for-the-badge&logoColor=ffffff" />
+</div>
+
+### Testing / Linting
+
+<div>
+<img src="https://img.shields.io/badge/-jest-C21325.svg?logo=jest&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-vitest-6E9F18.svg?logo=vitest&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-playwright-2EAD33.svg?logo=playwright&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-storybook-FF4785.svg?logo=storybook&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-eslint-4B32C3.svg?logo=eslint&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-prettier-F7B93E.svg?logo=prettier&style=for-the-badge&color=000" />
+</div>
+
+### Machine Learning / Data Science
+
+<div>
+<img src="https://img.shields.io/badge/-opencv-5C3EE8.svg?logo=opencv&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-pandas-150458.svg?logo=pandas&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-pytorch-EE4C2C.svg?logo=pytorch&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-scikit_learn-F7931E.svg?logo=scikitlearn&style=for-the-badge&color=000" />
+</div>
+
+### Editors / Environments
+
+<div>
+<img src="https://img.shields.io/badge/-visual_studio_code-007ACC.svg?logo=visualstudiocode&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-visual_studio-5C2D91.svg?logo=visualstudio&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-intellij_idea-000000.svg?logo=intellijidea&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-git-181717.svg?logo=git&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-vite-646CFF.svg?logo=vite&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-turborepo-EF4444.svg?logo=turborepo&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-node.js-339933.svg?logo=nodedotjs&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-google_apps_script-4285F4.svg?logo=googleappsscript&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-figma-F24E1E.svg?logo=figma&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-diagrams.net-F08705.svg?logo=diagramsdotnet&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-wordpress-21759B.svg?logo=wordpress&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-unity-000000.svg?logo=unity&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-ubuntu-E95420.svg?logo=ubuntu&style=for-the-badge&logoColor=ffffff" />
+</div>
+
+### Others
+
+<div>
+<img src="https://img.shields.io/badge/-axios-5A29E4.svg?logo=axios&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-chart.js-FF6384.svg?logo=chartdotjs&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-date--fns-770C56.svg?logo=datefns&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-latex-008080.svg?logo=latex&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-leaflet-199900.svg?logo=leaflet&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-mapbox-000000.svg?logo=mapbox&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-prisma-2D3748.svg?logo=prisma&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-qt-41CD52.svg?logo=qt&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-react_hook_form-EC5990.svg?logo=reacthookform&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-redux-764ABC.svg?logo=redux&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-swr-000000.svg?logo=swr&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-zod-3E67B1.svg?logo=zod&style=for-the-badge&logoColor=ffffff" />
+</div>
 
 ## Learning / Will Learn
 
-<a href="https://aws.amazon.com" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="aws" width="40" height="40"/></a>
-<a href="https://azure.microsoft.com/en-in/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/microsoft_azure/microsoft_azure-icon.svg" alt="azure" width="40" height="40"/></a>
-<a href="https://www.blender.org/" target="_blank" rel="noreferrer"><img src="https://download.blender.org/branding/community/blender_community_badge_white.svg" alt="blender" width="40" height="40"/></a>
-<a href="https://www.chartjs.org" target="_blank" rel="noreferrer"><img src="https://www.chartjs.org/media/logo-title.svg" alt="chartjs" width="40" height="40"/></a>
-<a href="https://d3js.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/d3js/d3js-original.svg" alt="d3js" width="40" height="40"/></a>
-<a href="https://www.docker.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="docker" width="40" height="40"/></a>
-<a href="https://firebase.google.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" alt="firebase" width="40" height="40"/></a>
-<a href="https://flutter.dev" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/flutterio/flutterio-icon.svg" alt="flutter" width="40" height="40"/></a>
-<a href="https://cloud.google.com" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/google_cloud/google_cloud-icon.svg" alt="gcp" width="40" height="40"/></a>
-<a href="https://graphql.org" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg" alt="graphql" width="40" height="40"/></a>
-<a href="https://heroku.com" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/></a>
-<a href="https://jestjs.io" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/></a>
-<a href="https://kotlinlang.org" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg" alt="kotlin" width="40" height="40"/></a>
-<a href="https://laravel.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/laravel/laravel-plain-wordmark.svg" alt="laravel" width="40" height="40"/></a>
-<a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg" alt="mongodb" width="40" height="40"/></a>
-<a href="https://nuxtjs.org/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/nuxtjs/nuxtjs-icon.svg" alt="nuxtjs" width="40" height="40"/></a>
-<a href="https://opencv.org/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/opencv/opencv-icon.svg" alt="opencv" width="40" height="40"/></a>
-<a href="https://svelte.dev" target="_blank" rel="noreferrer"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Svelte_Logo.svg" alt="svelte" width="40" height="40"/></a>
-<a href="https://www.tensorflow.org" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/tensorflow/tensorflow-icon.svg" alt="tensorflow" width="40" height="40"/></a>
-<a href="https://unity.com/" target="_blank" rel="noreferrer"><img src="https://www.vectorlogo.zone/logos/unity3d/unity3d-icon.svg" alt="unity" width="40" height="40"/></a>
-<a href="https://www.electronjs.org" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/electron/electron-original.svg" alt="electron" width="40" height="40"/></a>
+<div>
+<img src="https://img.shields.io/badge/-docker-2496ED.svg?logo=docker&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-AWS-232F3E.svg?logo=amazonaws&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-cloudflare-F38020.svg?logo=cloudflare&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-firebase-FFCA28.svg?logo=firebase&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-hono-E36002.svg?logo=hono&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-clerk-6C47FF.svg?logo=clerk&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-deno-000000.svg?logo=deno&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-elasticsearch-005571.svg?logo=elasticsearch&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-flutter-02569B.svg?logo=flutter&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-go-00ADD8.svg?logo=go&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-graphql-E10098.svg?logo=graphql&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-mongodb-47A248.svg?logo=mongodb&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-neo4j-4581C3.svg?logo=neo4j&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-nestjs-E0234E.svg?logo=nestjs&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-ruby_on_rails-D30001.svg?logo=rubyonrails&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-trpc-2596BE.svg?logo=trpc&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-webgl-990000.svg?logo=webgl&style=for-the-badge&logoColor=ffffff" />
+</div>
 
-## GitHub Stats
+## Stats
 
-![](https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=kage1020&theme=tokyonight)
-![](http://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=kage1020&theme=tokyonight)
-![](http://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=kage1020&theme=tokyonight)
-![](http://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=kage1020&theme=tokyonight&utcOffset=9)
+<div>
+<img height="200" src="https://github-readme-stats-kage1020.vercel.app/api?username=kage1020&theme=tokyonight&show_icons=true" />
+<img height="200" src="https://github-readme-stats-kage1020.vercel.app/api/top-langs?username=kage1020&theme=tokyonight&size_weight=0.1&count_weight=0.9&layout=compact" />
+<img height="200" src="https://github-profile-summary-cards-kage1020.vercel.app/api/cards/repos-per-language?username=kage1020&theme=tokyonight" />
+<img height="200" src="https://github-profile-summary-cards-kage1020.vercel.app/api/cards/most-commit-language?username=kage1020&theme=tokyonight" />
+<img height="200" src="https://github-profile-summary-cards-kage1020.vercel.app/api/cards/productive-time?username=kage1020&theme=tokyonight&utcOffset=9" />
+<img src="https://github-profile-trophy.vercel.app/?username=kage1020&theme=tokyonight" />
+</div>
 
-<p>
-  <img alt="GitHub stats" height="200px" src="https://github-readme-stats.vercel.app/api?username=kage1020&count_private=true&show_icons=true&theme=tokyonight" />
-  <img alt="Top Langs" height="200px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=kage1020&layout=compact" />
-</p>
+<br />
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=kage1020&row=1&theme=tokyonight)](https://github.com/ryo-ma/github-profile-trophy)
+<!-- Thanks to https://badgen.org/ -->
+<div>
+<img src="https://komarev.com/ghpvc/?username=kage1020&style=for-the-badge&abbreviated=tru" />
+<img alt="GitHub User's stars" src="https://img.shields.io/github/stars/kage1020?style=for-the-badge&color=green" />
+<a href="https://qiita.com/kage1020"><img src="https://badgen.org/img/qiita/kage1020/contributions?style=for-the-badge" alt="Contributions" /></a>
+<a href="https://qiita.com/kage1020"><img src="https://badgen.org/img/qiita/kage1020/followers?style=for-the-badge" alt="Followers" /></a>
+<a href="https://qiita.com/kage1020"><img src="https://badgen.org/img/qiita/kage1020/articles?style=for-the-badge" alt="Articles" /></a>
+<a href="https://zenn.dev/kage1020"><img src="https://badgen.org/img/zenn/kage1020/likes?style=for-the-badge" alt="Likes" /></a>
+<a href="https://zenn.dev/kage1020"><img src="https://badgen.org/img/zenn/kage1020/followers?style=for-the-badge" alt="Followers" /></a>
+<a href="https://zenn.dev/kage1020"><img src="https://badgen.org/img/zenn/kage1020/articles?style=for-the-badge" alt="Articles" /></a>
+<a href="https://zenn.dev/kage1020?tab=books"><img src="https://badgen.org/img/zenn/kage1020/books?style=for-the-badge" alt="Books" /></a>
+<a href="https://zenn.dev/kage1020?tab=scraps"><img src="https://badgen.org/img/zenn/kage1020/scraps?style=for-the-badge" alt="Scraps" /></a>
+<a href="https://atcoder.jp/users/kage1020itc?contestType=algo"><img src="https://badgen.org/img/atcoder/kage1020itc/rating/algorithm?style=for-the-badge&label=AtCoder" alt="Rating" /></a>
+<a href="https://bsky.app/profile/kage1020"><img src="https://badgen.org/img/bluesky/kage1020/followers?style=for-the-badge" alt="Followers" /></a>
+</div>
