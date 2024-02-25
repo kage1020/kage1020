@@ -28,19 +28,24 @@ export default function Modal({ children }: ChildrenProps) {
 
   return createPortal(
     <Fragment>
-      <div className="absolute inset-0 z-20 bg-black/70">
+      <div className="absolute inset-0 z-20 bg-black/70" onClick={onClose}>
         <dialog
-          className="relative h-[70%] w-[80%] rounded-lg border-2 border-stone-50 bg-stone-800 p-4 text-stone-50"
+          className="relative h-[70%] w-[80%] rounded-lg border-2 bg-stone-800"
           ref={modalRef}
         >
-          {children}
-          <div>
-            <button
-              className="mx-auto block rounded bg-stone-500 px-8 py-4 text-lg hover:bg-stone-600"
-              onClick={onClose}
-            >
-              close
-            </button>
+          <div
+            className="border-stone-50 p-4 text-stone-50"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {children}
+            <div>
+              <button
+                className="mx-auto block rounded bg-stone-500 px-8 py-4 text-lg hover:bg-stone-600"
+                onClick={onClose}
+              >
+                close
+              </button>
+            </div>
           </div>
         </dialog>
       </div>

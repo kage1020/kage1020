@@ -1,6 +1,14 @@
+import type { StaticImageData } from "next/image"
 import Link from "next/link"
 
 import Chip from "@/components/chip"
+
+import StockDataSupplierQR from "../../public/images/stock-data-supplier/QR.png"
+import StockDataSupplierAutocomplete from "../../public/images/stock-data-supplier/autocomplete.png"
+import StockDataSupplierResult from "../../public/images/stock-data-supplier/result.png"
+import StockDataSupplierRetrieval from "../../public/images/stock-data-supplier/retrieval.png"
+import StockDataSupplierRetrieving from "../../public/images/stock-data-supplier/retrieving.png"
+import StockDataSupplierTalk from "../../public/images/stock-data-supplier/talk.png"
 
 type AppProperty = {
   name: string
@@ -11,18 +19,27 @@ type AppProperty = {
   tag: string[]
   createdAt: string
   status: "Stable" | "In Development" | "Draft" | "Archived"
+  images: StaticImageData[]
 }
 
-const apps: AppProperty[] = [
+export const apps: AppProperty[] = [
   {
     name: "StockDataSupplier",
     description: "株探から株価データを取得するLINEアプリ",
     href: "/apps/StockDataSupplier",
-    url: "",
+    url: "https://lin.ee/TKrHW1q",
     github: "https://github.com/kage1020/StockDataSupplier",
     tag: ["LINE", "Google Apps Script", "株", "スクレイピング"],
     createdAt: "2022/01/07",
     status: "Stable",
+    images: [
+      StockDataSupplierTalk,
+      StockDataSupplierRetrieval,
+      StockDataSupplierAutocomplete,
+      StockDataSupplierRetrieving,
+      StockDataSupplierResult,
+      StockDataSupplierQR,
+    ],
   },
   {
     name: "GroupScheduler",
@@ -32,7 +49,8 @@ const apps: AppProperty[] = [
     github: "https://github.com/kage1020/GroupScheduler",
     tag: ["LINE", "Google Apps Script", "カレンダー", "Next.js"],
     createdAt: "2022/03/18",
-    status: "In Development",
+    status: "Draft",
+    images: [],
   },
   {
     name: "TrafficLtd.",
@@ -43,6 +61,7 @@ const apps: AppProperty[] = [
     tag: ["Next.js", "TypeScript", "Redux", "leaflet", "SWR", "TailwindCSS"],
     createdAt: "2022/09/24",
     status: "In Development",
+    images: [],
   },
   {
     name: "Minesweeper++",
@@ -53,6 +72,7 @@ const apps: AppProperty[] = [
     tag: ["Next.js", "TypeScript", "TailwindCSS"],
     createdAt: "2022/11/19",
     status: "Stable",
+    images: [],
   },
   {
     name: "Shooting Game with Math",
@@ -63,6 +83,7 @@ const apps: AppProperty[] = [
     tag: ["C++", "DxLib"],
     createdAt: "2022/12/19",
     status: "Archived",
+    images: [],
   },
   {
     name: "STACK",
@@ -74,6 +95,7 @@ const apps: AppProperty[] = [
     tag: ["Next.js", "TypeScript", "TailwindCSS"],
     createdAt: "2023/09/18",
     status: "Draft",
+    images: [],
   },
   {
     name: "AAAS",
@@ -84,6 +106,7 @@ const apps: AppProperty[] = [
     tag: [],
     createdAt: "2023/09/03",
     status: "Draft",
+    images: [],
   },
   {
     name: "IconCollection",
@@ -95,6 +118,7 @@ const apps: AppProperty[] = [
     tag: ["draw.io", "react-icons", "iconify", "JavaScript"],
     createdAt: "2023/06/04",
     status: "Stable",
+    images: [],
   },
   {
     name: "TUSApp",
@@ -116,6 +140,7 @@ const apps: AppProperty[] = [
     ],
     createdAt: "2023/05/24",
     status: "Archived",
+    images: [],
   },
   {
     name: "OEISCSchema",
@@ -126,6 +151,7 @@ const apps: AppProperty[] = [
     tag: ["json schema", "口腔診査"],
     createdAt: "2023/12/12",
     status: "In Development",
+    images: [],
   },
   {
     name: "marp-theme",
@@ -136,6 +162,7 @@ const apps: AppProperty[] = [
     tag: ["Marp", "CSS", "TailwindCSS"],
     createdAt: "2023/09/25",
     status: "Stable",
+    images: [],
   },
   {
     name: "Cross Calculator",
@@ -158,6 +185,7 @@ const apps: AppProperty[] = [
     ],
     createdAt: "2023/12/06",
     status: "In Development",
+    images: [],
   },
   {
     name: "MathTeXBook",
@@ -168,6 +196,7 @@ const apps: AppProperty[] = [
     tag: ["LaTeX", "MDX", "Starlight", "TailwindCSS", "Astro"],
     createdAt: "2024/02/03",
     status: "Stable",
+    images: [],
   },
   {
     name: "KABUTAN-Visualizer",
@@ -178,6 +207,7 @@ const apps: AppProperty[] = [
     tag: ["JavaScript", "拡張機能", "ECharts", "Chart.js"],
     createdAt: "2024/02/08",
     status: "Stable",
+    images: [],
   },
 ]
 
@@ -201,7 +231,7 @@ export default function Home() {
             <span className="absolute bottom-4 left-4">
               Created At: {app.createdAt}
             </span>
-            <Link className="absolute inset-0" href={app.href}></Link>
+            <Link className="absolute inset-0 z-0" href={app.href}></Link>
             <Chip className="absolute bottom-4 right-4">{app.status}</Chip>
           </div>
         )
