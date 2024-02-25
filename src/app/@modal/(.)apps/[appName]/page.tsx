@@ -3,9 +3,9 @@ import Image from "next/image"
 import { LuExternalLink } from "react-icons/lu"
 import { SiGithub } from "react-icons/si"
 
-import { apps } from "@/app/page"
 import Chip from "@/components/chip"
 import Modal from "@/components/modal"
+import { apps } from "@/utils"
 
 export const runtime = "edge"
 
