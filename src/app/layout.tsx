@@ -1,6 +1,8 @@
 import type { Metadata } from "next"
 import { Noto_Sans_JP } from "next/font/google"
 
+import { GoogleTagManager } from "@next/third-parties/google"
+
 import { cn } from "@/libs/util"
 
 import "@/styles/globals.css"
@@ -21,6 +23,11 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang="ja" className="dark">
       <body className={cn(NotoSansJP.className, "relative bg-stone-900")}>
+        {process.env.NODE_ENV === "production" && (
+          <GoogleTagManager
+            gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? ""}
+          />
+        )}
         <div className="relative z-10 p-12">{children}</div>
         {modal}
         <div id="modal-root" className="absolute inset-0"></div>
