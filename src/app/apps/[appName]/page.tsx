@@ -1,9 +1,18 @@
+import ContentViewer from "@/app/apps/[appName]/content-viewer"
+import { apps } from "@/utils"
+
+import type { AppName } from "@/utils"
+
 export const runtime = "edge"
 
 export default function AppPage({
   params: { appName },
 }: {
-  params: { appName: string }
+  params: { appName: AppName }
 }) {
-  return <div>{appName} page</div>
+  return (
+    <ContentViewer
+      app={apps.find((a) => a.href.split("/").at(-1) === appName)!}
+    />
+  )
 }

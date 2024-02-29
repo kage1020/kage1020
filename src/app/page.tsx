@@ -7,11 +7,11 @@ export default function Home() {
   return (
     <main className="mx-auto grid h-full max-w-4xl grid-cols-1 gap-6 overflow-auto p-4 text-white md:grid-cols-2">
       {apps.map((app) => {
-        if (app.status === "Draft") return null
+        // if (app.status === "Draft") return null
         return (
           <div
             key={app.name}
-            className="relative row-span-5 grid grid-rows-subgrid rounded-lg border border-stone-200 bg-stone-700 p-4 shadow-lg shadow-stone-600"
+            className="relative row-span-5 grid grid-rows-subgrid rounded-lg bg-stone-800 p-4 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl"
           >
             <p className="!mt-0 text-center text-2xl font-bold">{app.name}</p>
             <p>{app.description}</p>

@@ -30,10 +30,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  icons: {
-    icon: ["/favicon.ico", "/icon.svg"],
-    apple: ["/apple-touch-icon.png"],
-  },
   twitter: {
     card: "summary_large_image",
     title: "kage1020",

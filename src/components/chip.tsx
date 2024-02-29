@@ -68,6 +68,7 @@ export default function Chip({ className, children }: Props) {
         children === "In Development" &&
           "border-amber-600 bg-amber-600 text-white",
         children === "Stable" && "border-green-500 bg-green-500 text-white",
+        children === "Draft" && "border-blue-500 bg-blue-500 text-white",
         className,
       )}
     >
