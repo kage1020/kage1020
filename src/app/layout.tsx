@@ -51,7 +51,12 @@ type RootLayoutProps = ChildrenProps & {
 export default function RootLayout({ children, modal }: RootLayoutProps) {
   return (
     <html lang="ja" className="dark">
-      <body className={cn(NotoSansJP.className, "relative bg-stone-900")}>
+      <body
+        className={cn(
+          NotoSansJP.className,
+          "relative bg-stone-900 has-[dialog]:pr-4",
+        )}
+      >
         {process.env.NODE_ENV === "production" && (
           <GoogleTagManager
             gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? ""}

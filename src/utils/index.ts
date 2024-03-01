@@ -6,6 +6,10 @@ import KabutanVisualizerQuarterResult from "../../public/images/kabutan-visualiz
 import KabutanVisualizerYearGrowth from "../../public/images/kabutan-visualizer/year-growth.jpeg"
 import KabutanVisualizerYearProfit from "../../public/images/kabutan-visualizer/year-profit.jpeg"
 import KabutanVisualizerYearResult from "../../public/images/kabutan-visualizer/year-result.jpeg"
+import MathTexBookAnswer from "../../public/images/math-tex-book/answer.jpeg"
+import MathTexBookImageZoom from "../../public/images/math-tex-book/image-zoom.jpeg"
+import MathTexBookQuestion from "../../public/images/math-tex-book/question.jpeg"
+import MathTexBookTop from "../../public/images/math-tex-book/top.jpeg"
 import MinesweeperPlusPlusDescription from "../../public/images/minesweeper-plus-plus/description.jpeg"
 import MinesweeperPlusPlusLose from "../../public/images/minesweeper-plus-plus/lose.jpeg"
 import MinesweeperPlusPlusPlaying from "../../public/images/minesweeper-plus-plus/playing.jpeg"
@@ -143,7 +147,12 @@ export const apps: AppProperty[] = [
     tag: ["LaTeX", "MDX", "Starlight", "TailwindCSS", "Astro"],
     createdAt: "2024/02/03",
     status: "Stable",
-    images: [],
+    images: [
+      { src: MathTexBookTop, alt: "トップページ" },
+      { src: MathTexBookQuestion, alt: "問題ページ" },
+      { src: MathTexBookAnswer, alt: "解答ページ" },
+      { src: MathTexBookImageZoom, alt: "画像拡大" },
+    ],
   },
   {
     name: "Shooting Game with Math",
