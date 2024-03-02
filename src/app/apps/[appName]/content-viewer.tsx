@@ -11,7 +11,7 @@ export default function ContentViewer({ app }: { app: AppProperty }) {
   return (
     <div className="space-y-8 p-8 text-white">
       <p className="text-center text-5xl">{app.name}</p>
-      <p>{app.description}</p>
+      <p>{app.long}</p>
       <div className="flex flex-wrap gap-2">
         {app.tag.map((tag) => (
           <Chip key={tag}>{tag}</Chip>

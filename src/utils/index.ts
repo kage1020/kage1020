@@ -6,6 +6,11 @@ import KabutanVisualizerQuarterResult from "../../public/images/kabutan-visualiz
 import KabutanVisualizerYearGrowth from "../../public/images/kabutan-visualizer/year-growth.jpeg"
 import KabutanVisualizerYearProfit from "../../public/images/kabutan-visualizer/year-profit.jpeg"
 import KabutanVisualizerYearResult from "../../public/images/kabutan-visualizer/year-result.jpeg"
+import MarpThemeColor from "../../public/images/marp-theme/color.png"
+import MarpThemeCover from "../../public/images/marp-theme/cover.png"
+import MarpThemeDefault from "../../public/images/marp-theme/default.png"
+import MarpThemeImageCenter from "../../public/images/marp-theme/image-center.png"
+import MarpThemeTable from "../../public/images/marp-theme/table.png"
 import MathTexBookAnswer from "../../public/images/math-tex-book/answer.jpeg"
 import MathTexBookImageZoom from "../../public/images/math-tex-book/image-zoom.jpeg"
 import MathTexBookQuestion from "../../public/images/math-tex-book/question.jpeg"
@@ -21,13 +26,14 @@ import ShootingGameWithMathPlaying from "../../public/images/shooting-game-with-
 import ShootingGameWithMathPlaying2 from "../../public/images/shooting-game-with-math/playing2.png"
 import ShootingGameWithMathResult from "../../public/images/shooting-game-with-math/result.png"
 import ShootingGameWithMathSelect from "../../public/images/shooting-game-with-math/select.png"
-import SHootingGameWithMathStart from "../../public/images/shooting-game-with-math/start.png"
+import ShootingGameWithMathStart from "../../public/images/shooting-game-with-math/start.png"
 import StockDataSupplierQR from "../../public/images/stock-data-supplier/QR.png"
 import StockDataSupplierAutocomplete from "../../public/images/stock-data-supplier/autocomplete.png"
 import StockDataSupplierResult from "../../public/images/stock-data-supplier/result.png"
 import StockDataSupplierRetrieval from "../../public/images/stock-data-supplier/retrieval.png"
 import StockDataSupplierRetrieving from "../../public/images/stock-data-supplier/retrieving.png"
 import StockDataSupplierTalk from "../../public/images/stock-data-supplier/talk.png"
+import TUSAppDark from "../../public/images/tus-app/architecture-dark.drawio.svg"
 
 export type AppName =
   | "Shooting Game with Math"
@@ -47,7 +53,8 @@ export type AppName =
 
 export type AppProperty = {
   name: AppName
-  description: string
+  short: string
+  long: string
   href: string
   url: string
   github: string
@@ -63,7 +70,8 @@ export type AppProperty = {
 export const apps: AppProperty[] = [
   {
     name: "StockDataSupplier",
-    description: "株探から株価データを取得するLINEアプリ",
+    short: "株探から株価データを取得するLINEアプリ",
+    long: "株探から株価データを取得するLINEアプリです。銘柄名を入力すると、株探から株価データを取得して返信します。",
     href: "/apps/StockDataSupplier",
     url: "https://lin.ee/TKrHW1q",
     github: "https://github.com/kage1020/StockDataSupplier",
@@ -81,7 +89,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "KABUTAN-Visualizer",
-    description: "株探の決算データを可視化するアプリ",
+    short: "株探の決算データを可視化するアプリ",
+    long: "株探の決算データを可視化する拡張機能です。株探の決算データをグラフで可視化します。",
     href: "/apps/KABUTAN-Visualizer",
     url: "",
     github: "https://github.com/kage1020/KABUTAN-Visualizer",
@@ -99,7 +108,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "Minesweeper++",
-    description: "運要素強めのマインスイーパー",
+    short: "運要素強めのマインスイーパー",
+    long: "運要素を強めにしたマインスイーパーです。通常のマインスイーパーとは異なり、周囲の爆弾の数を表す値が確率で減少します。",
     href: "/apps/MinesweeperPlusPlus",
     url: "https://minesweeper-plus-plus.vercel.app/",
     github: "https://github.com/kage1020/MinesweeperPlusPlus",
@@ -117,8 +127,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "IconCollection",
-    description:
-      "アイコンライブラリをdraw.ioで使えるようxml library形式に変換する",
+    short: "アイコンライブラリをdraw.ioで使えるようxml library形式に変換する",
+    long: "アイコンライブラリをdraw.ioで使えるようxml library形式に変換するアプリです。react-iconsとiconifyのアイコンをまとめたアイコンライブラリを作成しました。",
     href: "/apps/IconCollection",
     url: "",
     github: "https://github.com/kage1020/IconCollection",
@@ -129,18 +139,26 @@ export const apps: AppProperty[] = [
   },
   {
     name: "marp-theme",
-    description: "Marpのためのカスタムテーマ",
+    short: "Marpのためのカスタムテーマ",
+    long: "Marpのためのカスタムテーマです。Marpのデフォルトテーマに加えて、画像の中央寄せ、テーブルのスタイル、カラーコードの表示などを変更しました。",
     href: "/apps/marp-theme",
     url: "",
     github: "https://github.com/kage1020/marp-theme",
     tag: ["Marp", "CSS", "TailwindCSS"],
     createdAt: "2023/09/25",
     status: "Stable",
-    images: [],
+    images: [
+      { src: MarpThemeCover, alt: "カバー" },
+      { src: MarpThemeDefault, alt: "デフォルト" },
+      { src: MarpThemeImageCenter, alt: "画像中央寄せ" },
+      { src: MarpThemeTable, alt: "テーブル" },
+      { src: MarpThemeColor, alt: "カラーコード" },
+    ],
   },
   {
     name: "MathTeXBook",
-    description: "TeXで書かれた数学の問題をMDXで表示する問題集",
+    short: "TeXで書かれた数学の問題をMDXで表示する問題集",
+    long: "TeXで書かれた数学の問題をMDXで表示する問題集です。LaTeXで書かれた問題をMDXで表示することで、数式を含む問題を簡単に表示できます。",
     href: "/apps/MathTeXBook",
     url: "https://math-tex-book.vercel.app/",
     github: "https://github.com/kage1020/MathTeXBook",
@@ -156,7 +174,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "Shooting Game with Math",
-    description: "スコア計算に少し複雑な算数を使ったシューティングゲーム",
+    short: "スコア計算に少し複雑な算数を使ったシューティングゲーム",
+    long: "スコア計算に少し複雑な算数を使ったシューティングゲームです。敵を倒すとスコアが加算されますが、スコア計算には少し複雑な算数を使っています。",
     href: "/apps/ShootingGameWithMath",
     url: "",
     github: "https://github.com/kage1020/Shooting-Game-With-Math",
@@ -164,7 +183,7 @@ export const apps: AppProperty[] = [
     createdAt: "2020/11/19",
     status: "Archived",
     images: [
-      { src: SHootingGameWithMathStart, alt: "スタート画面" },
+      { src: ShootingGameWithMathStart, alt: "スタート画面" },
       { src: ShootingGameWithMathSelect, alt: "選択画面" },
       { src: ShootingGameWithMathDescription, alt: "ルール説明画面" },
       { src: ShootingGameWithMathPlaying, alt: "プレイ中" },
@@ -174,7 +193,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "TUSApp",
-    description: "unofficial utility app for TUS",
+    short: "unofficial utility app for TUS",
+    long: "This is an unofficial utility app for learning stacks created by Taniguchi Lab members in TUS.",
     href: "/apps/TUSApp",
     url: "https://tus-app.vercel.app/",
     github: "https://github.com/kage1020/TUSApp",
@@ -192,11 +212,12 @@ export const apps: AppProperty[] = [
     ],
     createdAt: "2023/05/24",
     status: "Archived",
-    images: [],
+    images: [{ src: TUSAppDark, alt: "Dark" }],
   },
   {
     name: "GroupScheduler",
-    description: "グループで予定を共有するLINEアプリ",
+    short: "グループで予定を共有するLINEアプリ",
+    long: "グループで予定を共有するLINEアプリです。グループで予定を共有することで、予定の共有や調整を簡単に行うことができます。",
     href: "/apps/GroupScheduler",
     url: "",
     github: "https://github.com/kage1020/GroupScheduler",
@@ -207,7 +228,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "Traffic Ltd.",
-    description: "交通系経営ストラテジーシミュレーションゲーム",
+    short: "交通系経営ストラテジーシミュレーションゲーム",
+    long: "交通系経営ストラテジーシミュレーションゲームです。プレイヤーは交通会社の経営者となり、交通機関を運行し、経営を行います。",
     href: "/apps/TrafficLtd",
     url: "https://traffic-ltd.vercel.app/",
     github: "https://github.com/kage1020/TrafficLtd",
@@ -218,7 +240,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "OEISCSchema",
-    description: "口腔診査情報標準コード仕様のためのjson schema",
+    short: "口腔診査情報標準コード仕様のためのjson schema",
+    long: "口腔診査情報標準コード仕様のためのjson schemaです。口腔診査情報標準コード仕様に準拠したjson schemaを作成しました。",
     href: "/apps/OEISCSchema",
     url: "",
     github: "https://github.com/kage1020/OEISCSchema",
@@ -229,7 +252,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "Cross Calculator",
-    description: "フレームワーク横断電卓",
+    short: "フレームワーク横断電卓",
+    long: "フレームワーク横断電卓です。フレームワークを横断して電卓を作成しました。",
     href: "/apps/CrossCalculator",
     url: "https://cross-calculator.vercel.app",
     github: "https://github.com/kage1020/CrossCalculator",
@@ -252,8 +276,9 @@ export const apps: AppProperty[] = [
   },
   {
     name: "STACK",
-    description:
+    short:
       "Skill Training And Coding Knowledge. ゲームをしながらプログラミングを学ぶ",
+    long: "Skill Training And Coding Knowledge. ゲームをしながらプログラミングを学ぶアプリです。",
     href: "/apps/STACK",
     url: "",
     github: "https://github.com/kage1020/STACK",
@@ -264,7 +289,8 @@ export const apps: AppProperty[] = [
   },
   {
     name: "AAAS",
-    description: "Annotation App for Action Segmentation.",
+    short: "Annotation App for Action Segmentation.",
+    long: "Annotation App for Action Segmentation.",
     href: "/apps/AAAS",
     url: "",
     github: "https://github.com/kage1020/AAAS",

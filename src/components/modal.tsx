@@ -17,7 +17,6 @@ export default function Modal({ children }: ChildrenProps) {
 
   useEffect(() => {
     if (!modalRef.current?.open) {
-      // document.body.style.overflow = "hidden"
       if (modalRef.current && overlayRef.current) {
         modalRef.current?.showModal()
         modalRef.current.className = cn(
@@ -43,8 +42,7 @@ export default function Modal({ children }: ChildrenProps) {
       setTimeout(() => {
         router.back()
         modalRef.current?.close()
-        // document.body.style.overflow = "auto"
-      }, 500)
+      }, 400)
     }
   }
 
@@ -59,11 +57,11 @@ export default function Modal({ children }: ChildrenProps) {
         ref={modalRef}
       >
         <div
-          className="border-stone-50 p-4 text-stone-50"
+          className="flex h-full flex-col justify-between border-stone-50 text-stone-50"
           onClick={(e) => e.stopPropagation()}
         >
           {children}
-          <div>
+          <div className="pb-8">
             <button
               className="mx-auto block rounded border-2 border-stone-100 px-8 py-4 text-lg transition hover:bg-stone-100/20"
               onClick={onClose}

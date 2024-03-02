@@ -13,7 +13,7 @@ export default function Home() {
             className="relative row-span-5 grid grid-rows-subgrid rounded-lg bg-stone-800 p-4 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl"
           >
             <p className="!mt-0 text-center text-2xl font-bold">{app.name}</p>
-            <p>{app.description}</p>
+            <p>{app.short}</p>
             <div className="flex flex-wrap gap-2">
               {app.tag.map((tag) => (
                 <Chip key={tag}>{tag}</Chip>
@@ -26,7 +26,9 @@ export default function Home() {
               className="absolute inset-0 z-0"
               href={app.href}
               scroll={false}
-            ></Link>
+            >
+              <span className="sr-only">{app.name}</span>
+            </Link>
             <Chip className="absolute bottom-4 right-4">{app.status}</Chip>
           </div>
         )

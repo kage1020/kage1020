@@ -54,7 +54,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
       <body
         className={cn(
           NotoSansJP.className,
-          "relative bg-stone-900 has-[dialog]:pr-4",
+          "relative bg-stone-900 has-[dialog]:overflow-hidden has-[dialog]:pr-4",
         )}
       >
         {process.env.NODE_ENV === "production" && (

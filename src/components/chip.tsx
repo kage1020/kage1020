@@ -107,7 +107,7 @@ export default function Chip({ className, children }: Props) {
       {children === "ECharts" && <SiApacheecharts className="text-echarts" />}
       {children === "CSS" && <SiCss3 className="text-css" />}
       {children === "LaTeX" && <SiLatex className="text-latex" />}
-      {children === "MDX" && <SiMdx className="text-mdx" />}
+      {children === "MDX" && <SiMdx />}
       {children === "Chart.js" && <SiChartdotjs className="text-chartjs" />}
       {children}
     </span>
