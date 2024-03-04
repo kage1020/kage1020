@@ -71,7 +71,7 @@ export const apps: AppProperty[] = [
   {
     name: "StockDataSupplier",
     short: "株探から株価データを取得するLINEアプリ",
-    long: "株探から株価データを取得するLINEアプリです。銘柄名を入力すると、株探から株価データを取得して返信します。",
+    long: "株銘柄の検索サイト「株探」から各銘柄に関する情報を取得し、基本情報、チャート情報、財務情報を集約・表示するLINEアプリです。銘柄名を入力すると、株探から最新情報を取得し、その銘柄の売買に必要な情報をピックアップして表示します。また、その情報をもとに、今その銘柄が買い時なのか、売り時なのかを判定します。",
     href: "/apps/StockDataSupplier",
     url: "https://lin.ee/TKrHW1q",
     github: "https://github.com/kage1020/StockDataSupplier",
