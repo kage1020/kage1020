@@ -7,3 +7,7 @@ export type ClassNameProps = {
 }
 
 export type Props = ChildrenProps & ClassNameProps
+
+export type CardProps = Props & {
+  grid?: boolean
+}

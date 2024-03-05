@@ -1,38 +1,82 @@
+import Image from "next/image"
 import Link from "next/link"
 
-import Chip from "@/components/chip"
-import { apps } from "@/utils"
+import { SiGithub, SiQiita, SiX, SiZenn } from "react-icons/si"
+
+import Card from "@/components/card"
+import Transition from "@/components/transition"
+
+import avatar from "../../public/icon-512x512.png"
 
 export default function Home() {
   return (
-    <main className="mx-auto grid h-full max-w-4xl grid-cols-1 gap-6 overflow-auto p-4 text-white md:grid-cols-2">
-      {apps.map((app) => {
-        return (
-          <div
-            key={app.name}
-            className="relative row-span-5 grid grid-rows-subgrid rounded-lg bg-stone-800 p-4 shadow-lg transition duration-300 ease-in-out hover:-translate-y-1 hover:shadow-xl"
-          >
-            <p className="!mt-0 text-center text-2xl font-bold">{app.name}</p>
-            <p>{app.short}</p>
-            <div className="flex flex-wrap gap-2">
-              {app.tag.map((tag) => (
-                <Chip key={tag}>{tag}</Chip>
-              ))}
-            </div>
-            <span className="absolute bottom-4 left-4">
-              Created At: {app.createdAt}
-            </span>
-            <Link
-              className="absolute inset-0 z-0"
-              href={app.href}
-              scroll={false}
-            >
-              <span className="sr-only">{app.name}</span>
-            </Link>
-            <Chip className="absolute bottom-4 right-4">{app.status}</Chip>
-          </div>
-        )
-      })}
-    </main>
+    <Transition className="mx-auto grid h-full max-w-4xl grid-cols-1 gap-6 overflow-auto p-4 text-white md:grid-cols-2">
+      <div className="col-span-2 grid justify-center py-20">
+        <div className="grid place-items-center">
+          <Image src={avatar} alt="" width={128} height={128} />
+        </div>
+        <p className="p-4 text-center text-5xl font-bold">kage1020</p>
+      </div>
+      <Card className="col-span-2 h-32 bg-gradient-to-b from-stone-700 to-stone-800">
+        <div className="grid h-full w-full place-items-center text-3xl">
+          Apps
+        </div>
+        <Link href="/apps" className="absolute inset-0">
+          <span className="sr-only">apps</span>
+        </Link>
+      </Card>
+      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8">
+        <div className="grid h-full w-full place-items-center text-2xl">
+          <SiGithub size={64} />
+        </div>
+        <Link
+          href="https://github.com/kage1020"
+          className="absolute inset-0"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="sr-only">GitHub</span>
+        </Link>
+      </Card>
+      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8 hover:text-qiita">
+        <div className="grid h-full w-full place-items-center text-2xl">
+          <SiQiita size={64} />
+        </div>
+        <Link
+          href="https://qiita.com/kage1020"
+          className="absolute inset-0"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="sr-only">Qiita</span>
+        </Link>
+      </Card>
+      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8 hover:text-zenn">
+        <div className="grid h-full w-full place-items-center text-2xl">
+          <SiZenn size={64} />
+        </div>
+        <Link
+          href="https://zenn.dev/kage1020"
+          className="absolute inset-0"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="sr-only">Zenn</span>
+        </Link>
+      </Card>
+      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8">
+        <div className="grid h-full w-full place-items-center text-2xl">
+          <SiX size={64} />
+        </div>
+        <Link
+          href="https://twitter.com/kage1020"
+          className="absolute inset-0"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="sr-only">X</span>
+        </Link>
+      </Card>
+    </Transition>
   )
 }

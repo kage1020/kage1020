@@ -6,21 +6,39 @@ import { motion } from "framer-motion"
 
 import type { Props } from "@/types"
 
-const Transition = forwardRef<HTMLDialogElement, Props>(function Transition(
+const Transition = forwardRef<HTMLDivElement, Props>(function Transition(
   { className, children }: Props,
   ref,
 ) {
   return (
-    <motion.dialog
+    <motion.main
       ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
       className={className}
     >
       {children}
-    </motion.dialog>
+    </motion.main>
   )
 })
 
 export default Transition
+
+export const TransitionDiv = forwardRef<HTMLDivElement, Props>(
+  function TransitionDiv({ className, children }: Props, ref) {
+    return (
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    )
+  },
+)

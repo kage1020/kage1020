@@ -4,5 +4,6 @@
     "source.fixAll": "explicit"
   },
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "cSpell.words": ["nextui"]
+  "cSpell.words": ["nextui"],
+  "tailwindCSS.experimental.classRegex": ["[\"'`]([^\"'`]*).*?[\"'`]"]
 }

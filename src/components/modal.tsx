@@ -63,7 +63,7 @@ export default function Modal({ children }: ChildrenProps) {
           {children}
           <div className="pb-8">
             <button
-              className="mx-auto block rounded border-2 border-stone-100 px-8 py-4 text-lg transition hover:bg-stone-100/20"
+              className="mx-auto block rounded border-2 border-stone-100 px-8 py-3 text-lg transition hover:bg-stone-100/20"
               onClick={onClose}
             >
               close
