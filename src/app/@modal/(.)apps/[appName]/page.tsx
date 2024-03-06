@@ -6,7 +6,7 @@ import type { AppName } from "@/utils"
 
 export const runtime = "edge"
 
-export default function AppPage({
+export default function ModalAppName({
   params: { appName },
 }: {
   params: { appName: AppName }

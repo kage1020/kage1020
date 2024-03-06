@@ -18,7 +18,7 @@ export async function generateMetadata({
   }
 }
 
-export default function AppPage({
+export default function AppName({
   params: { appName },
 }: {
   params: { appName: AppName }
