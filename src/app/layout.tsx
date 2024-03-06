@@ -16,7 +16,9 @@ export const metadata: Metadata = {
     template: "%s | kage1020",
   },
   description: "A portfolio site of kage1020",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL ?? ""),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? "",
+  ),
   openGraph: {
     title: "kage1020",
     description: "A portfolio site of kage1020",
