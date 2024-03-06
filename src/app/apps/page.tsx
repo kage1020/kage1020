@@ -10,7 +10,7 @@ export const metadata = {
   description: "A list of all my apps",
 }
 
-export default function AppPage() {
+export default function Apps() {
   return (
     <Transition className="mx-auto grid h-full max-w-4xl grid-cols-1 gap-6 overflow-auto p-4 text-white md:grid-cols-2">
       {apps.map((app) => {
