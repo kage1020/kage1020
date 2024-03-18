@@ -1,6 +1,7 @@
 import Image from "next/image"
 
 import { LuExternalLink } from "react-icons/lu"
+import { MdEvent } from "react-icons/md"
 import { SiGithub } from "react-icons/si"
 
 import Chip from "@/components/chip"
@@ -9,7 +10,7 @@ import type { AppProperty } from "@/utils"
 
 export default function ContentViewer({ app }: { app: AppProperty }) {
   return (
-    <div className="space-y-8 p-8 text-white">
+    <div className="space-y-8 break-all p-4 text-white md:p-8">
       <p className="text-center text-5xl">{app.name}</p>
       <p>{app.long}</p>
       <div className="flex flex-wrap gap-2">
@@ -17,7 +18,7 @@ export default function ContentViewer({ app }: { app: AppProperty }) {
           <Chip key={tag}>{tag}</Chip>
         ))}
       </div>
-      <div className="flex space-x-4">
+      <div className="flex flex-wrap gap-4">
         {app.url && (
           <a
             className="flex items-center space-x-2 underline"
@@ -25,7 +26,7 @@ export default function ContentViewer({ app }: { app: AppProperty }) {
             target="_blank"
             rel="noreferrer noopener"
           >
-            <LuExternalLink className="inline" />
+            <LuExternalLink size={20} />
             <span>{app.url}</span>
           </a>
         )}
@@ -35,10 +36,13 @@ export default function ContentViewer({ app }: { app: AppProperty }) {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <SiGithub className="inline" />
+          <SiGithub size={20} />
           <span>{app.github}</span>
         </a>
-        <span>Created At: {app.createdAt}</span>
+        <span className="flex items-center space-x-2">
+          <MdEvent size={20} />
+          <span>Created At: {app.createdAt}</span>
+        </span>
         <span>
           Status: <Chip className="inline">{app.status}</Chip>
         </span>

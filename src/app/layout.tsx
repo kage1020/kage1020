@@ -56,7 +56,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
       <body
         className={cn(
           NotoSansJP.className,
-          "relative bg-stone-900 text-white has-[dialog]:overflow-hidden has-[dialog]:pr-4",
+          "relative bg-stone-900 text-white has-[dialog]:overflow-hidden",
         )}
       >
         {process.env.NODE_ENV === "production" && (
@@ -64,7 +64,7 @@ export default function RootLayout({ children, modal }: RootLayoutProps) {
             gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? ""}
           />
         )}
-        <div className="relative z-10 p-12">{children}</div>
+        <div className="relative z-10 px-4 py-8 md:p-12">{children}</div>
         {modal}
         <div id="modal-root" className="absolute inset-0"></div>
       </body>

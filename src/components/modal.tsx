@@ -53,7 +53,7 @@ export default function Modal({ children }: ChildrenProps) {
       ref={overlayRef}
     >
       <dialog
-        className="relative h-[70%] w-[80%] overscroll-y-none rounded-lg border-2 bg-stone-800 opacity-0 transition duration-500 ease-in-out"
+        className="relative h-[85%] w-[85%] overflow-x-hidden rounded-lg border-2 bg-stone-800 opacity-0 transition duration-500 ease-in-out"
         ref={modalRef}
       >
         <div

@@ -1,5 +1,6 @@
 import type { StaticImageData } from "next/image"
 
+import IconCollection from "../../public/images/icon-collection/list.png"
 import KabutanVisualizerHalfResult from "../../public/images/kabutan-visualizer/half-result.jpeg"
 import KabutanVisualizerKabuka from "../../public/images/kabutan-visualizer/kabuka.jpeg"
 import KabutanVisualizerQuarterResult from "../../public/images/kabutan-visualizer/quarter-result.jpeg"
@@ -75,7 +76,7 @@ export const apps: AppProperty[] = [
     href: "/apps/StockDataSupplier",
     url: "https://lin.ee/TKrHW1q",
     github: "https://github.com/kage1020/StockDataSupplier",
-    tag: ["LINE", "Google Apps Script", "株", "スクレイピング"],
+    tag: ["LINE", "株", "Google Apps Script", "スクレイピング"],
     createdAt: "2021/01/07",
     status: "Stable",
     images: [
@@ -135,7 +136,7 @@ export const apps: AppProperty[] = [
     tag: ["draw.io", "react-icons", "iconify", "JavaScript"],
     createdAt: "2023/06/04",
     status: "Stable",
-    images: [],
+    images: [{ src: IconCollection, alt: "アイコンライブラリ" }],
   },
   {
     name: "marp-theme",
@@ -255,7 +256,7 @@ export const apps: AppProperty[] = [
     short: "フレームワーク横断電卓",
     long: "フレームワーク横断電卓です。フレームワークを横断して電卓を作成しました。",
     href: "/apps/CrossCalculator",
-    url: "https://cross-calculator.vercel.app",
+    url: "https://cross-calculator.netlify.app",
     github: "https://github.com/kage1020/CrossCalculator",
     tag: [
       "TypeScript",

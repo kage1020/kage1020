@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
+import { TransitionLTR } from "@/components/transition"
+
 import avatar from "../../public/icon-512x512.png"
 
 export default function Header() {
@@ -13,21 +15,25 @@ export default function Header() {
 
   if (pathname.startsWith("/apps/")) {
     return (
-      <Link href="/apps" className="flex items-center gap-4 pb-8">
-        <Image src={avatar} alt="" width={32} height={32} />
-        <span className="border-b-2 border-b-transparent transition duration-300 hover:border-b-white">
-          apps
-        </span>
-      </Link>
+      <TransitionLTR>
+        <Link href="/apps" className="flex items-center gap-4 pb-8">
+          <Image src={avatar} alt="" width={32} height={32} />
+          <span className="border-b-2 border-b-transparent transition duration-300 hover:border-b-white">
+            apps
+          </span>
+        </Link>
+      </TransitionLTR>
     )
   }
 
   return (
-    <Link href="/" className="flex items-center gap-4 pb-8">
-      <Image src={avatar} alt="" width={32} height={32} />
-      <span className="border-b-2 border-b-transparent transition duration-300 hover:border-b-white">
-        kage1020
-      </span>
-    </Link>
+    <TransitionLTR>
+      <Link href="/" className="flex items-center gap-4 pb-8">
+        <Image src={avatar} alt="" width={32} height={32} />
+        <span className="border-b-2 border-b-transparent transition duration-300 hover:border-b-white">
+          kage1020
+        </span>
+      </Link>
+    </TransitionLTR>
   )
 }

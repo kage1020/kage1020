@@ -26,14 +26,14 @@ const Transition = forwardRef<HTMLDivElement, Props>(function Transition(
 
 export default Transition
 
-export const TransitionDiv = forwardRef<HTMLDivElement, Props>(
+export const TransitionLTR = forwardRef<HTMLDivElement, Props>(
   function TransitionDiv({ className, children }: Props, ref) {
     return (
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -20 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={className}
       >

@@ -1,5 +1,5 @@
 import ContentViewer from "@/app/apps/[appName]/content-viewer"
-import { TransitionDiv } from "@/components/transition"
+import Transition from "@/components/transition"
 import { apps } from "@/utils"
 
 import type { AppName } from "@/utils"
@@ -24,10 +24,10 @@ export default function AppName({
   params: { appName: AppName }
 }) {
   return (
-    <TransitionDiv className="rounded-lg border-2">
+    <Transition className="rounded-lg border-2">
       <ContentViewer
         app={apps.find((a) => a.href.split("/").at(-1) === appName)!}
       />
-    </TransitionDiv>
+    </Transition>
   )
 }
