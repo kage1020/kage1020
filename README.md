@@ -53,6 +53,7 @@ I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm 
 <img src="https://img.shields.io/badge/-sqlite-003B57.svg?logo=sqlite&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-vercel-000000.svg?logo=vercel&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-supabase-3FCF8E.svg?logo=supabase&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-cloudflare-F38020.svg?logo=cloudflare&style=for-the-badge&logoColor=ffffff" />
 </div>
 
 ### Frameworks
@@ -71,7 +72,7 @@ I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm 
 <img src="https://img.shields.io/badge/-electron-47848F.svg?logo=electron&style=for-the-badge&logoColor=ffffff" />
 </div>
 
-### UI Libraries
+### Libraries
 
 <div>
 <img src="https://img.shields.io/badge/-headless_ui-66E3FF.svg?logo=headlessui&style=for-the-badge&color=000" />
@@ -79,6 +80,14 @@ I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm 
 <img src="https://img.shields.io/badge/-nextui-000000.svg?logo=nextui&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-radix_ui-161618.svg?logo=radixui&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-shadcn/ui-000000.svg?logo=shadcnui&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-axios-5A29E4.svg?logo=axios&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-chart.js-FF6384.svg?logo=chartdotjs&style=for-the-badge&color=000" />
+<img src="https://img.shields.io/badge/-date--fns-770C56.svg?logo=datefns&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-prisma-2D3748.svg?logo=prisma&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-react_hook_form-EC5990.svg?logo=reacthookform&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-redux-764ABC.svg?logo=redux&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-swr-000000.svg?logo=swr&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-zod-3E67B1.svg?logo=zod&style=for-the-badge&logoColor=ffffff" />
 </div>
 
 ### Testing / Linting
@@ -108,6 +117,7 @@ I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm 
 <img src="https://img.shields.io/badge/-visual_studio-5C2D91.svg?logo=visualstudio&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-intellij_idea-000000.svg?logo=intellijidea&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-git-181717.svg?logo=git&style=for-the-badge&logoColor=ffffff" />
+<img src="https://img.shields.io/badge/-docker-2496ED.svg?logo=docker&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-vite-646CFF.svg?logo=vite&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-turborepo-EF4444.svg?logo=turborepo&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-node.js-339933.svg?logo=nodedotjs&style=for-the-badge&logoColor=ffffff" />
@@ -122,26 +132,16 @@ I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm 
 ### Others
 
 <div>
-<img src="https://img.shields.io/badge/-axios-5A29E4.svg?logo=axios&style=for-the-badge&logoColor=ffffff" />
-<img src="https://img.shields.io/badge/-chart.js-FF6384.svg?logo=chartdotjs&style=for-the-badge&color=000" />
-<img src="https://img.shields.io/badge/-date--fns-770C56.svg?logo=datefns&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-latex-008080.svg?logo=latex&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-leaflet-199900.svg?logo=leaflet&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-mapbox-000000.svg?logo=mapbox&style=for-the-badge&logoColor=ffffff" />
-<img src="https://img.shields.io/badge/-prisma-2D3748.svg?logo=prisma&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-qt-41CD52.svg?logo=qt&style=for-the-badge&logoColor=ffffff" />
-<img src="https://img.shields.io/badge/-react_hook_form-EC5990.svg?logo=reacthookform&style=for-the-badge&logoColor=ffffff" />
-<img src="https://img.shields.io/badge/-redux-764ABC.svg?logo=redux&style=for-the-badge&logoColor=ffffff" />
-<img src="https://img.shields.io/badge/-swr-000000.svg?logo=swr&style=for-the-badge&logoColor=ffffff" />
-<img src="https://img.shields.io/badge/-zod-3E67B1.svg?logo=zod&style=for-the-badge&logoColor=ffffff" />
 </div>
 
 ## Learning / Will Learn
 
 <div>
-<img src="https://img.shields.io/badge/-docker-2496ED.svg?logo=docker&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-AWS-232F3E.svg?logo=amazonaws&style=for-the-badge&logoColor=ffffff" />
-<img src="https://img.shields.io/badge/-cloudflare-F38020.svg?logo=cloudflare&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-firebase-FFCA28.svg?logo=firebase&style=for-the-badge&color=000" />
 <img src="https://img.shields.io/badge/-hono-E36002.svg?logo=hono&style=for-the-badge&logoColor=ffffff" />
 <img src="https://img.shields.io/badge/-clerk-6C47FF.svg?logo=clerk&style=for-the-badge&logoColor=ffffff" />
@@ -161,11 +161,11 @@ I'm a college student in Tokyo who loves Next.js. I like the front-end, but I'm 
 ## Stats
 
 <div>
-<img height="200" src="https://github-readme-stats-kage1020.vercel.app/api?username=kage1020&theme=tokyonight&show_icons=true" />
-<img height="200" src="https://github-readme-stats-kage1020.vercel.app/api/top-langs?username=kage1020&theme=tokyonight&size_weight=0.1&count_weight=0.9&layout=compact" />
-<img height="200" src="https://github-profile-summary-cards-kage1020.vercel.app/api/cards/repos-per-language?username=kage1020&theme=tokyonight" />
-<img height="200" src="https://github-profile-summary-cards-kage1020.vercel.app/api/cards/most-commit-language?username=kage1020&theme=tokyonight" />
-<img height="200" src="https://github-profile-summary-cards-kage1020.vercel.app/api/cards/productive-time?username=kage1020&theme=tokyonight&utcOffset=9" />
+<img height="200" src="https://github-readme-stats-kage1020s-projects.vercel.app/api?username=kage1020&theme=tokyonight&show_icons=true" />
+<img height="200" src="https://github-readme-stats-kage1020s-projects.vercel.app/api/top-langs?username=kage1020&theme=tokyonight&size_weight=0.1&count_weight=0.9&layout=compact" />
+<img height="200" src="https://github-profile-summary-cards-kage1020s-projects.vercel.app/api/cards/repos-per-language?username=kage1020&theme=tokyonight" />
+<img height="200" src="https://github-profile-summary-cards-kage1020s-projects.vercel.app/api/cards/most-commit-language?username=kage1020&theme=tokyonight" />
+<img height="200" src="https://github-profile-summary-cards-kage1020s-projects.vercel.app/api/cards/productive-time?username=kage1020&theme=tokyonight&utcOffset=9" />
 <img src="https://github-profile-trophy.vercel.app/?username=kage1020&theme=tokyonight" />
 </div>
 
