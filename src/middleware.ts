@@ -1,5 +1,11 @@
 import { NextResponse, type NextRequest } from "next/server"
 
+export const config = {
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
+  ],
+}
+
 export default function middleware(req: NextRequest) {
   const query = req.nextUrl.searchParams.get("q")
 
@@ -17,4 +23,6 @@ export default function middleware(req: NextRequest) {
     case "500":
       return new NextResponse("Internal Server Error", { status: 500 })
   }
+
+  return NextResponse.next()
 }
