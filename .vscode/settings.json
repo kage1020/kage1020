@@ -5,5 +5,11 @@
   },
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "cSpell.words": ["nextui"],
-  "tailwindCSS.experimental.classRegex": ["[\"'`]([^\"'`]*).*?[\"'`]"]
+  "tailwindCSS.experimental.classRegex": [
+    // Tailwind Variants
+    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    // Class Variance Authority
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
 }

@@ -17,6 +17,7 @@ import {
   SiNuxtdotjs,
   SiPrisma,
   SiPython,
+  SiQwik,
   SiRedux,
   SiRemix,
   SiSolid,
@@ -28,87 +29,90 @@ import {
   SiUnity,
   SiVuedotjs,
 } from "react-icons/si"
+import { tv } from "tailwind-variants"
 
-import QwikIcon from "@/components/qwik-icon"
-import { cn } from "@/libs/util"
+const style = tv({
+  base: "flex h-fit items-center gap-x-2 rounded-full border-2 border-black bg-stone-900 px-3 py-1",
+  variants: {
+    color: {
+      javascript: "border-javascript",
+      typescript: "border-typescript",
+      line: "border-line",
+      tailwind: "border-tailwind",
+      next: "border-next",
+      nuxt: "border-nuxt",
+      remix: "border-remix",
+      svelte: "border-svelte",
+      vue: "border-vue",
+      astro: "border-astro",
+      solid: "border-solid",
+      gatsby: "border-gatsby",
+      qwik: "border-qwik",
+      gas: "border-gas",
+      redux: "border-redux",
+      swr: "border-swr",
+      leaflet: "border-leaflet",
+      cpp: "border-cpp",
+      draw: "border-draw",
+      iconify: "border-iconify",
+      supabase: "border-supabase",
+      prisma: "border-prisma",
+      python: "border-python",
+      echarts: "border-echarts",
+      css: "border-css",
+      latex: "border-latex",
+      mdx: "border-mdx",
+      chartjs: "border-chartjs",
+      unity: "border-unity",
+      archived: "border-red-500 bg-red-500 text-white",
+      development: "border-amber-600 bg-amber-600 text-white",
+      stable: "border-green-500 bg-green-500 text-white",
+      draft: "border-blue-500 bg-blue-500 text-white",
+      others: "border-white",
+    },
+  },
+})
 
-import type { Props } from "@/types"
+export type ChipColor = keyof typeof style.variants.color
 
-export default function Chip({ className, children }: Props) {
+type ChipProps = {
+  className?: string
+  color: ChipColor | "others"
+  children: React.ReactNode
+}
+
+export function Chip({ className, color, children }: ChipProps) {
   return (
-    <span
-      className={cn(
-        "flex h-fit items-center gap-x-2 rounded-full border-2 border-black bg-stone-900 px-3 py-1",
-        children === "JavaScript" && "border-javascript",
-        children === "TypeScript" && "border-typescript",
-        children === "LINE" && "border-line",
-        children === "TailwindCSS" && "border-tailwind",
-        children === "Nuxt" && "border-nuxt",
-        children === "Svelte" && "border-svelte",
-        children === "Vue" && "border-vue",
-        children === "Astro" && "border-astro",
-        children === "Solid" && "border-solid",
-        children === "Gatsby" && "border-gatsby",
-        children === "Qwik" && "border-qwik",
-        children === "Google Apps Script" && "border-gas",
-        children === "Redux" && "border-redux",
-        children === "leaflet" && "border-leaflet",
-        children === "C++" && "border-cpp",
-        children === "draw.io" && "border-draw",
-        children === "iconify" && "border-iconify",
-        children === "Supabase" && "border-supabase",
-        children === "Prisma" && "border-prisma",
-        children === "Python" && "border-python",
-        children === "ECharts" && "border-echarts",
-        children === "CSS" && "border-css",
-        children === "LaTeX" && "border-latex",
-        children === "MDX" && "border-mdx",
-        children === "Chart.js" && "border-chartjs",
-        children === "Archived" && "border-red-500 bg-red-500 text-white",
-        children === "In Development" &&
-          "border-amber-600 bg-amber-600 text-white",
-        children === "Stable" && "border-green-500 bg-green-500 text-white",
-        children === "Draft" && "border-blue-500 bg-blue-500 text-white",
-        className,
-      )}
-    >
-      {children === "Next.js" && <SiNextdotjs />}
-      {children === "JavaScript" && (
-        <SiJavascript className="text-javascript" />
-      )}
-      {children === "TypeScript" && (
-        <SiTypescript className="text-typescript" />
-      )}
-      {children === "LINE" && <SiLine className="text-line" />}
-      {children === "TailwindCSS" && (
-        <SiTailwindcss className="text-tailwind" />
-      )}
-      {children === "Nuxt" && <SiNuxtdotjs className="text-nuxt" />}
-      {children === "Remix" && <SiRemix />}
-      {children === "Svelte" && <SiSvelte className="text-svelte" />}
-      {children === "Vue" && <SiVuedotjs className="text-vue" />}
-      {children === "Astro" && <SiAstro className="text-astro" />}
-      {children === "Solid" && <SiSolid className="text-solid" />}
-      {children === "Gatsby" && <SiGatsby className="text-gatsby" />}
-      {children === "Qwik" && <QwikIcon className="text-qwik" />}
-      {children === "Google Apps Script" && (
-        <SiGoogleappsscript className="text-gas" />
-      )}
-      {children === "Redux" && <SiRedux className="text-redux" />}
-      {children === "leaflet" && <SiLeaflet className="text-leaflet" />}
-      {children === "SWR" && <SiSwr />}
-      {children === "C++" && <SiCplusplus className="text-cpp" />}
-      {children === "draw.io" && <SiDiagramsdotnet className="text-draw" />}
-      {children === "iconify" && <SiIconify className="text-iconify" />}
-      {children === "Unity" && <SiUnity />}
-      {children === "Supabase" && <SiSupabase className="text-supabase" />}
-      {children === "Prisma" && <SiPrisma className="text-prisma" />}
-      {children === "Python" && <SiPython className="text-python" />}
-      {children === "ECharts" && <SiApacheecharts className="text-echarts" />}
-      {children === "CSS" && <SiCss3 className="text-css" />}
-      {children === "LaTeX" && <SiLatex className="text-latex" />}
-      {children === "MDX" && <SiMdx />}
-      {children === "Chart.js" && <SiChartdotjs className="text-chartjs" />}
+    <span className={style({ className, color })}>
+      {color === "javascript" && <SiJavascript />}
+      {color === "typescript" && <SiTypescript />}
+      {color === "line" && <SiLine />}
+      {color === "tailwind" && <SiTailwindcss />}
+      {color === "next" && <SiNextdotjs />}
+      {color === "nuxt" && <SiNuxtdotjs />}
+      {color === "remix" && <SiRemix />}
+      {color === "svelte" && <SiSvelte />}
+      {color === "vue" && <SiVuedotjs />}
+      {color === "astro" && <SiAstro />}
+      {color === "solid" && <SiSolid />}
+      {color === "gatsby" && <SiGatsby />}
+      {color === "qwik" && <SiQwik />}
+      {color === "gas" && <SiGoogleappsscript />}
+      {color === "redux" && <SiRedux />}
+      {color === "swr" && <SiSwr />}
+      {color === "leaflet" && <SiLeaflet />}
+      {color === "cpp" && <SiCplusplus />}
+      {color === "draw" && <SiDiagramsdotnet />}
+      {color === "iconify" && <SiIconify />}
+      {color === "supabase" && <SiSupabase />}
+      {color === "prisma" && <SiPrisma />}
+      {color === "python" && <SiPython />}
+      {color === "echarts" && <SiApacheecharts />}
+      {color === "css" && <SiCss3 />}
+      {color === "latex" && <SiLatex />}
+      {color === "mdx" && <SiMdx />}
+      {color === "chartjs" && <SiChartdotjs />}
+      {color === "unity" && <SiUnity />}
       {children}
     </span>
   )

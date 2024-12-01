@@ -1,39 +1,14 @@
+import clsx from "clsx"
 import { extendTailwindMerge } from "tailwind-merge"
 
-import type { ClassNameValue } from "tailwind-merge"
+import tailwindConfig from "../../tailwind.config"
+
+import type { ClassValue } from "tailwind-variants"
 
 const twMerge = extendTailwindMerge({
   extend: {
     theme: {
-      colors: [
-        "zenn",
-        "qiita",
-        "typescript",
-        "line",
-        "tailwind",
-        "nuxt",
-        "svelte",
-        "vue",
-        "astro",
-        "solid",
-        "gatsby",
-        "qwik",
-        "gas",
-        "redux",
-        "leaflet",
-        "cpp",
-        "draw",
-        "iconify",
-        "javascript",
-        "supabase",
-        "prisma",
-        "python",
-        "echarts",
-        "css",
-        "latex",
-        "mdx",
-        "chartjs",
-      ],
+      colors: Object.keys(tailwindConfig.theme.extend.colors),
     },
     classGroups: {
       "border-style": ["border-ridge"],
@@ -41,6 +16,6 @@ const twMerge = extendTailwindMerge({
   },
 })
 
-export const cn = (...args: ClassNameValue[]) => {
-  return twMerge(...args)
+export function cn(...classes: ClassValue[]) {
+  return clsx(twMerge(classes))
 }

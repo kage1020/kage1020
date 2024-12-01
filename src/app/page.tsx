@@ -1,99 +1,140 @@
-import Image from "next/image"
-import Link from "next/link"
+"use client"
 
+import Image from "next/image"
+import { useState } from "react"
+
+import { motion } from "framer-motion"
+import { Link } from "next-view-transitions"
+import { BsTwitter } from "react-icons/bs"
 import { SiGithub, SiQiita, SiX, SiZenn } from "react-icons/si"
 
-import Card from "@/components/card"
-import Transition from "@/components/transition"
+import icon from "../../public/icon-512x512.webp"
 
-import avatar from "../../public/icon-512x512.png"
+const itemVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+}
 
 export default function Home() {
+  const [flip, setFlip] = useState(false)
+
+  const flipX = () => {
+    setTimeout(() => setFlip(true), 500)
+    setTimeout(() => setFlip(false), 1500)
+  }
+
   return (
-    <Transition className="mx-auto grid h-full max-w-2xl grid-cols-1 gap-6 overflow-auto text-white md:grid-cols-2">
-      <div className="grid justify-center p-8 md:col-span-2 md:py-20">
-        <div className="hidden place-items-center md:grid">
-          <Image src={avatar} alt="" width={128} height={128} />
-        </div>
-        <div className="grid place-items-center md:hidden">
-          <Image src={avatar} alt="" width={96} height={96} />
-        </div>
-        <p className="p-4 text-center text-3xl font-bold md:text-5xl">
-          kage1020
-        </p>
-      </div>
-      <Card className="h-28 bg-gradient-to-b from-stone-700 to-stone-800 md:col-span-2 md:h-36">
-        <div className="grid h-full w-full place-items-center text-2xl md:text-4xl">
-          Apps
-        </div>
-        <Link href="/apps" className="absolute inset-0">
-          <span className="sr-only">apps</span>
-        </Link>
-      </Card>
-      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8">
-        <div className="hidden h-full w-full place-items-center text-2xl md:grid">
-          <SiGithub size={64} />
-        </div>
-        <div className="grid h-full w-full place-items-center text-2xl md:hidden">
-          <SiGithub size={40} />
-        </div>
-        <Link
-          href="https://github.com/kage1020"
-          className="absolute inset-0"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className="mx-auto grid h-full max-w-3xl place-items-center">
+      <motion.div
+        className="grid w-full grid-cols-2 gap-8"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              duration: 0.3,
+              delayChildren: 0.3,
+              staggerChildren: 0.3,
+            },
+          },
+        }}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.div className="col-span-2" variants={itemVariant}>
+          <Image
+            src={icon}
+            alt=""
+            className="mx-auto max-w-[256px] [view-transition-name:icon]"
+            style={{ width: "100%", height: "auto" }}
+          />
+        </motion.div>
+        <motion.div className="col-span-2" variants={itemVariant}>
+          <h1 className="mb-4 text-center text-5xl [view-transition-name:name-title]">
+            kage1020
+          </h1>
+        </motion.div>
+        <motion.div
+          className="from-stone-800 to-stone-900 border-stone-700 relative col-span-2 grid h-[150px] place-items-center rounded-lg border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+          variants={itemVariant}
+          whileHover={{ y: -4 }}
         >
-          <span className="sr-only">GitHub</span>
-        </Link>
-      </Card>
-      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8 hover:text-qiita">
-        <div className="hidden h-full w-full place-items-center text-2xl md:grid">
-          <SiQiita size={64} />
-        </div>
-        <div className="grid h-full w-full place-items-center text-2xl md:hidden">
-          <SiQiita size={40} />
-        </div>
-        <Link
-          href="https://qiita.com/kage1020"
-          className="absolute inset-0"
-          target="_blank"
-          rel="noopener noreferrer"
+          <Link href="/gallery" className="absolute inset-0" />
+          App Gallery
+        </motion.div>
+        <motion.div
+          className="from-stone-800 to-stone-900 border-stone-700 relative grid h-[150px] place-items-center rounded border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+          variants={itemVariant}
+          whileHover={{ y: -4 }}
         >
-          <span className="sr-only">Qiita</span>
-        </Link>
-      </Card>
-      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8 hover:text-zenn">
-        <div className="hidden h-full w-full place-items-center text-2xl md:grid">
-          <SiZenn size={64} />
-        </div>
-        <div className="grid h-full w-full place-items-center text-2xl md:hidden">
-          <SiZenn size={40} />
-        </div>
-        <Link
-          href="https://zenn.dev/kage1020"
-          className="absolute inset-0"
-          target="_blank"
-          rel="noopener noreferrer"
+          <Link
+            href="https://github.com/kage1020"
+            target="_blank"
+            className="absolute inset-0"
+          />
+          <SiGithub size={48} />
+        </motion.div>
+        <motion.div
+          className="from-stone-800 to-stone-900 border-stone-700 group relative grid h-[150px] place-items-center rounded border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+          variants={itemVariant}
+          whileHover={{ y: -4 }}
         >
-          <span className="sr-only">Zenn</span>
-        </Link>
-      </Card>
-      <Card className="bg-gradient-to-b from-stone-700 to-stone-800 p-8">
-        <div className="hidden h-full w-full place-items-center text-2xl md:grid">
-          <SiX size={64} />
-        </div>
-        <div className="grid h-full w-full place-items-center text-2xl md:hidden">
-          <SiX size={40} />
-        </div>
-        <Link
-          href="https://twitter.com/kage1020"
-          className="absolute inset-0"
-          target="_blank"
-          rel="noopener noreferrer"
+          <Link
+            href="https://qiita.com/kage1020"
+            target="_blank"
+            className="absolute inset-0"
+          />
+          <SiQiita
+            size={64}
+            className="group-hover:text-qiita transition-colors duration-300"
+          />
+        </motion.div>
+        <motion.div
+          className="from-stone-800 to-stone-900 border-stone-700 group relative grid h-[150px] place-items-center rounded border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+          variants={itemVariant}
+          whileHover={{ y: -4 }}
         >
-          <span className="sr-only">X</span>
-        </Link>
-      </Card>
-    </Transition>
+          <Link
+            href="https://zenn.dev/kage1020"
+            target="_blank"
+            className="absolute inset-0"
+          />
+          <SiZenn
+            size={48}
+            className="group-hover:text-zenn transition-colors duration-300"
+          />
+        </motion.div>
+        <motion.div
+          className="border-stone-700 from-stone-800 to-stone-900 relative grid h-[150px] place-items-center rounded border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+          variants={itemVariant}
+          whileHover={{ y: -4 }}
+          onHoverEnd={flipX}
+        >
+          <Link
+            href="https://x.com/kage1020"
+            target="_blank"
+            className="absolute inset-0 z-10"
+          />
+          <motion.div className="relative h-full w-full">
+            <motion.div
+              className="absolute left-1/2 top-1/2 [backface-visibility:hidden]"
+              initial={{ rotateY: 0, x: "-50%", y: "-50%" }}
+              animate={{ rotateY: flip ? 180 : 0, x: "-50%", y: "-50%" }}
+              transition={{ duration: 0.5 }}
+            >
+              <SiX size={48} />
+            </motion.div>
+            <motion.div
+              className="absolute left-1/2 top-1/2 [backface-visibility:hidden]"
+              initial={{ rotateY: 180, x: "-50%", y: "-50%" }}
+              animate={{ rotateY: flip ? 0 : 180, x: "-50%", y: "-50%" }}
+              transition={{ duration: 0.5 }}
+            >
+              <BsTwitter size={48} className="text-[#1d9bf0]" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </motion.div>
+    </div>
   )
 }

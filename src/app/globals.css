@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+  @apply bg-stone-800 w-4 rounded;
+}
+
+*::-webkit-scrollbar-thumb {
+  @apply bg-stone-600 w-4 rounded;
+}

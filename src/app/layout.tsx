@@ -1,14 +1,8 @@
 import type { Metadata, Viewport } from "next"
-import { Noto_Sans_JP } from "next/font/google"
 
 import { GoogleTagManager } from "@next/third-parties/google"
-
-import { cn } from "@/libs/util"
-
-import "@/styles/globals.css"
-import type { ChildrenProps } from "@/types"
-
-const NotoSansJP = Noto_Sans_JP({ subsets: ["latin"] })
+import { ViewTransitions } from "next-view-transitions"
+import "./globals.css"
 
 export const metadata: Metadata = {
   title: {
@@ -19,6 +13,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? "",
   ),
+  alternates: {
+    canonical: new URL(
+      process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? "",
+    ),
+  },
   openGraph: {
     title: "kage1020",
     description: "A portfolio site of kage1020",
@@ -46,28 +45,27 @@ export const viewport: Viewport = {
   themeColor: "#2d70b3",
 }
 
-type RootLayoutProps = ChildrenProps & {
+export default function RootLayout({
+  modal,
+  children,
+}: {
   modal: React.ReactNode
-}
-
-export default function RootLayout({ children, modal }: RootLayoutProps) {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="ja" className="dark">
-      <body
-        className={cn(
-          NotoSansJP.className,
-          "relative bg-stone-900 text-white has-[dialog]:overflow-hidden",
-        )}
-      >
-        {process.env.NODE_ENV === "production" && (
-          <GoogleTagManager
-            gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? ""}
-          />
-        )}
-        <div className="relative z-10 px-4 py-8 md:p-12">{children}</div>
-        {modal}
-        <div id="modal-root" className="absolute inset-0"></div>
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="ja">
+        <body className="from-stone-950 to-stone-900 text-white h-screen overflow-hidden bg-gradient-to-b p-8">
+          {process.env.NODE_ENV === "production" && (
+            <GoogleTagManager
+              gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID ?? ""}
+            />
+          )}
+          {children}
+          {modal}
+          <div id="modal-root"></div>
+        </body>
+      </html>
+    </ViewTransitions>
   )
 }
