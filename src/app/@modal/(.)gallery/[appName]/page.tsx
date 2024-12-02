@@ -1,5 +1,7 @@
 import Modal from "@/components/modal"
 
+export const runtime = "edge"
+
 type AppModalProps = {
   params: Promise<{ appName?: string }>
 }
