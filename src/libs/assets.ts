@@ -34,7 +34,7 @@ import StockDataSupplierResult from "../../public/images/stock-data-supplier/res
 import StockDataSupplierRetrieval from "../../public/images/stock-data-supplier/retrieval.png"
 import StockDataSupplierRetrieving from "../../public/images/stock-data-supplier/retrieving.png"
 import StockDataSupplierTalk from "../../public/images/stock-data-supplier/talk.png"
-import TUSAppDark from "../../public/images/tus-app/architecture-dark.svg"
+import TUSAppDark from "../../public/images/tus-app/architecture-dark.png"
 
 import type { ChipColor } from "@/components/chip"
 
