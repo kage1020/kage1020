@@ -8,9 +8,7 @@ import { createPortal } from "react-dom"
 
 import { cn } from "@/libs/util"
 
-import type { ChildrenProps } from "@/types"
-
-export default function Modal({ children }: ChildrenProps) {
+export default function Modal({ children }: { children: React.ReactNode }) {
   const modalRef = useRef<ElementRef<"dialog">>(null)
   const overlayRef = useRef<ElementRef<"div">>(null)
   const router = useRouter()
@@ -48,22 +46,22 @@ export default function Modal({ children }: ChildrenProps) {
 
   return createPortal(
     <div
-      className="absolute inset-0 z-20 bg-black/70 opacity-0 transition duration-500 ease-in-out"
+      className="bg-black/70 absolute inset-0 z-20 opacity-0 transition duration-500 ease-in-out"
       onClick={onClose}
       ref={overlayRef}
     >
       <dialog
-        className="relative h-[85%] w-[85%] overflow-x-hidden rounded-lg border-2 bg-stone-800 opacity-0 transition duration-500 ease-in-out"
+        className="bg-stone-800 relative h-[85%] w-[85%] overflow-x-hidden rounded-lg border-2 opacity-0 transition duration-500 ease-in-out"
         ref={modalRef}
       >
         <div
-          className="flex h-full flex-col justify-between border-stone-50 text-stone-50"
+          className="border-stone-50 text-stone-50 flex h-full flex-col justify-between"
           onClick={(e) => e.stopPropagation()}
         >
           {children}
           <div className="pb-8">
             <button
-              className="mx-auto block rounded border-2 border-stone-100 px-8 py-3 text-lg transition hover:bg-stone-100/20"
+              className="border-stone-100 hover:bg-stone-100/20 mx-auto block rounded border-2 px-8 py-3 text-lg transition"
               onClick={onClose}
             >
               close
