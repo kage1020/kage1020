@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { Link } from "next-view-transitions"
 
 import { Chip } from "@/components/chip"
-import { galleryItems } from "@/libs/assets"
+import { appItems } from "@/libs/assets"
 
 import icon from "../../../public/icon-512x512.webp"
 
@@ -15,7 +15,7 @@ const itemVariant = {
   visible: { opacity: 1, y: 0 },
 }
 
-export default function Gallery() {
+export default function Apps() {
   return (
     <div className="mx-auto h-full max-w-5xl overflow-hidden">
       <Link href="/" className="flex items-center gap-8">
@@ -44,7 +44,7 @@ export default function Gallery() {
         initial="hidden"
         animate="visible"
       >
-        {galleryItems.map((app) => (
+        {appItems.map((app) => (
           <motion.div
             key={app.name}
             className="bg-stone-800 border-stone-700 relative row-span-5 grid h-[150px] grid-rows-subgrid rounded-lg border p-4 shadow-lg hover:-translate-y-1 hover:shadow-xl"

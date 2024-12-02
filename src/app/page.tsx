@@ -55,12 +55,20 @@ export default function Home() {
           </h1>
         </motion.div>
         <motion.div
-          className="from-stone-800 to-stone-900 border-stone-700 relative col-span-2 grid h-[150px] place-items-center rounded-lg border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+          className="from-stone-800 to-stone-900 border-stone-700 relative grid h-[150px] place-items-center rounded-lg border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
           variants={itemVariant}
           whileHover={{ y: -4 }}
         >
           <Link href="/gallery" className="absolute inset-0" />
-          App Gallery
+          Gallery
+        </motion.div>
+        <motion.div
+          className="from-stone-800 to-stone-900 border-stone-700 relative grid h-[150px] place-items-center rounded-lg border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
+          variants={itemVariant}
+          whileHover={{ y: -4 }}
+        >
+          <Link href="/apps" className="absolute inset-0" />
+          Apps
         </motion.div>
         <motion.div
           className="from-stone-800 to-stone-900 border-stone-700 relative grid h-[150px] place-items-center rounded border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"

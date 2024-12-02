@@ -7,6 +7,7 @@ import {
   SiDiagramsdotnet,
   SiGatsby,
   SiGoogleappsscript,
+  SiHono,
   SiIconify,
   SiJavascript,
   SiLatex,
@@ -18,6 +19,7 @@ import {
   SiPrisma,
   SiPython,
   SiQwik,
+  SiReact,
   SiRedux,
   SiRemix,
   SiSolid,
@@ -39,6 +41,7 @@ const style = tv({
       typescript: "border-typescript",
       line: "border-line",
       tailwind: "border-tailwind",
+      react: "border-react",
       next: "border-next",
       nuxt: "border-nuxt",
       remix: "border-remix",
@@ -48,6 +51,7 @@ const style = tv({
       solid: "border-solid",
       gatsby: "border-gatsby",
       qwik: "border-qwik",
+      hono: "border-hono",
       gas: "border-gas",
       redux: "border-redux",
       swr: "border-swr",
@@ -88,6 +92,7 @@ export function Chip({ className, color, children }: ChipProps) {
       {color === "typescript" && <SiTypescript />}
       {color === "line" && <SiLine />}
       {color === "tailwind" && <SiTailwindcss />}
+      {color === "react" && <SiReact />}
       {color === "next" && <SiNextdotjs />}
       {color === "nuxt" && <SiNuxtdotjs />}
       {color === "remix" && <SiRemix />}
@@ -97,6 +102,7 @@ export function Chip({ className, color, children }: ChipProps) {
       {color === "solid" && <SiSolid />}
       {color === "gatsby" && <SiGatsby />}
       {color === "qwik" && <SiQwik />}
+      {color === "hono" && <SiHono />}
       {color === "gas" && <SiGoogleappsscript />}
       {color === "redux" && <SiRedux />}
       {color === "swr" && <SiSwr />}

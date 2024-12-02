@@ -38,7 +38,7 @@ import TUSAppDark from "../../public/images/tus-app/architecture-dark.drawio.svg
 
 import type { ChipColor } from "@/components/chip"
 
-export type AppProperty = {
+export type GalleryItemProperty = {
   name: string
   short: string
   long: string
@@ -60,7 +60,7 @@ export type AppProperty = {
   }[]
 }
 
-export const apps: AppProperty[] = [
+export const galleryItems: GalleryItemProperty[] = [
   {
     name: "StockDataSupplier",
     short: "株探から株価データを取得するLINEアプリ",
@@ -382,6 +382,49 @@ export const apps: AppProperty[] = [
     status: {
       label: "Draft",
       color: "draft",
+    },
+    images: [],
+  },
+]
+
+export type AppItemProperty = {
+  name: string
+  short: string
+  long: string
+  href: string
+  github: string
+  tag: {
+    name: string
+    color: ChipColor
+  }[]
+  createdAt: string
+  status: {
+    label: "Stable" | "In Development" | "Draft" | "Archived"
+    color: "stable" | "development" | "draft" | "archived"
+  }
+  images: {
+    src: StaticImageData
+    alt: string
+  }[]
+}
+
+export const appItems: AppItemProperty[] = [
+  {
+    name: "Lorem Text",
+    short: "random text generator",
+    long: "This is a random text generator. This generates number, alphabet, symbol, Japanese, etc.",
+    href: "/apps/LoremText",
+    github: "https://github.com/kage1020/lorem-text",
+    tag: [
+      { name: "Hono.js", color: "hono" },
+      { name: "TypeScript", color: "typescript" },
+      { name: "React", color: "react" },
+      { name: "TailwindCSS", color: "tailwind" },
+    ],
+    createdAt: "2024/11/18",
+    status: {
+      label: "Stable",
+      color: "stable",
     },
     images: [],
   },
