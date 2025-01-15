@@ -53,6 +53,7 @@ export default function Home() {
           <h1 className="mb-4 text-center text-5xl [view-transition-name:name-title]">
             kage1020
           </h1>
+          <h3 className="text-center text-2xl">🚧Under construction🚧</h3>
         </motion.div>
         <motion.div
           className="from-stone-800 to-stone-900 border-stone-700 relative grid h-[150px] place-items-center rounded-lg border bg-gradient-to-b p-4 text-3xl shadow-lg hover:-translate-y-1 hover:shadow-xl"
