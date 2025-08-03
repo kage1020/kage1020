@@ -14,6 +14,8 @@ import {
   FaTimes,
 } from "react-icons/fa"
 
+export const runtime = "edge"
+
 const projects = galleryData as Gallery[]
 
 interface PageProps {

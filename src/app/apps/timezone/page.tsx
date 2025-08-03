@@ -5,6 +5,8 @@ import { Suspense } from "react"
 import { FaArrowLeft } from "react-icons/fa"
 import Timezone from "./timezone"
 
+export const runtime = "edge"
+
 interface PageProps {
   searchParams: Promise<{ from?: string; to?: string; format24?: string }>
 }
