@@ -17,6 +17,10 @@
 	},
 	"observability": {
 		"enabled": true
+	},
+	"route": {
+		"pattern": "kage1020.com",
+		"custom_domain": true
 	}
 	/**
 	 * Smart Placement

@@ -14,16 +14,19 @@ interface PageProps {
 export async function generateMetadata({
   searchParams,
 }: PageProps): Promise<Metadata> {
-  const from = (await searchParams).from || "Asia/Tokyo"
-  const to = (await searchParams).to || "America/New_York"
+  const params = await searchParams
+  const from = params.from || "Asia/Tokyo"
+  const to = params.to || "America/New_York"
+  const format24 = params.format24 || "true"
 
   const fromTimezone =
     timezones.find((tz) => tz.timezone === from) || timezones[0]
   const toTimezone = timezones.find((tz) => tz.timezone === to) || timezones[1]
 
-  const ogImageUrl = `/api/og/timezone?from=${encodeURIComponent(
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.CF_PAGES_URL || 'https://kage1020.com'
+  const ogImageUrl = `${baseUrl}/api/og/timezone?from=${encodeURIComponent(
     from
-  )}&to=${encodeURIComponent(to)}`
+  )}&to=${encodeURIComponent(to)}&format24=${format24}`
 
   const titleWithFlags = `${fromTimezone.flag} ${fromTimezone.name} ⇄ ${toTimezone.flag} ${toTimezone.name} - World Timezone`
   const descriptionWithFlags = `Compare time between ${fromTimezone.flag} ${fromTimezone.name} and ${toTimezone.flag} ${toTimezone.name}`
@@ -34,6 +37,14 @@ export async function generateMetadata({
     openGraph: {
       title: titleWithFlags,
       description: descriptionWithFlags,
+      type: "website",
+      url: new URL(
+        `/apps/timezone?from=${encodeURIComponent(
+          from
+        )}&to=${encodeURIComponent(to)}`,
+        process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? ""
+      ),
+      siteName: "kage1020",
       images: [
         {
           url: ogImageUrl,
