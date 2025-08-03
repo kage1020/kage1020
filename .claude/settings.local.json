@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(move:*)",
+      "Bash(npm run dev:*)",
+      "Bash(pnpm add:*)",
+      "Bash(npm run build:*)",
+      "Bash(mv:*)",
+      "WebFetch(domain:random.kage1020.com)"
+    ],
+    "deny": []
+  }
+}

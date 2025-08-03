@@ -1,0 +1,113 @@
+[
+  {
+    "id": "mpp",
+    "title": "Minesweeper++",
+    "description": "運要素を強めにしたマインスイーパーです。通常のマインスイーパーとは異なり、周囲の爆弾の数を表す値が確率で減少します。",
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS"],
+    "thumbnail": "/gallery/mpp/start.webp",
+    "screenshots": [
+      "/gallery/mpp/start.webp",
+      "/gallery/mpp/description.webp",
+      "/gallery/mpp/select.webp",
+      "/gallery/mpp/playing.webp",
+      "/gallery/mpp/win.webp",
+      "/gallery/mpp/lose.webp"
+    ],
+    "links": {
+      "demo": "https://minesweeper-plus-plus.vercel.app",
+      "github": "https://github.com/kage1020/MinesweeperPlusPlus"
+    },
+    "articles": [],
+    "date": "2022/11/19"
+  },
+  {
+    "id": "icon",
+    "title": "IconCollection",
+    "description": "アイコンライブラリをdraw.ioで使えるようxml library形式に変換するVSCode拡張機能です。react-iconsとiconifyのアイコンをまとめたアイコンライブラリを作成しました。",
+    "technologies": [
+      "draw.io",
+      "react-icons",
+      "iconify",
+      "VSCode Extension",
+      "TypeScript"
+    ],
+    "thumbnail": "/gallery/icon/thumbnail.png",
+    "screenshots": ["/gallery/icon/thumbnail.png"],
+    "links": {
+      "demo": "https://marketplace.visualstudio.com/items?itemName=kage1020.icon-collection",
+      "github": "https://github.com/kage1020/IconCollection"
+    },
+    "articles": [],
+    "date": "2023/06/04"
+  },
+  {
+    "id": "marp",
+    "title": "Marp Theme",
+    "description": "kage1020のMarpテーマです。MarpはMarkdownでスライドを作成できるツールです。",
+    "technologies": ["Marp", "Markdown", "CSS"],
+    "thumbnail": "/gallery/marp/cover.webp",
+    "screenshots": [
+      "/gallery/marp/cover.webp",
+      "/gallery/marp/default.webp",
+      "/gallery/marp/color.webp",
+      "/gallery/marp/image-center.webp",
+      "/gallery/marp/table.webp"
+    ],
+    "links": {
+      "github": "https://github.com/kage1020/marp-theme"
+    },
+    "articles": [],
+    "date": "2023/09/25"
+  },
+  {
+    "id": "fontlens",
+    "title": "FontLens",
+    "description": "A simple web application for comparing and previewing fonts.",
+    "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Fonts"],
+    "thumbnail": "/gallery/fontlens/thumbnail.png",
+    "screenshots": ["/gallery/fontlens/thumbnail.png"],
+    "links": {
+      "demo": "https://fontlens.kage1020.com",
+      "github": "https://github.com/kage1020/fontlens"
+    },
+    "articles": [],
+    "date": "2025/04/28"
+  },
+  {
+    "id": "vut",
+    "title": "Video Understanding Toolkit",
+    "description": "A collection of tools and utilities for video understanding tasks, including video classification, action recognition, and more.",
+    "technologies": ["Python", "PyTorch", "OpenCV"],
+    "thumbnail": "/gallery/vut/thumbnail.png",
+    "screenshots": ["/gallery/vut/thumbnail.png"],
+    "links": {
+      "demo": "https://pypi.org/project/vut/",
+      "github": "https://github.com/kage1020/vut"
+    },
+    "articles": [],
+    "date": "2025/05/13"
+  },
+  {
+    "id": "react-component-color",
+    "title": "React Component Color",
+    "description": "A VS Code extension that provides visual color coding for React components based on whether they are Server Components or Client Components in modern React applications.",
+    "technologies": ["VSCode Extension", "TypeScript", "React"],
+    "thumbnail": "/gallery/react-component-color/server-component.png",
+    "screenshots": [
+      "/gallery/react-component-color/server-component.png",
+      "/gallery/react-component-color/client-component.png"
+    ],
+    "links": {
+      "demo": "https://marketplace.visualstudio.com/items?itemName=kage1020.react-component-color",
+      "github": "https://github.com/kage1020/react-component-color"
+    },
+    "articles": [
+      {
+        "title": "React Component Color - Server/Client Components を色分けで可視化するVS Code拡張機能",
+        "url": "https://zenn.dev/kage1020/articles/react-component-color",
+        "type": "tech"
+      }
+    ],
+    "date": "2025/06/03"
+  }
+]

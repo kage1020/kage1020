@@ -1,0 +1,26 @@
+[
+  {
+    "id": "timezone",
+    "title": "World Timezone",
+    "description": "Compare time between any two cities worldwide with real-time updates, time difference calculations, and URL sharing support.",
+    "url": "/apps/timezone",
+    "status": "active",
+    "technologies": ["React", "TypeScript", "Next.js"],
+    "category": "Utility",
+    "screenshot": "/apps/timezone/thumbnail.png",
+    "articles": [],
+    "lastUpdated": "2025-08-02"
+  },
+  {
+    "id": "lorem-text",
+    "title": "Lorem Text",
+    "description": "Comprehensive API service for generating random data including UUIDs, strings, Japanese characters, Lorem ipsum, and cryptographic keys.",
+    "url": "/apps/lorem-text",
+    "status": "active",
+    "technologies": ["API", "TypeScript", "Hono"],
+    "category": "API Service",
+    "screenshot": "/apps/lorem-text/thumbnail.png",
+    "articles": [],
+    "lastUpdated": "2025-08-02"
+  }
+]

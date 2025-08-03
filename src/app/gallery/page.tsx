@@ -1,88 +1,111 @@
-"use client"
-
+import PageLayout from "@/components/page-layout"
+import galleryData from "@/data/gallery.json"
+import { Gallery } from "@/types"
+import { getTechColor, getTechIcon } from "@/utils/techColors"
 import Image from "next/image"
+import Link from "next/link"
+import { unstable_ViewTransition as ViewTransition } from "react"
+import { FaExternalLinkAlt, FaGithub, FaNewspaper } from "react-icons/fa"
 
-import { motion } from "framer-motion"
-import { Link } from "next-view-transitions"
+const projects = galleryData as Gallery[]
 
-import { Chip } from "@/components/chip"
-import { galleryItems } from "@/libs/assets"
-
-import icon from "../../../public/icon-512x512.webp"
-
-const itemVariant = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+interface ProjectCardProps {
+  project: Gallery
 }
 
-export default function Gallery() {
+function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <div className="mx-auto h-full max-w-5xl overflow-hidden">
-      <Link href="/" className="flex items-center gap-8">
-        <Image
-          src={icon}
-          alt=""
-          className="[view-transition-name:icon]"
-          width={48}
-          height={48}
-        />
-        <h1 className="text-2xl [view-transition-name:name-title]">kage1020</h1>
-      </Link>
-      <motion.div
-        className="my-4 grid h-full w-full grid-cols-2 gap-8 overflow-y-auto px-2 pb-16"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              duration: 0.3,
-              delayChildren: 0.3,
-              staggerChildren: 0.1,
-            },
-          },
-        }}
-        initial="hidden"
-        animate="visible"
+    <div className="bg-[#111111] rounded-lg overflow-hidden hover:bg-[#1a1a1a] transition-all duration-200 h-full grid grid-rows-[auto_auto_1fr_auto_auto] gap-3">
+      <Link
+        href={`/gallery/${project.id}`}
+        className="row-start-1 row-end-6 col-start-1 grid grid-rows-subgrid p-6 gap-4"
       >
-        {galleryItems.map((app) => (
-          <motion.div
-            key={app.name}
-            className="bg-stone-800 border-stone-700 relative row-span-5 grid h-[150px] grid-rows-subgrid rounded-lg border p-4 shadow-lg hover:-translate-y-1 hover:shadow-xl"
-            variants={itemVariant}
-            whileHover={{ y: -4 }}
-          >
-            <Link href={app.href} className="absolute inset-0" />
-            <h2 className="text-3xl font-bold">{app.name}</h2>
-            <p>{app.short}</p>
-            {app.images[0] && (
-              <Image
-                src={app.images[0].src}
-                alt={app.images[0].alt}
-                className="h-64 object-contain"
-              />
-            )}
-            <div className="flex flex-wrap gap-2">
-              {app.tag.map((tag) => (
-                <Chip key={tag.name} color={tag.color}>
-                  {tag.name}
-                </Chip>
-              ))}
-            </div>
-            <span className="bottom-4 left-4 md:absolute">
-              Created At: {app.createdAt}
+        <div className="relative aspect-video -m-6 mb-2 row-start-1">
+          <Image
+            src={project.thumbnail}
+            alt={project.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        </div>
+
+        <h3 className="font-bold text-lg row-start-2">{project.title}</h3>
+
+        <p className="text-gray-400 text-sm line-clamp-2 row-start-3">
+          {project.description}
+        </p>
+      </Link>
+
+      <div className="flex flex-wrap gap-2 row-start-4 col-start-1 px-6 pointer-events-none">
+        {project.technologies.map((tech) => {
+          const Icon = getTechIcon(tech)
+          return (
+            <span
+              key={tech}
+              className={`px-2 py-1 text-xs rounded-full flex items-center gap-1 ${getTechColor(
+                tech
+              )}`}
+            >
+              {Icon && <Icon size={12} />}
+              {tech}
             </span>
-            <p className="flex">
-              <Chip
-                color={app.status.color}
-                className="bottom-4 right-4 md:absolute"
-              >
-                {app.status.label}
-              </Chip>
-            </p>
-            <Link className="absolute inset-0 z-0" href={app.href} />
-          </motion.div>
-        ))}
-      </motion.div>
+          )
+        })}
+      </div>
+
+      <div className="flex items-center justify-between row-start-5 col-start-1 px-6 pb-6 pointer-events-none">
+        <span className="text-gray-500 text-sm">{project.date}</span>
+        <div className="flex gap-2 pointer-events-auto relative z-10">
+          {project.links.github && (
+            <a
+              href={project.links.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <FaGithub size={16} />
+            </a>
+          )}
+          {project.links.demo && (
+            <a
+              href={project.links.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-white transition-colors"
+            >
+              <FaExternalLinkAlt size={16} />
+            </a>
+          )}
+          {project.articles && project.articles.length > 0 && (
+            <a
+              href={project.articles[0].url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-[#2d70b3] transition-colors"
+              title={project.articles[0].title}
+            >
+              <FaNewspaper size={16} />
+            </a>
+          )}
+        </div>
+      </div>
     </div>
+  )
+}
+
+export default function GalleryPage() {
+  return (
+    <PageLayout>
+      <ViewTransition name="gallery-header">
+        <h2 className="text-4xl font-bold mb-8">Gallery</h2>
+      </ViewTransition>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project) => (
+          <ProjectCard key={project.id} project={project} />
+        ))}
+      </div>
+    </PageLayout>
   )
 }

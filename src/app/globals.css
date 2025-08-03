@@ -1,11 +1,84 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-*::-webkit-scrollbar {
-  @apply bg-stone-800 w-4 rounded;
+:root {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --foreground-muted: #a3a3a3;
+  --background-secondary: #111111;
+  --background-tertiary: #1a1a1a;
+  --accent: #666666;
+  --accent-hover: #888888;
 }
 
-*::-webkit-scrollbar-thumb {
-  @apply bg-stone-600 w-4 rounded;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: radial-gradient(
+    ellipse at top,
+    #111111 0%,
+    var(--background) 50%
+  );
+  background-attachment: fixed;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* カスタムスクロールバー */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+::-webkit-scrollbar-corner {
+  background: #1a1a1a;
+}
+
+/* Firefox用のスクロールバー */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #333333 #1a1a1a;
 }

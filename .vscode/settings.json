@@ -1,15 +1,5 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "explicit",
-    "source.fixAll": "explicit"
-  },
-  "typescript.preferences.importModuleSpecifier": "non-relative",
-  "cSpell.words": ["nextui"],
-  "tailwindCSS.experimental.classRegex": [
-    // Tailwind Variants
-    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    // Class Variance Authority
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ]
+	"files.associations": {
+		"wrangler.json": "jsonc"
+	}
 }
