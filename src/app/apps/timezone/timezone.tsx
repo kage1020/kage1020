@@ -68,6 +68,7 @@ export default function Timezone() {
   const [is24Hour, setIs24Hour] = useState(true)
   const [mounted, setMounted] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [includeTime, setIncludeTime] = useState(false)
 
   const [selectedTimezones, setSelectedTimezones] = useState([
     timezones[0],
@@ -165,7 +166,14 @@ export default function Timezone() {
   }
 
   const shareCurrentURL = async () => {
-    const currentUrl = window.location.href
+    let currentUrl = window.location.href
+    
+    // Add timestamp parameter if includeTime is true
+    if (includeTime) {
+      const url = new URL(currentUrl)
+      url.searchParams.set('t', Date.now().toString())
+      currentUrl = url.toString()
+    }
 
     try {
       await navigator.clipboard.writeText(currentUrl)
@@ -194,27 +202,38 @@ export default function Timezone() {
               />
               24-hour format
             </label>
-            <button
-              onClick={shareCurrentURL}
-              className={`px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2 ${
-                copied
-                  ? "bg-green-600 text-white"
-                  : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
-              }`}
-            >
-              {copied && (
-                <>
-                  <FaCheck size={14} />
-                  Copied!
-                </>
-              )}
-              {!copied && (
-                <>
-                  <FaLink size={14} />
-                  Share URL
-                </>
-              )}
-            </button>
+            <div className="flex items-center gap-2">
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={includeTime}
+                  onChange={(e) => setIncludeTime(e.target.checked)}
+                  className="rounded"
+                />
+                Include time in URL
+              </label>
+              <button
+                onClick={shareCurrentURL}
+                className={`px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2 ${
+                  copied
+                    ? "bg-green-600 text-white"
+                    : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
+                }`}
+              >
+                {copied && (
+                  <>
+                    <FaCheck size={14} />
+                    Copied!
+                  </>
+                )}
+                {!copied && (
+                  <>
+                    <FaLink size={14} />
+                    Share URL
+                  </>
+                )}
+              </button>
+            </div>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -249,28 +268,39 @@ export default function Timezone() {
             />
             24-hour format
           </label>
-          <button
-            onClick={shareCurrentURL}
-            className={cn(
-              "px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2",
-              copied
-                ? "bg-green-600 text-white"
-                : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
-            )}
-          >
-            {copied && (
-              <>
-                <FaCheck size={14} />
-                Copied!
-              </>
-            )}
-            {!copied && (
-              <>
-                <FaLink size={14} />
-                Share URL
-              </>
-            )}
-          </button>
+          <div className="flex items-center gap-2">
+            <label className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={includeTime}
+                onChange={(e) => setIncludeTime(e.target.checked)}
+                className="rounded"
+              />
+              Include time in URL
+            </label>
+            <button
+              onClick={shareCurrentURL}
+              className={cn(
+                "px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2",
+                copied
+                  ? "bg-green-600 text-white"
+                  : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
+              )}
+            >
+              {copied && (
+                <>
+                  <FaCheck size={14} />
+                  Copied!
+                </>
+              )}
+              {!copied && (
+                <>
+                  <FaLink size={14} />
+                  Share URL
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 

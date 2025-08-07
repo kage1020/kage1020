@@ -8,7 +8,7 @@ import Timezone from "./timezone"
 export const runtime = "edge"
 
 interface PageProps {
-  searchParams: Promise<{ from?: string; to?: string; format24?: string }>
+  searchParams: Promise<{ from?: string; to?: string; format24?: string; t?: string }>
 }
 
 export async function generateMetadata({
@@ -18,15 +18,19 @@ export async function generateMetadata({
   const from = params.from || "Asia/Tokyo"
   const to = params.to || "America/New_York"
   const format24 = params.format24 || "true"
+  const timestamp = params.t || ""
 
   const fromTimezone =
     timezones.find((tz) => tz.timezone === from) || timezones[0]
   const toTimezone = timezones.find((tz) => tz.timezone === to) || timezones[1]
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || process.env.CF_PAGES_URL || 'https://kage1020.com'
+  const baseUrl =
+    process.env.NEXT_PUBLIC_BASE_URL ||
+    process.env.CF_PAGES_URL ||
+    "https://kage1020.com"
   const ogImageUrl = `${baseUrl}/api/og/timezone?from=${encodeURIComponent(
     from
-  )}&to=${encodeURIComponent(to)}&format24=${format24}`
+  )}&to=${encodeURIComponent(to)}&format24=${format24}${timestamp ? `&t=${timestamp}` : ''}`
 
   const titleWithFlags = `${fromTimezone.flag} ${fromTimezone.name} ⇄ ${toTimezone.flag} ${toTimezone.name} - World Timezone`
   const descriptionWithFlags = `Compare time between ${fromTimezone.flag} ${fromTimezone.name} and ${toTimezone.flag} ${toTimezone.name}`
@@ -41,7 +45,7 @@ export async function generateMetadata({
       url: new URL(
         `/apps/timezone?from=${encodeURIComponent(
           from
-        )}&to=${encodeURIComponent(to)}`,
+        )}&to=${encodeURIComponent(to)}${timestamp ? `&t=${timestamp}` : ''}`,
         process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? ""
       ),
       siteName: "kage1020",
@@ -59,6 +63,8 @@ export async function generateMetadata({
       title: titleWithFlags,
       description: descriptionWithFlags,
       images: [ogImageUrl],
+      creator: "@kage1020",
+      creatorId: "kage1020",
     },
   }
 }
