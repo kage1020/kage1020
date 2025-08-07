@@ -5,7 +5,7 @@ export const timezones = [
   { name: "Paris", timezone: "Europe/Paris", flag: "🇫🇷", iconKey: "FR" },
   {
     name: "Vancouver",
-    timezone: "Canada/Vancouver",
+    timezone: "America/Vancouver",
     flag: "🇨🇦",
     iconKey: "CA",
   },
