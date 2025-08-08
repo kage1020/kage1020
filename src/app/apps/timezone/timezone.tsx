@@ -23,7 +23,7 @@ import {
 } from "@/utils/timezone"
 import { useRouter, useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
-import { FaCheck, FaLink } from "react-icons/fa"
+import { FaCheck, FaDownload, FaLink } from "react-icons/fa"
 
 const iconMap = {
   JP: JpIcon,
@@ -69,6 +69,7 @@ export default function Timezone() {
   const [mounted, setMounted] = useState(false)
   const [copied, setCopied] = useState(false)
   const [includeTime, setIncludeTime] = useState(false)
+  const [downloading, setDownloading] = useState(false)
 
   const [selectedTimezones, setSelectedTimezones] = useState([
     timezones[0],
@@ -167,11 +168,11 @@ export default function Timezone() {
 
   const shareCurrentURL = async () => {
     let currentUrl = window.location.href
-    
+
     // Add timestamp parameter if includeTime is true
     if (includeTime) {
       const url = new URL(currentUrl)
-      url.searchParams.set('t', Date.now().toString())
+      url.searchParams.set("t", Date.now().toString())
       currentUrl = url.toString()
     }
 
@@ -184,6 +185,40 @@ export default function Timezone() {
       }, 2000)
     } catch (err) {
       console.error("Failed to copy URL to clipboard:", err)
+    }
+  }
+
+  const downloadOGPImage = async () => {
+    setDownloading(true)
+
+    try {
+      const baseUrl = window.location.origin
+      const ogImageUrl = `${baseUrl}/api/og/timezone?from=${encodeURIComponent(
+        selectedTimezones[0].timezone
+      )}&to=${encodeURIComponent(
+        selectedTimezones[1].timezone
+      )}&format24=${is24Hour}${includeTime ? `&t=${Date.now()}` : ""}`
+
+      // Fetch the image
+      const response = await fetch(ogImageUrl)
+      const blob = await response.blob()
+
+      // Create download link
+      const url = window.URL.createObjectURL(blob)
+      const a = document.createElement("a")
+      a.href = url
+      a.download = `timezone-${selectedTimezones[0].name.replace(
+        /\s+/g,
+        "-"
+      )}-${selectedTimezones[1].name.replace(/\s+/g, "-")}.png`
+      document.body.appendChild(a)
+      a.click()
+      document.body.removeChild(a)
+      window.URL.revokeObjectURL(url)
+    } catch (err) {
+      console.error("Failed to download OGP image:", err)
+    } finally {
+      setDownloading(false)
     }
   }
 
@@ -232,6 +267,18 @@ export default function Timezone() {
                     Share URL
                   </>
                 )}
+              </button>
+              <button
+                onClick={downloadOGPImage}
+                disabled={downloading}
+                className={`px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2 ${
+                  downloading
+                    ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                    : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
+                }`}
+              >
+                <FaDownload size={14} />
+                {downloading ? "Downloading..." : "Download OGP"}
               </button>
             </div>
           </div>
@@ -299,6 +346,19 @@ export default function Timezone() {
                   Share URL
                 </>
               )}
+            </button>
+            <button
+              onClick={downloadOGPImage}
+              disabled={downloading}
+              className={cn(
+                "px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2",
+                downloading
+                  ? "bg-gray-600 text-gray-400 cursor-not-allowed"
+                  : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
+              )}
+            >
+              <FaDownload size={14} />
+              {downloading ? "Downloading..." : "Download OGP"}
             </button>
           </div>
         </div>

@@ -7,7 +7,8 @@
       "Bash(pnpm add:*)",
       "Bash(npm run build:*)",
       "Bash(mv:*)",
-      "WebFetch(domain:random.kage1020.com)"
+      "WebFetch(domain:random.kage1020.com)",
+      "Bash(npm run lint)"
     ],
     "deny": []
   }
