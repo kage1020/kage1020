@@ -60,6 +60,224 @@ const FlagIcon = ({
   </div>
 )
 
+const TimelineVisualization = ({
+  selectedTimezones,
+  currentTime,
+  is24Hour,
+}: {
+  selectedTimezones: typeof timezones
+  currentTime: Date
+  is24Hour: boolean
+}) => {
+  const getTimeForHour = (hourOffset: number, timezone: string) => {
+    const date = new Date(currentTime)
+    date.setHours(date.getHours() + hourOffset)
+
+    const formatter = new Intl.DateTimeFormat("en-US", {
+      hour: is24Hour ? "2-digit" : "numeric",
+      hour12: !is24Hour,
+      timeZone: timezone,
+    })
+
+    return formatter.format(date)
+  }
+
+  const getBackgroundGradient = (hour: number, minute: number = 0) => {
+    const minuteProgress = minute / 60
+
+    // 各時間の色をOKLCHで定義 (lightness, chroma, hue)
+    const hourColors: { [key: number]: [number, number, number] } = {
+      0: [0.25, 0.08, 265], // 0時: 深い紺色
+      1: [0.28, 0.07, 260], // 1時: 紺色
+      2: [0.3, 0.06, 255], // 2時: 紺色
+      3: [0.32, 0.06, 250], // 3時: 少し明るい紺色
+      4: [0.35, 0.07, 280], // 4時: 紫がかった紺色
+      5: [0.4, 0.09, 290], // 5時: 紫色（夜明け前）
+      6: [0.55, 0.15, 40], // 6時: オレンジ色（日の出）
+      7: [0.65, 0.14, 60], // 7時: 明るいオレンジ（朝）
+      8: [0.72, 0.12, 85], // 8時: 黄色がかったオレンジ
+      9: [0.8, 0.1, 100], // 9時: 明るい黄色（午前）
+      10: [0.85, 0.08, 105], // 10時: 薄い黄色
+      11: [0.9, 0.06, 110], // 11時: 白に近い黄色
+      12: [0.95, 0.04, 110], // 12時: 最も明るい（正午）
+      13: [0.92, 0.05, 105], // 13時: 明るい黄色
+      14: [0.88, 0.07, 100], // 14時: 黄色
+      15: [0.82, 0.09, 90], // 15時: 黄色がかったオレンジ
+      16: [0.75, 0.12, 70], // 16時: オレンジ（夕方前）
+      17: [0.65, 0.15, 50], // 17時: 濃いオレンジ（夕暮れ）
+      18: [0.55, 0.16, 30], // 18時: 赤みがかったオレンジ（日没）
+      19: [0.45, 0.14, 10], // 19時: 赤紫（薄暮）
+      20: [0.38, 0.1, 310], // 20時: 紫（夜の始まり）
+      21: [0.34, 0.08, 280], // 21時: 紫がかった紺色
+      22: [0.3, 0.07, 270], // 22時: 紺色（深夜へ）
+      23: [0.27, 0.07, 265], // 23時: 深い紺色
+    }
+
+    // 現在の時間と次の時間の色を取得
+    const currentColor = hourColors[hour]
+    const nextColor = hourColors[(hour + 1) % 24]
+
+    // 分による補間
+    const lightness =
+      currentColor[0] + (nextColor[0] - currentColor[0]) * minuteProgress
+    const chroma =
+      currentColor[1] + (nextColor[1] - currentColor[1]) * minuteProgress
+    const hue =
+      currentColor[2] + (nextColor[2] - currentColor[2]) * minuteProgress
+
+    // グラデーションの終点を計算（少し変化をつける）
+    const lightness2 = Math.min(1, lightness + 0.05)
+    const chroma2 = Math.max(0, chroma - 0.02)
+    const hue2 = (hue + 10) % 360
+
+    return `linear-gradient(135deg,
+      oklch(${lightness} ${chroma} ${hue}) 0%,
+      oklch(${lightness2} ${chroma2} ${hue2}) 100%)`
+  }
+
+  const renderTimeline = (timezone: (typeof timezones)[0], index: number) => {
+    const tzDate = new Date(
+      currentTime.toLocaleString("en-US", { timeZone: timezone.timezone })
+    )
+    const currentHour = tzDate.getHours()
+    const currentMinute = tzDate.getMinutes()
+
+    // 25時間分の色を計算してグラデーションを作成
+    const gradientStops: string[] = []
+    for (let i = 0; i < 25; i++) {
+      const hourOffset = i - 12
+      const displayDate = new Date(currentTime)
+      displayDate.setHours(displayDate.getHours() + hourOffset)
+
+      const tzSpecificDate = new Date(
+        displayDate.toLocaleString("en-US", {
+          timeZone: timezone.timezone,
+        })
+      )
+      const actualHourInTz = tzSpecificDate.getHours()
+      const actualMinuteInTz = tzSpecificDate.getMinutes()
+
+      // 各時間の色を取得（OKLCH）
+      const minuteProgress = actualMinuteInTz / 60
+      const hourColors: { [key: number]: [number, number, number] } = {
+        0: [0.25, 0.08, 265], // 0時: 深い紺色
+        1: [0.28, 0.07, 260], // 1時: 紺色
+        2: [0.3, 0.06, 255], // 2時: 紺色
+        3: [0.32, 0.06, 250], // 3時: 少し明るい紺色
+        4: [0.35, 0.07, 280], // 4時: 紫がかった紺色
+        5: [0.4, 0.09, 290], // 5時: 紫色（夜明け前）
+        6: [0.55, 0.15, 40], // 6時: オレンジ色（日の出）
+        7: [0.65, 0.14, 60], // 7時: 明るいオレンジ（朝）
+        8: [0.72, 0.12, 85], // 8時: 黄色がかったオレンジ
+        9: [0.8, 0.1, 100], // 9時: 明るい黄色（午前）
+        10: [0.85, 0.08, 105], // 10時: 薄い黄色
+        11: [0.9, 0.06, 110], // 11時: 白に近い黄色
+        12: [0.95, 0.04, 110], // 12時: 最も明るい（正午）
+        13: [0.92, 0.05, 105], // 13時: 明るい黄色
+        14: [0.88, 0.07, 100], // 14時: 黄色
+        15: [0.82, 0.09, 90], // 15時: 黄色がかったオレンジ
+        16: [0.75, 0.12, 70], // 16時: オレンジ（夕方前）
+        17: [0.65, 0.15, 50], // 17時: 濃いオレンジ（夕暮れ）
+        18: [0.55, 0.16, 30], // 18時: 赤みがかったオレンジ（日没）
+        19: [0.45, 0.14, 10], // 19時: 赤紫（薄暮）
+        20: [0.38, 0.1, 310], // 20時: 紫（夜の始まり）
+        21: [0.34, 0.08, 280], // 21時: 紫がかった紺色
+        22: [0.3, 0.07, 270], // 22時: 紺色（深夜へ）
+        23: [0.27, 0.07, 265], // 23時: 深い紺色
+      }
+
+      const currentColor = hourColors[actualHourInTz]
+      const nextColor = hourColors[(actualHourInTz + 1) % 24]
+
+      const lightness =
+        currentColor[0] + (nextColor[0] - currentColor[0]) * minuteProgress
+      const chroma =
+        currentColor[1] + (nextColor[1] - currentColor[1]) * minuteProgress
+      const hue =
+        currentColor[2] + (nextColor[2] - currentColor[2]) * minuteProgress
+
+      const position = (i / 24) * 100
+      gradientStops.push(`oklch(${lightness} ${chroma} ${hue}) ${position}%`)
+    }
+
+    return (
+      <div key={index} className={`relative h-24 ${index === 0 ? "mt-6" : ""}`}>
+        <div className="absolute top-0 left-0 text-xs text-gray-400 px-2 py-1 flex items-center gap-2 z-10">
+          <FlagIcon IconComponent={timezone.icon} name={timezone.name} />
+          <span className="font-medium text-white">{timezone.name}</span>
+        </div>
+        <div className="relative h-full pt-8">
+          <div
+            className="h-full relative"
+            style={{
+              background: `linear-gradient(90deg, ${gradientStops.join(", ")})`,
+              opacity: 0.4,
+            }}
+          >
+            <div className="flex h-full justify-center">
+              {/* 時刻ラベルと現在時刻マーカー */}
+              {Array.from({ length: 25 }, (_, i) => {
+                const hourOffset = i - 12
+                const isCurrentHour = hourOffset === 0
+
+                return (
+                  <div
+                    key={i}
+                    className="relative flex-shrink-0 border-r border-gray-700"
+                    style={{
+                      width: "30px",
+                    }}
+                  >
+                    {!isCurrentHour && (
+                      <div className="absolute bottom-0 left-0 p-1 text-xs font-mono z-10">
+                        <span className="bg-black/50 px-1 rounded text-white">
+                          {getTimeForHour(hourOffset, timezone.timezone)}
+                        </span>
+                      </div>
+                    )}
+                    {isCurrentHour && (
+                      <>
+                        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-white z-10">
+                          {index === 0 && (
+                            <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded whitespace-nowrap">
+                              NOW
+                            </div>
+                          )}
+                        </div>
+                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 p-1 text-xs font-mono z-20">
+                          <span className="bg-black/70 px-1 rounded text-white font-bold">
+                            {getTimeForHour(hourOffset, timezone.timezone)}
+                          </span>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <div className="bg-[#111111] rounded-lg p-4">
+      <h4 className="text-lg font-medium mb-3">Timeline Visualization</h4>
+      <div className="relative overflow-x-auto">
+        <div className="min-w-max">
+          <div className="space-y-2">
+            {selectedTimezones.map((tz, index) => renderTimeline(tz, index))}
+          </div>
+        </div>
+      </div>
+      <div className="text-xs text-gray-400 mt-2 text-center">
+        Timeline shows ±12 hours from current time
+      </div>
+    </div>
+  )
+}
+
 export default function Timezone() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -461,6 +679,12 @@ export default function Timezone() {
           </div>
         </div>
       </div>
+
+      <TimelineVisualization
+        selectedTimezones={selectedTimezones}
+        currentTime={currentTime}
+        is24Hour={is24Hour}
+      />
     </div>
   )
 }
