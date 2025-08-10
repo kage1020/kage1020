@@ -136,12 +136,6 @@ const TimelineVisualization = ({
   }
 
   const renderTimeline = (timezone: (typeof timezones)[0], index: number) => {
-    const tzDate = new Date(
-      currentTime.toLocaleString("en-US", { timeZone: timezone.timezone })
-    )
-    const currentHour = tzDate.getHours()
-    const currentMinute = tzDate.getMinutes()
-
     // 25時間分の色を計算してグラデーションを作成
     const gradientStops: string[] = []
     for (let i = 0; i < 25; i++) {
