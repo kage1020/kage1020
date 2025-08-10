@@ -82,59 +82,6 @@ const TimelineVisualization = ({
     return formatter.format(date)
   }
 
-  const getBackgroundGradient = (hour: number, minute: number = 0) => {
-    const minuteProgress = minute / 60
-
-    // 各時間の色をOKLCHで定義 (lightness, chroma, hue)
-    const hourColors: { [key: number]: [number, number, number] } = {
-      0: [0.25, 0.08, 265], // 0時: 深い紺色
-      1: [0.28, 0.07, 260], // 1時: 紺色
-      2: [0.3, 0.06, 255], // 2時: 紺色
-      3: [0.32, 0.06, 250], // 3時: 少し明るい紺色
-      4: [0.35, 0.07, 280], // 4時: 紫がかった紺色
-      5: [0.4, 0.09, 290], // 5時: 紫色（夜明け前）
-      6: [0.55, 0.15, 40], // 6時: オレンジ色（日の出）
-      7: [0.65, 0.14, 60], // 7時: 明るいオレンジ（朝）
-      8: [0.72, 0.12, 85], // 8時: 黄色がかったオレンジ
-      9: [0.8, 0.1, 100], // 9時: 明るい黄色（午前）
-      10: [0.85, 0.08, 105], // 10時: 薄い黄色
-      11: [0.9, 0.06, 110], // 11時: 白に近い黄色
-      12: [0.95, 0.04, 110], // 12時: 最も明るい（正午）
-      13: [0.92, 0.05, 105], // 13時: 明るい黄色
-      14: [0.88, 0.07, 100], // 14時: 黄色
-      15: [0.82, 0.09, 90], // 15時: 黄色がかったオレンジ
-      16: [0.75, 0.12, 70], // 16時: オレンジ（夕方前）
-      17: [0.65, 0.15, 50], // 17時: 濃いオレンジ（夕暮れ）
-      18: [0.55, 0.16, 30], // 18時: 赤みがかったオレンジ（日没）
-      19: [0.45, 0.14, 10], // 19時: 赤紫（薄暮）
-      20: [0.38, 0.1, 310], // 20時: 紫（夜の始まり）
-      21: [0.34, 0.08, 280], // 21時: 紫がかった紺色
-      22: [0.3, 0.07, 270], // 22時: 紺色（深夜へ）
-      23: [0.27, 0.07, 265], // 23時: 深い紺色
-    }
-
-    // 現在の時間と次の時間の色を取得
-    const currentColor = hourColors[hour]
-    const nextColor = hourColors[(hour + 1) % 24]
-
-    // 分による補間
-    const lightness =
-      currentColor[0] + (nextColor[0] - currentColor[0]) * minuteProgress
-    const chroma =
-      currentColor[1] + (nextColor[1] - currentColor[1]) * minuteProgress
-    const hue =
-      currentColor[2] + (nextColor[2] - currentColor[2]) * minuteProgress
-
-    // グラデーションの終点を計算（少し変化をつける）
-    const lightness2 = Math.min(1, lightness + 0.05)
-    const chroma2 = Math.max(0, chroma - 0.02)
-    const hue2 = (hue + 10) % 360
-
-    return `linear-gradient(135deg,
-      oklch(${lightness} ${chroma} ${hue}) 0%,
-      oklch(${lightness2} ${chroma2} ${hue2}) 100%)`
-  }
-
   const renderTimeline = (timezone: (typeof timezones)[0], index: number) => {
     // 25時間分の色を計算してグラデーションを作成
     const gradientStops: string[] = []
