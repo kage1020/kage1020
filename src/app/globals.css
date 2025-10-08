@@ -8,6 +8,7 @@
   --background-tertiary: #1a1a1a;
   --accent: #666666;
   --accent-hover: #888888;
+  color-scheme: dark;
 }
 
 @theme inline {

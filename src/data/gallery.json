@@ -37,7 +37,13 @@
       "demo": "https://marketplace.visualstudio.com/items?itemName=kage1020.icon-collection",
       "github": "https://github.com/kage1020/IconCollection"
     },
-    "articles": [],
+    "articles": [
+      {
+        "title": "好きなアイコンを使ってDraw.ioで図を書こう！",
+        "url": "https://qiita.com/kage1020/items/ebfdb0761c26b4863df0",
+        "type": "tech"
+      }
+    ],
     "date": "2023/06/04"
   },
   {
