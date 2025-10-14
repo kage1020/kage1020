@@ -1,6 +1,6 @@
+import type { MetadataRoute } from "next"
 import appsData from "@/data/apps.json"
 import galleryData from "@/data/gallery.json"
-import { MetadataRoute } from "next"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kage1020.com"

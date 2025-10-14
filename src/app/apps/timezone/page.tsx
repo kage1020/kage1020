@@ -1,14 +1,19 @@
-import PageLayout from "@/components/page-layout"
-import { timezones } from "@/utils/timezone"
-import { Metadata } from "next"
+import type { Metadata } from "next"
 import { Suspense } from "react"
 import { FaArrowLeft } from "react-icons/fa"
+import PageLayout, { type Breadcrumb } from "@/components/page-layout"
+import { timezones } from "@/utils/timezone"
 import Timezone from "./timezone"
 
 export const runtime = "edge"
 
 interface PageProps {
-  searchParams: Promise<{ from?: string; to?: string; format24?: string; t?: string }>
+  searchParams: Promise<{
+    from?: string
+    to?: string
+    format24?: string
+    t?: string
+  }>
 }
 
 export async function generateMetadata({
@@ -29,8 +34,10 @@ export async function generateMetadata({
     process.env.CF_PAGES_URL ||
     "https://kage1020.com"
   const ogImageUrl = `${baseUrl}/api/og/timezone?from=${encodeURIComponent(
-    from
-  )}&to=${encodeURIComponent(to)}&format24=${format24}${timestamp ? `&t=${timestamp}` : ''}`
+    from,
+  )}&to=${encodeURIComponent(to)}&format24=${format24}${
+    timestamp ? `&t=${timestamp}` : ""
+  }`
 
   const titleWithFlags = `${fromTimezone.flag} ${fromTimezone.name} ⇄ ${toTimezone.flag} ${toTimezone.name} - World Timezone`
   const descriptionWithFlags = `Compare time between ${fromTimezone.flag} ${fromTimezone.name} and ${toTimezone.flag} ${toTimezone.name}`
@@ -44,9 +51,9 @@ export async function generateMetadata({
       type: "website",
       url: new URL(
         `/apps/timezone?from=${encodeURIComponent(
-          from
-        )}&to=${encodeURIComponent(to)}${timestamp ? `&t=${timestamp}` : ''}`,
-        process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? ""
+          from,
+        )}&to=${encodeURIComponent(to)}${timestamp ? `&t=${timestamp}` : ""}`,
+        process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? "",
       ),
       siteName: "kage1020",
       images: [
@@ -69,21 +76,20 @@ export async function generateMetadata({
   }
 }
 
-export default function TimezonePage() {
-  const breadcrumbs = [
-    {
-      href: "/apps",
-      label: "Apps",
-      icon: <FaArrowLeft size={16} />,
-      transitionName: "apps-header",
-    },
-  ]
+const breadcrumbs: Breadcrumb[] = [
+  {
+    href: "/apps",
+    label: "Apps",
+    icon: <FaArrowLeft size={16} />,
+  },
+]
 
+export default function TimezonePage() {
   return (
     <PageLayout breadcrumbs={breadcrumbs} maxWidth="6xl">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">World Timezone</h1>
+          <h2 className="text-3xl font-bold mb-2">World Timezone</h2>
         </div>
 
         <div className="bg-[#0a0a0a] rounded-lg p-6">

@@ -1,30 +1,40 @@
-import LogoLink from "@/components/LogoLink"
 import Link from "next/link"
-import { unstable_ViewTransition as ViewTransition } from "react"
+import { ViewTransition } from "react"
 import { FaArrowRight, FaCode, FaGithub, FaPen, FaRocket } from "react-icons/fa"
 import { FaXTwitter } from "react-icons/fa6"
+import { Logo } from "@/components/logo"
 
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8">
       <main className="max-w-5xl w-full">
         <div className="text-center mb-20">
-          <LogoLink size="large" />
+          <Link
+            href="/"
+            className="flex flex-col items-center gap-6 text-gray-400 hover:text-white transition-colors"
+          >
+            <div className="relative transition-transform hover:scale-110">
+              <Logo />
+            </div>
+            <ViewTransition name="name">
+              <h1 className="text-6xl font-bold">kage1020</h1>
+            </ViewTransition>
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           <Link
             href="/gallery"
-            className="group bg-[#111111] border border-gray-800 hover:border-blue-500/50 rounded-xl p-12 transition-all duration-300 text-center"
+            className="group bg-[#111111] border border-gray-800 hover:border-blue-500/50 rounded-xl p-12 text-center transition-colors duration-300"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500/20 transition-colors duration-300">
+              <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500/20">
                 <FaCode className="text-blue-400 text-2xl" />
               </div>
-              <ViewTransition name="gallery-header">
+              <ViewTransition>
                 <h2 className="text-xl font-bold mb-2">Gallery</h2>
               </ViewTransition>
-              <div className="flex items-center text-gray-400 group-hover:text-blue-400 transition-colors duration-300">
+              <div className="flex items-center text-gray-400 group-hover:text-blue-400">
                 <span className="text-sm">View Projects</span>
                 <FaArrowRight className="ml-2 text-xs" />
               </div>
@@ -33,16 +43,16 @@ export default function Home() {
 
           <Link
             href="/apps"
-            className="group bg-[#111111] border border-gray-800 hover:border-green-500/50 rounded-xl p-12 transition-all duration-300 text-center"
+            className="group bg-[#111111] border border-gray-800 hover:border-green-500/50 rounded-xl p-12 text-center transition-colors duration-300"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors duration-300">
+              <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-500/20">
                 <FaRocket className="text-green-400 text-2xl" />
               </div>
-              <ViewTransition name="apps-header">
+              <ViewTransition>
                 <h2 className="text-xl font-bold mb-2">Apps</h2>
               </ViewTransition>
-              <div className="flex items-center text-gray-400 group-hover:text-green-400 transition-colors duration-300">
+              <div className="flex items-center text-gray-400 group-hover:text-green-400">
                 <span className="text-sm">Try Live Apps</span>
                 <FaArrowRight className="ml-2 text-xs" />
               </div>
@@ -51,16 +61,16 @@ export default function Home() {
 
           <Link
             href="/blogs"
-            className="group bg-[#111111] border border-gray-800 hover:border-purple-500/50 rounded-xl p-12 transition-all duration-300 text-center"
+            className="group bg-[#111111] border border-gray-800 hover:border-purple-500/50 rounded-xl p-12 text-center transition-colors duration-300"
           >
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors duration-300">
+              <div className="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-purple-500/20">
                 <FaPen className="text-purple-400 text-2xl" />
               </div>
-              <ViewTransition name="blogs-header">
+              <ViewTransition>
                 <h2 className="text-xl font-bold mb-2">Blogs</h2>
               </ViewTransition>
-              <div className="flex items-center text-gray-400 group-hover:text-purple-400 transition-colors duration-300">
+              <div className="flex items-center text-gray-400 group-hover:text-purple-400">
                 <span className="text-sm">Read Articles</span>
                 <FaArrowRight className="ml-2 text-xs" />
               </div>

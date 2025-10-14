@@ -6,6 +6,7 @@ export function JpIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>Japanese Flag</title>
       <defs>
         <clipPath id="flagJp4x30">
           <path fillOpacity="0.7" d="M-88 32h640v480H-88z" />
@@ -38,6 +39,7 @@ export function UsIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>United States Flag</title>
       <path fill="#bd3d44" d="M0 0h640v480H0" />
       <path
         stroke="#fff"
@@ -65,6 +67,7 @@ export function GbIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>United Kingdom Flag</title>
       <path fill="#012169" d="M0 0h640v480H0z" />
       <path
         fill="#fff"
@@ -88,6 +91,7 @@ export function FrIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>French Flag</title>
       <path fill="#fff" d="M0 0h640v480H0z" />
       <path fill="#000091" d="M0 0h213.3v480H0z" />
       <path fill="#e1000f" d="M426.7 0H640v480H426.7z" />
@@ -103,6 +107,7 @@ export function CaIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>Canadian Flag</title>
       <path fill="#fff" d="M150.1 0h339.7v480H150z" />
       <path
         fill="#d52b1e"
@@ -120,6 +125,7 @@ export function AuIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>Australian Flag</title>
       <path fill="#00008b" d="M0 0h640v480H0z" />
       <path
         fill="#fff"
@@ -147,6 +153,7 @@ export function AeIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>United Arab Emirates Flag</title>
       <path fill="#00732f" d="M0 0h640v160H0z" />
       <path fill="#fff" d="M0 160h640v160H0z" />
       <path fill="#000001" d="M0 320h640v160H0z" />
@@ -163,6 +170,7 @@ export function SgIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>Singapore Flag</title>
       <defs>
         <clipPath id="flagSg4x30">
           <path fillOpacity="0.7" d="M0 0h640v480H0z" />
@@ -192,6 +200,7 @@ export function HkIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>Hong Kong Flag</title>
       <path fill="#ec1b2e" d="M0 0h640v480H0" />
       <path
         id="flagHk4x30"
@@ -214,6 +223,7 @@ export function KrIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>South Korean Flag</title>
       <defs>
         <clipPath id="flagKr4x30">
           <path fillOpacity="0.7" d="M-95.8-.4h682.7v512H-95.8z" />
@@ -256,6 +266,7 @@ export function DeIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>German Flag</title>
       <path fill="#fc0" d="M0 320h640v160H0z" />
       <path fill="#000001" d="M0 0h640v160H0z" />
       <path fill="#f00" d="M0 160h640v160H0z" />
@@ -271,6 +282,7 @@ export function InIcon() {
       height="480"
       viewBox="0 0 640 480"
     >
+      <title>Indian Flag</title>
       <path fill="#f93" d="M0 0h640v160H0z" />
       <path fill="#fff" d="M0 160h640v160H0z" />
       <path fill="#128807" d="M0 320h640v160H0z" />

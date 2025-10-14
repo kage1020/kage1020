@@ -1,15 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(mkdir:*)",
-      "Bash(move:*)",
-      "Bash(npm run dev:*)",
-      "Bash(pnpm add:*)",
-      "Bash(npm run build:*)",
-      "Bash(mv:*)",
       "WebFetch(domain:random.kage1020.com)",
-      "Bash(npm run lint)"
+      "WebFetch(domain:react.dev)",
+      "mcp__context7__*"
     ],
-    "deny": []
+    "deny": ["Bash(npm:*)", "Bash(yarn:*)", "Bash(bun:*)"]
   }
 }

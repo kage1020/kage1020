@@ -1,3 +1,5 @@
+import type { Route } from "next"
+
 export interface Article {
   title: string
   url: string
@@ -23,7 +25,7 @@ export interface App {
   id: string
   title: string
   description: string
-  url: string
+  url: Route
   status: "active" | "maintenance" | "development"
   technologies: string[]
   category: string

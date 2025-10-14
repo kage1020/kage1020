@@ -1,12 +1,12 @@
-import PageLayout from "@/components/page-layout"
-import appsData from "@/data/apps.json"
-import { App } from "@/types"
-import { cn } from "@/utils"
-import { getTechColor, getTechIcon } from "@/utils/techColors"
 import Image from "next/image"
 import Link from "next/link"
-import { unstable_ViewTransition as ViewTransition } from "react"
+import { ViewTransition } from "react"
 import { FaNewspaper } from "react-icons/fa"
+import PageLayout from "@/components/page-layout"
+import appsData from "@/data/apps.json"
+import type { App } from "@/types"
+import { cn } from "@/utils"
+import { getTechColor, getTechIcon } from "@/utils/techColors"
 
 const apps = appsData as App[]
 
@@ -77,7 +77,7 @@ function AppCard({ app }: AppCardProps) {
             <span
               className={cn(
                 "px-2 py-1 text-xs rounded-full",
-                getStatusColor(app.status)
+                getStatusColor(app.status),
               )}
             >
               {getStatusLabel(app.status)}
@@ -96,7 +96,7 @@ function AppCard({ app }: AppCardProps) {
                   key={tech}
                   className={cn(
                     "px-2 py-1 text-xs rounded-full flex items-center gap-1",
-                    getTechColor(tech)
+                    getTechColor(tech),
                   )}
                 >
                   {Icon && <Icon size={10} />}
@@ -138,7 +138,7 @@ function AppCard({ app }: AppCardProps) {
 export default function AppsPage() {
   return (
     <PageLayout>
-      <ViewTransition name="apps-header">
+      <ViewTransition>
         <h2 className="text-4xl font-bold mb-8">Apps</h2>
       </ViewTransition>
 
