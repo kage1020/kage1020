@@ -15,8 +15,6 @@ import type { Gallery } from "@/types"
 import { cn } from "@/utils"
 import { getTechColor, getTechIcon } from "@/utils/techColors"
 
-export const runtime = "edge"
-
 const projects = galleryData as Gallery[]
 
 interface PageProps {

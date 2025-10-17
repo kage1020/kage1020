@@ -5,8 +5,6 @@ import PageLayout, { type Breadcrumb } from "@/components/page-layout"
 import { timezones } from "@/utils/timezone"
 import Timezone from "./timezone"
 
-export const runtime = "edge"
-
 interface PageProps {
   searchParams: Promise<{
     from?: string
