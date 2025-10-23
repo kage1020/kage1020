@@ -27,7 +27,7 @@ export const timezones = [
 export const formatTime = (
   date: Date,
   timezone: string,
-  format24Hour = true
+  format24Hour = true,
 ) => {
   try {
     return date.toLocaleTimeString("en-US", {
@@ -45,7 +45,7 @@ export const formatTime = (
 export const formatTimeWithSeconds = (
   date: Date,
   timezone: string,
-  format24Hour = true
+  format24Hour = true,
 ) => {
   try {
     return date.toLocaleTimeString("en-US", {
@@ -64,7 +64,7 @@ export const formatTimeWithSeconds = (
 export const formatDate = (
   date: Date,
   timezone: string,
-  includeWeekday = false
+  includeWeekday = false,
 ) => {
   try {
     const options: Intl.DateTimeFormatOptions = {
@@ -87,10 +87,10 @@ export const getTimeDifference = (timezone1: string, timezone2: string) => {
   try {
     const date = new Date()
     const time1 = new Date(
-      date.toLocaleString("en-US", { timeZone: timezone1 })
+      date.toLocaleString("en-US", { timeZone: timezone1 }),
     )
     const time2 = new Date(
-      date.toLocaleString("en-US", { timeZone: timezone2 })
+      date.toLocaleString("en-US", { timeZone: timezone2 }),
     )
     const diffMs = time1.getTime() - time2.getTime()
     const diffHours = Math.round(diffMs / (1000 * 60 * 60))

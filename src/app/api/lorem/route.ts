@@ -1,6 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
-
-export const runtime = "edge"
+import { type NextRequest, NextResponse } from "next/server"
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url)
@@ -10,7 +8,7 @@ export async function GET(request: NextRequest) {
   if (!endpoint) {
     return NextResponse.json(
       { error: "Missing endpoint parameter" },
-      { status: 400 }
+      { status: 400 },
     )
   }
 
@@ -42,7 +40,7 @@ export async function GET(request: NextRequest) {
     console.error("Error fetching from Lorem API:", error)
     return NextResponse.json(
       { error: "Failed to fetch data from Lorem API" },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }

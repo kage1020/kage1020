@@ -1,8 +1,8 @@
 "use client"
 
-import { cn } from "@/utils"
-import { useState } from "react"
+import { useId, useState } from "react"
 import { FaCheck, FaCopy, FaRandom } from "react-icons/fa"
+import { cn } from "@/utils"
 
 interface GeneratorOption {
   id: string
@@ -241,17 +241,20 @@ const generators: GeneratorOption[] = [
   },
 ]
 
-const groupedGenerators = generators.reduce((acc, gen) => {
-  if (!acc[gen.category]) {
-    acc[gen.category] = []
-  }
-  acc[gen.category].push(gen)
-  return acc
-}, {} as Record<string, GeneratorOption[]>)
+const groupedGenerators = generators.reduce(
+  (acc, gen) => {
+    if (!acc[gen.category]) {
+      acc[gen.category] = []
+    }
+    acc[gen.category].push(gen)
+    return acc
+  },
+  {} as Record<string, GeneratorOption[]>,
+)
 
 export default function LoremText() {
   const [selectedGenerator, setSelectedGenerator] = useState<GeneratorOption>(
-    generators[0]
+    generators[0],
   )
   const [length, setLength] = useState(10)
   const [selectedAuthor, setSelectedAuthor] = useState("akutagawa")
@@ -262,6 +265,7 @@ export default function LoremText() {
     string,
     unknown
   > | null>(null)
+  const id = useId()
 
   const authorOptions = [
     { value: "akutagawa", label: "Akutagawa" },
@@ -328,6 +332,7 @@ export default function LoremText() {
               <div className="grid grid-cols-1 gap-2">
                 {gens.map((gen) => (
                   <button
+                    type="button"
                     key={gen.id}
                     onClick={() => {
                       setSelectedGenerator(gen)
@@ -338,7 +343,7 @@ export default function LoremText() {
                       "p-3 rounded-lg text-left transition-colors",
                       selectedGenerator.id === gen.id
                         ? "bg-blue-600 text-white"
-                        : "bg-[#111111] hover:bg-[#1a1a1a] text-gray-300"
+                        : "bg-[#111111] hover:bg-[#1a1a1a] text-gray-300",
                     )}
                   >
                     <div className="font-medium">{gen.name}</div>
@@ -362,8 +367,14 @@ export default function LoremText() {
 
               {selectedGenerator.hasAuthor && (
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium">Author</label>
+                  <label
+                    className="block text-sm font-medium"
+                    htmlFor={`${id}-author`}
+                  >
+                    Author
+                  </label>
                   <select
+                    id={`${id}-author`}
                     value={selectedAuthor}
                     onChange={(e) => setSelectedAuthor(e.target.value)}
                     className="w-full px-3 py-2 bg-black rounded border border-gray-600 focus:border-blue-500 focus:outline-none"
@@ -379,12 +390,18 @@ export default function LoremText() {
 
               {selectedGenerator.hasLength && (
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium">Length</label>
+                  <label
+                    className="block text-sm font-medium"
+                    htmlFor={`${id}-length`}
+                  >
+                    Length
+                  </label>
                   <input
+                    id={`${id}-length`}
                     type="number"
                     value={length}
                     onChange={(e) =>
-                      setLength(Math.max(1, parseInt(e.target.value) || 1))
+                      setLength(Math.max(1, parseInt(e.target.value, 10) || 1))
                     }
                     min="1"
                     max="1000"
@@ -394,6 +411,7 @@ export default function LoremText() {
               )}
 
               <button
+                type="button"
                 onClick={generateData}
                 disabled={loading}
                 className="w-full mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white rounded transition-colors flex items-center justify-center gap-2"
@@ -409,12 +427,13 @@ export default function LoremText() {
               <div className="flex items-center justify-between">
                 <h4 className="font-medium">Result</h4>
                 <button
+                  type="button"
                   onClick={copyToClipboard}
                   className={cn(
                     "px-3 py-1.5 text-sm rounded transition-colors flex items-center gap-2",
                     copied
                       ? "bg-green-600 text-white"
-                      : "bg-gray-700 hover:bg-gray-600 text-gray-300"
+                      : "bg-gray-700 hover:bg-gray-600 text-gray-300",
                   )}
                 >
                   {copied && (
@@ -440,14 +459,17 @@ export default function LoremText() {
                         <div className="grid grid-cols-1 gap-1">
                           {parsedResult.map(
                             (name: Record<string, unknown>, index: number) => (
-                              <div key={index} className="text-gray-300">
+                              <div
+                                key={`${name.last}-${name.first}-${index}`}
+                                className="text-gray-300"
+                              >
                                 {typeof name === "object" &&
                                 name.first &&
                                 name.last
                                   ? `${name.last} ${name.first}`
                                   : String(name)}
                               </div>
-                            )
+                            ),
                           )}
                         </div>
                       )}
@@ -483,8 +505,8 @@ export default function LoremText() {
                   {selectedGenerator.hasAuthor
                     ? `/${selectedAuthor}/${length}`
                     : selectedGenerator.hasLength
-                    ? `${selectedGenerator.endpoint}/${length}`
-                    : selectedGenerator.endpoint}
+                      ? `${selectedGenerator.endpoint}/${length}`
+                      : selectedGenerator.endpoint}
                 </code>
               </div>
             </div>

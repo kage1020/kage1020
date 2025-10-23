@@ -1,11 +1,11 @@
-import PageLayout from "@/components/page-layout"
-import galleryData from "@/data/gallery.json"
-import { Gallery } from "@/types"
-import { getTechColor, getTechIcon } from "@/utils/techColors"
 import Image from "next/image"
 import Link from "next/link"
-import { unstable_ViewTransition as ViewTransition } from "react"
+import { ViewTransition } from "react"
 import { FaExternalLinkAlt, FaGithub, FaNewspaper } from "react-icons/fa"
+import PageLayout from "@/components/page-layout"
+import galleryData from "@/data/gallery.json"
+import type { Gallery } from "@/types"
+import { getTechColor, getTechIcon } from "@/utils/techColors"
 
 const projects = galleryData as Gallery[]
 
@@ -44,7 +44,7 @@ function ProjectCard({ project }: ProjectCardProps) {
             <span
               key={tech}
               className={`px-2 py-1 text-xs rounded-full flex items-center gap-1 ${getTechColor(
-                tech
+                tech,
               )}`}
             >
               {Icon && <Icon size={12} />}
@@ -97,7 +97,7 @@ function ProjectCard({ project }: ProjectCardProps) {
 export default function GalleryPage() {
   return (
     <PageLayout>
-      <ViewTransition name="gallery-header">
+      <ViewTransition>
         <h2 className="text-4xl font-bold mb-8">Gallery</h2>
       </ViewTransition>
 

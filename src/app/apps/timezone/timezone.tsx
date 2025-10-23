@@ -1,5 +1,9 @@
 "use client"
 
+import type { Route } from "next"
+import { usePathname, useRouter, useSearchParams } from "next/navigation"
+import { useEffect, useId, useState } from "react"
+import { FaCheck, FaDownload, FaLink } from "react-icons/fa"
 import {
   AeIcon,
   AuIcon,
@@ -21,9 +25,6 @@ import {
   getTimeDifference,
   timezones as timezonesData,
 } from "@/utils/timezone"
-import { useRouter, useSearchParams } from "next/navigation"
-import { useEffect, useState } from "react"
-import { FaCheck, FaDownload, FaLink } from "react-icons/fa"
 
 const iconMap = {
   JP: JpIcon,
@@ -93,7 +94,7 @@ const TimelineVisualization = ({
       const tzSpecificDate = new Date(
         displayDate.toLocaleString("en-US", {
           timeZone: timezone.timezone,
-        })
+        }),
       )
       const actualHourInTz = tzSpecificDate.getHours()
       const actualMinuteInTz = tzSpecificDate.getMinutes()
@@ -163,7 +164,7 @@ const TimelineVisualization = ({
 
                 return (
                   <div
-                    key={i}
+                    key={hourOffset}
                     className="relative flex-shrink-0 border-r border-gray-700"
                     style={{
                       width: "30px",
@@ -221,7 +222,9 @@ const TimelineVisualization = ({
 
 export default function Timezone() {
   const searchParams = useSearchParams()
+  const pathname = usePathname()
   const router = useRouter()
+  const id = useId()
 
   const [currentTime, setCurrentTime] = useState(new Date())
   const [is24Hour, setIs24Hour] = useState(true)
@@ -252,7 +255,7 @@ export default function Timezone() {
       toTimezone || timezones[1],
     ])
 
-    setIs24Hour(format24 === "false" ? false : true)
+    setIs24Hour(format24 !== "false")
   }, [searchParams, mounted])
 
   useEffect(() => {
@@ -272,7 +275,7 @@ export default function Timezone() {
       fromTimezone || timezones[0],
       toTimezone || timezones[1],
     ]
-    const initial24Hour = format24 === "false" ? false : true
+    const initial24Hour = format24 !== "false"
 
     setSelectedTimezones(initialTimezones)
     setIs24Hour(initial24Hour)
@@ -283,7 +286,7 @@ export default function Timezone() {
       params.set("to", initialTimezones[1].timezone)
       params.set("format24", initial24Hour.toString())
 
-      const newUrl = `${window.location.pathname}?${params.toString()}`
+      const newUrl = `${pathname}?${params.toString()}` as Route
       router.replace(newUrl)
     }
 
@@ -292,27 +295,27 @@ export default function Timezone() {
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [router, searchParams])
+  }, [pathname, router, searchParams])
 
   const updateURL = (
     newSelectedTimezones?: typeof selectedTimezones,
-    new24Hour?: boolean
+    new24Hour?: boolean,
   ) => {
     const params = new URLSearchParams()
     params.set("from", (newSelectedTimezones || selectedTimezones)[0].timezone)
     params.set("to", (newSelectedTimezones || selectedTimezones)[1].timezone)
     params.set(
       "format24",
-      (new24Hour !== undefined ? new24Hour : is24Hour).toString()
+      (new24Hour !== undefined ? new24Hour : is24Hour).toString(),
     )
 
-    const newUrl = `${window.location.pathname}?${params.toString()}`
+    const newUrl = `${pathname}?${params.toString()}` as Route
     router.replace(newUrl)
   }
 
   const changeTimezone = (
     index: number,
-    newTimezone: (typeof timezones)[0]
+    newTimezone: (typeof timezones)[0],
   ) => {
     const newSelectedTimezones = [...selectedTimezones]
     newSelectedTimezones[index] = newTimezone
@@ -353,9 +356,9 @@ export default function Timezone() {
     try {
       const baseUrl = window.location.origin
       const ogImageUrl = `${baseUrl}/api/og/timezone?from=${encodeURIComponent(
-        selectedTimezones[0].timezone
+        selectedTimezones[0].timezone,
       )}&to=${encodeURIComponent(
-        selectedTimezones[1].timezone
+        selectedTimezones[1].timezone,
       )}&format24=${is24Hour}${includeTime ? `&t=${Date.now()}` : ""}`
 
       // Fetch the image
@@ -368,7 +371,7 @@ export default function Timezone() {
       a.href = url
       a.download = `timezone-${selectedTimezones[0].name.replace(
         /\s+/g,
-        "-"
+        "-",
       )}-${selectedTimezones[1].name.replace(/\s+/g, "-")}.png`
       document.body.appendChild(a)
       a.click()
@@ -407,6 +410,7 @@ export default function Timezone() {
                 Include time in URL
               </label>
               <button
+                type="button"
                 onClick={shareCurrentURL}
                 className={`px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2 ${
                   copied
@@ -428,6 +432,7 @@ export default function Timezone() {
                 )}
               </button>
               <button
+                type="button"
                 onClick={downloadOGPImage}
                 disabled={downloading}
                 className={`px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2 ${
@@ -485,12 +490,13 @@ export default function Timezone() {
               Include time in URL
             </label>
             <button
+              type="button"
               onClick={shareCurrentURL}
               className={cn(
                 "px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2",
                 copied
                   ? "bg-green-600 text-white"
-                  : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
+                  : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600",
               )}
             >
               {copied && (
@@ -507,13 +513,14 @@ export default function Timezone() {
               )}
             </button>
             <button
+              type="button"
               onClick={downloadOGPImage}
               disabled={downloading}
               className={cn(
                 "px-3 py-1.5 text-sm rounded transition-all flex items-center gap-2",
                 downloading
                   ? "bg-gray-600 text-gray-400 cursor-not-allowed"
-                  : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600"
+                  : "bg-gray-800 hover:bg-gray-700 text-white border border-gray-700 hover:border-gray-600",
               )}
             >
               <FaDownload size={14} />
@@ -525,16 +532,20 @@ export default function Timezone() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {selectedTimezones.map((tz, index) => (
-          <div key={index} className="bg-[#111111] rounded-lg p-4">
+          <div key={tz.timezone} className="bg-[#111111] rounded-lg p-4">
             <div className="mb-4">
-              <label className="block text-sm font-medium mb-2">
+              <label
+                className="block text-sm font-medium mb-2"
+                htmlFor={`timezone-${id}`}
+              >
                 {index === 0 ? "First Location" : "Second Location"}
               </label>
               <select
+                id={`timezone-${id}`}
                 value={tz.timezone}
                 onChange={(e) => {
                   const newTimezone = timezones.find(
-                    (t) => t.timezone === e.target.value
+                    (t) => t.timezone === e.target.value,
                   )
                   if (newTimezone) {
                     changeTimezone(index, newTimezone)
@@ -572,14 +583,14 @@ export default function Timezone() {
           {(() => {
             const diff = getTimeDifference(
               selectedTimezones[1].timezone,
-              selectedTimezones[0].timezone
+              selectedTimezones[0].timezone,
             )
             const color =
               diff === 0
                 ? "text-green-500"
                 : diff > 0
-                ? "text-amber-500"
-                : "text-blue-500"
+                  ? "text-amber-500"
+                  : "text-blue-500"
             return (
               <span className={cn("font-bold", color)}>
                 {diff === 0
@@ -598,17 +609,14 @@ export default function Timezone() {
             <span className="text-white">{selectedTimezones[1].name}</span>
           </div>
           <span>
-            is{" "}
-            {(() => {
+            is {(() => {
               const diff = getTimeDifference(
                 selectedTimezones[1].timezone,
-                selectedTimezones[0].timezone
+                selectedTimezones[0].timezone,
               )
               if (diff === 0) return "at the same time as"
               if (diff > 0) return `${diff} hour${diff > 1 ? "s" : ""} ahead of`
-              return `${Math.abs(diff)} hour${
-                Math.abs(diff) > 1 ? "s" : ""
-              } behind`
+              return `${Math.abs(diff)} hour${Math.abs(diff) > 1 ? "s" : ""} behind`
             })()}
           </span>
           <div className="flex items-center gap-1">
