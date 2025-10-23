@@ -19,10 +19,6 @@ import { getTechColor, getTechIcon } from "@/utils/techColors"
 
 const projects = galleryData as Gallery[]
 
-interface PageProps {
-  params: Promise<{ id: string }>
-}
-
 const breadcrumbs: Breadcrumb[] = [
   {
     href: "/gallery",
@@ -31,7 +27,9 @@ const breadcrumbs: Breadcrumb[] = [
   },
 ]
 
-export default function GalleryDetailPage({ params }: PageProps) {
+export default function GalleryDetailPage({
+  params,
+}: PageProps<"/gallery/[id]">) {
   const { id } = use(params)
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
