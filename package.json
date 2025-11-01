@@ -35,7 +35,7 @@
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "babel-plugin-react-compiler": "1.0.0",
-    "drizzle-kit": "^0.31.4",
+    "drizzle-kit": "^0.31.6",
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.44.0"
