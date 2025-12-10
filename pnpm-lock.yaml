@@ -27,7 +27,7 @@ importers:
         specifier: ^0.44.4
         version: 0.44.4(kysely@0.28.8)
       next:
-        specifier: 16.0.7
+        specifier: ^16.0.7
         version: 16.0.7(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       react:
         specifier: 19.2.0
