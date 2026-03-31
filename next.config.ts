@@ -3,7 +3,6 @@ import type { NextConfig } from "next"
 const nextConfig: NextConfig = {
   typedRoutes: true,
   reactCompiler: true,
-  // cacheComponents is not yet supported by @opennextjs/cloudflare
   // cacheComponents: true,
   experimental: {
     viewTransition: true,
