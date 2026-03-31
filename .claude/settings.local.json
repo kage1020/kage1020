@@ -3,8 +3,13 @@
     "allow": [
       "WebFetch(domain:random.kage1020.com)",
       "WebFetch(domain:react.dev)",
-      "mcp__context7__*"
+      "mcp__context7__*",
+      "WebSearch"
     ],
-    "deny": ["Bash(npm:*)", "Bash(yarn:*)", "Bash(bun:*)"]
+    "deny": [
+      "Bash(npm:*)",
+      "Bash(yarn:*)",
+      "Bash(bun:*)"
+    ]
   }
 }
