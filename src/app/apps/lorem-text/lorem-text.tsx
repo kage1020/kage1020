@@ -457,20 +457,18 @@ export default function LoremText() {
                     {selectedGenerator.id === "person-name" &&
                       Array.isArray(parsedResult) && (
                         <div className="grid grid-cols-1 gap-1">
-                          {parsedResult.map(
-                            (name: Record<string, unknown>, index: number) => (
-                              <div
-                                key={`${name.last}-${name.first}-${index}`}
-                                className="text-gray-300"
-                              >
-                                {typeof name === "object" &&
-                                name.first &&
-                                name.last
-                                  ? `${name.last} ${name.first}`
-                                  : String(name)}
-                              </div>
-                            ),
-                          )}
+                          {parsedResult.map((name: Record<string, unknown>) => (
+                            <div
+                              key={JSON.stringify(name)}
+                              className="text-gray-300"
+                            >
+                              {typeof name === "object" &&
+                              name.first &&
+                              name.last
+                                ? `${name.last} ${name.first}`
+                                : String(name)}
+                            </div>
+                          ))}
                         </div>
                       )}
                     {(selectedGenerator.id !== "person-name" ||
