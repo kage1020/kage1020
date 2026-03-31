@@ -10,12 +10,12 @@ export const metadata: Metadata = {
   },
   description: "A website of kage1020",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? "",
+    process.env.NEXT_PUBLIC_BASE_URL ??
+      process.env.CF_PAGES_URL ??
+      "https://kage1020.com",
   ),
   alternates: {
-    canonical: new URL(
-      process.env.NEXT_PUBLIC_BASE_URL ?? process.env.CF_PAGES_URL ?? "",
-    ),
+    canonical: "/",
   },
 }
 

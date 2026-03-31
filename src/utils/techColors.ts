@@ -1,5 +1,6 @@
 import type { IconType } from "react-icons"
 import {
+  FaAws,
   FaCode,
   FaDrawPolygon,
   FaFileImage,
@@ -8,10 +9,9 @@ import {
   FaServer,
 } from "react-icons/fa"
 import {
-  SiAmazonwebservices,
   SiAngular,
   SiCplusplus,
-  SiCss3,
+  SiCss,
   SiCypress,
   SiDjango,
   SiDocker,
@@ -141,9 +141,9 @@ const techIconMap: Record<string, IconType> = {
   PHP: SiPhp,
 
   "Tailwind CSS": SiTailwindcss,
-  CSS: SiCss3,
+  CSS: SiCss,
   SCSS: SiSass,
-  "CSS Modules": SiCss3,
+  "CSS Modules": SiCss,
 
   "Node.js": SiNodedotjs,
   Express: SiExpress,
@@ -160,7 +160,7 @@ const techIconMap: Record<string, IconType> = {
 
   Docker: SiDocker,
   Kubernetes: SiKubernetes,
-  AWS: SiAmazonwebservices,
+  AWS: FaAws,
   GCP: SiGooglecloud,
   Vercel: SiVercel,
   Netlify: SiNetlify,
