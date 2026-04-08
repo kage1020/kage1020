@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+	/* Surfaces */
+	--color-surface-0: #0a0a0a;
+	--color-surface-1: #111111;
+	--color-surface-2: #1a1a1a;
+	--color-surface-3: #222222;
+
+	/* Text */
+	--color-text-primary: #f5f5f5;
+	--color-text-secondary: #a3a3a3;
+	--color-text-muted: #525252;
+
+	/* Accent */
+	--color-accent: #2d70b3;
+	--color-accent-dim: oklch(0.45 0.1 250);
+	--color-accent-bright: oklch(0.7 0.15 250);
+
+	/* Semantic */
+	--color-success: oklch(0.7 0.15 145);
+	--color-warning: oklch(0.75 0.15 80);
+	--color-error: oklch(0.65 0.2 25);
+
+	/* Font */
+	--font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+	--font-mono: var(--font-geist-mono), ui-monospace, "Cascadia Code", "Fira Code", monospace;
+}
+
+html {
+	color-scheme: dark;
+}
+
+body {
+	background-color: var(--color-surface-0);
+	color: var(--color-text-primary);
+	font-family: var(--font-sans);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+	background-color: var(--color-accent-dim);
+	color: var(--color-text-primary);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--color-surface-3);
+	border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--color-text-muted);
+}

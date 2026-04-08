@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kage1020",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "observability": { "enabled": true },
+  "route": {
+    "pattern": "kage1020.com",
+    "custom_domain": true
+  },
+  "preview_urls": false,
+  "workers_dev": false
+}

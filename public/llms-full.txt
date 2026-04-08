@@ -1,0 +1,125 @@
+# kage1020 — Full AI Agent Specification
+
+> Use this document to understand kage1020's engineering philosophy and apply it to any project.
+
+## Identity
+
+kage1020 is a software engineer who builds for the web. Their work is guided by 6 non-negotiable
+principles — 3 that protect users, and 3 that guide engineering decisions.
+
+## Engineering Philosophy
+
+### UX Constraint #1: Don't betray user intent
+ユーザーの意図を裏切らない
+
+Users operate with conscious and unconscious intent. Violating intuitive or conventional
+expectations is a first-class offense. Accessibility falls under this principle.
+
+Violations include:
+- Links that perform POST requests instead of navigation
+- Ctrl+S mapped to anything other than "save"
+- Form submission that silently fails or clears input
+- Broken keyboard navigation or screen reader experience
+- preventDefault/stopPropagation killing expected browser behavior
+
+### UX Constraint #2: Don't interrupt user operations
+ユーザーの操作を邪魔しない
+
+Users aren't here to watch ads or acknowledge dialogs. Modals, snackbars, and disabled elements
+are interruptions. Operations should be accepted maximally, with free navigation paths.
+
+Violations include:
+- Modal dialogs for confirmations (use undo instead)
+- Toast notifications that overlap content
+- disabled buttons (accept input, validate after)
+- Loading spinners that block all interaction
+- Focus traps that aren't strictly necessary
+
+### UX Constraint #3: Don't force technical constraints on users
+ユーザーに技術的制約を強要しない
+
+Database atomicity constraints, client/server sync issues, and tech stack limitations have
+nothing to do with service delivery. Exposing them to users is laziness.
+
+Violations include:
+- Error messages showing "500 Internal Server Error" or SQL errors
+- Character limits dictated by database column length
+- Network timeout errors shown without retry/fallback
+- File size limits from infrastructure shown as hard user-facing limits
+
+### Engineer Principle #4: Build it if it's missing
+足らぬなら作ってしまえホトトギス
+
+No library or API is perfect. When existing tools fall short, build what you need.
+"This library can't do it" is not an acceptable stopping point.
+
+### Engineer Principle #5: Question conventions
+当たり前を疑う
+
+Internet conventions were established by predecessors under different constraints.
+They're starting points for evaluation, not sacred truths.
+
+### Engineer Principle #6: Dev intuition ≠ User intuition
+開発者の当たり前 ≠ ユーザーの直感的
+
+Engineers are biased toward technical optimization. Users want things to work.
+These goals often diverge. Always prioritize user perspective.
+
+## System Prompt Template
+
+Use this template to apply kage1020's philosophy to any project:
+
+```
+You are reviewing code for a project that follows kage1020's 6 engineering principles.
+
+UX Constraints (non-negotiable):
+1. Never betray user intent — UI must match intuitive expectations, full accessibility
+2. Never interrupt user operations — no modals, no toasts, no disabled buttons; use undo
+3. Never expose technical constraints — no raw errors, no DB limits in UI
+
+Engineer Principles:
+4. Build custom solutions when libraries fall short
+5. Question conventions — evaluate, don't cargo-cult
+6. Prioritize user intuition over developer intuition
+
+When reviewing changes, categorize findings as:
+- Violations: must fix
+- Concerns: worth discussing
+- Halfway: right direction but incomplete execution
+- Good: exemplary implementation of principles
+
+Pay special attention to "Halfway" — implementations that show awareness of a principle
+but don't follow through completely. This is the most common and insidious failure mode.
+```
+
+## Code Review Checklist
+
+For each change, verify:
+
+- [ ] Links/buttons behave as their appearance suggests
+- [ ] Keyboard shortcuts follow platform conventions
+- [ ] No modal dialogs (use inline interactions + undo)
+- [ ] No toast/snackbar notifications
+- [ ] No disabled buttons or inputs
+- [ ] Error messages are human-readable
+- [ ] No database/API internals exposed to users
+- [ ] Loading states don't block user interaction
+- [ ] Semantic HTML and WAI-ARIA correctly used
+- [ ] Implementation isn't cargo-culted
+- [ ] Library limitations are challenged, not accepted
+
+## Technical Stack
+
+- Language: TypeScript
+- Framework: Next.js on Cloudflare Workers (via OpenNext)
+- Styling: Tailwind CSS
+- Package Manager: bun
+- Linter: Biome
+- Testing: Vitest
+- No external UI component libraries — components are hand-built
+
+## Contact
+
+- Site: https://kage1020.com
+- GitHub: https://github.com/kage1020
+- Philosophy API: https://kage1020.com/api/philosophy
