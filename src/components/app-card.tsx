@@ -6,6 +6,7 @@ export function AppCard({ app }: { app: App }) {
 		<Link
 			href={`/apps/${app.id}`}
 			className="group block rounded-lg border border-surface-2 bg-surface-1 p-5 transition-colors hover:border-surface-3 hover:bg-surface-2"
+			transitionTypes={["navigate"]}
 		>
 			<div className="mb-3 flex items-center justify-between">
 				<h3 className="font-medium group-hover:text-accent-bright">{app.title}</h3>

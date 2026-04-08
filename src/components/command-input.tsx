@@ -1,5 +1,6 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { useCallback, useEffect, useRef, useState } from "react"
 
 const commands: Record<string, string> = {
@@ -26,6 +27,7 @@ export function CommandInput({
 	autoFocus?: boolean
 	onNavigate?: () => void
 }) {
+	const router = useRouter()
 	const [input, setInput] = useState("")
 	const [selectedIndex, setSelectedIndex] = useState(-1)
 	const [focused, setFocused] = useState(false)
@@ -42,10 +44,10 @@ export function CommandInput({
 			const target = commands[command.toLowerCase()]
 			if (target) {
 				onNavigate?.()
-				window.location.href = target
+				router.push(target, { transitionTypes: ["command"] })
 			}
 		},
-		[onNavigate],
+		[onNavigate, router],
 	)
 
 	useEffect(() => {

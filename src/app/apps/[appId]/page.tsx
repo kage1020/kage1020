@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { ViewTransition } from "react"
 import { apps } from "@/data/apps"
 import { appComponents } from "@/lib/apps-registry"
 
@@ -34,16 +35,22 @@ export default async function AppPage({ params }: { params: Promise<{ appId: str
 		<div className="min-h-dvh">
 			<header className="border-b border-surface-2 bg-surface-0">
 				<div className="mx-auto flex max-w-4xl items-center gap-4 px-6 py-4">
-					<Link href="/apps" className="font-mono text-sm text-accent-bright hover:text-accent">
+					<Link
+						href="/apps"
+						className="font-mono text-sm text-accent-bright hover:text-accent"
+						transitionTypes={["navigate"]}
+					>
 						← apps
 					</Link>
 					<span className="font-mono text-sm text-text-muted">/</span>
 					<h1 className="font-mono text-sm">{app.title}</h1>
 				</div>
 			</header>
-			<main className="mx-auto max-w-4xl px-6 py-8">
-				<AppComponent />
-			</main>
+			<ViewTransition enter="vt-slide-up">
+				<main className="mx-auto max-w-4xl px-6 py-8">
+					<AppComponent />
+				</main>
+			</ViewTransition>
 		</div>
 	)
 }

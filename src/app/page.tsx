@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { ViewTransition } from "react"
 import { HomeShell } from "./home-shell"
 
 const routes = [
@@ -13,35 +14,42 @@ export default function Home() {
 	return (
 		<main className="flex min-h-dvh flex-col items-center justify-center px-6">
 			<div className="w-full max-w-lg space-y-8">
-				{/* Logo / Name */}
-				<div className="space-y-2">
-					<h1 className="font-mono text-2xl font-bold tracking-tight">kage1020</h1>
-					<p className="font-mono text-sm text-text-secondary">
-						Software Engineer — builds things for the web.
-					</p>
-				</div>
+				{/* Logo / Name — shared element with header on other pages */}
+				<ViewTransition name="site-name">
+					<div className="space-y-2">
+						<h1 className="font-mono text-2xl font-bold tracking-tight">kage1020</h1>
+						<p className="font-mono text-sm text-text-secondary">
+							Software Engineer — builds things for the web.
+						</p>
+					</div>
+				</ViewTransition>
 
 				{/* Shell output: ls */}
-				<div className="space-y-1 font-mono text-sm">
-					<p className="text-text-muted">$ ls</p>
-					<nav className="grid gap-1">
-						{routes.map((route) => (
-							<Link
-								key={route.path}
-								href={route.path}
-								className="group flex items-baseline gap-3 rounded px-2 py-1 transition-colors hover:bg-surface-1"
-							>
-								<span className="text-accent-bright">{route.command}</span>
-								<span className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100">
-									# {route.description}
-								</span>
-							</Link>
-						))}
-					</nav>
-				</div>
+				<ViewTransition enter="vt-slide-up">
+					<div className="space-y-1 font-mono text-sm">
+						<p className="text-text-muted">$ ls</p>
+						<nav className="grid gap-1">
+							{routes.map((route) => (
+								<Link
+									key={route.path}
+									href={route.path}
+									className="group flex items-baseline gap-3 rounded px-2 py-1 transition-colors hover:bg-surface-1"
+									transitionTypes={["navigate"]}
+								>
+									<span className="text-accent-bright">{route.command}</span>
+									<span className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100">
+										# {route.description}
+									</span>
+								</Link>
+							))}
+						</nav>
+					</div>
+				</ViewTransition>
 
 				{/* Interactive command input */}
-				<HomeShell />
+				<ViewTransition enter="vt-fade-in">
+					<HomeShell />
+				</ViewTransition>
 			</div>
 		</main>
 	)

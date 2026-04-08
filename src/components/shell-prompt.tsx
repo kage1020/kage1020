@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useEffect, useState, ViewTransition } from "react"
 import { CommandInput } from "./command-input"
 
 export function ShellPrompt() {
@@ -30,9 +30,15 @@ export function ShellPrompt() {
 	return (
 		<header className="sticky top-0 z-50 border-b border-surface-2 bg-surface-0/90 backdrop-blur-sm">
 			<div className="mx-auto flex max-w-4xl items-center gap-2 px-6 py-3">
-				<Link href="/" className="font-mono text-sm text-accent-bright hover:text-accent">
-					kage1020
-				</Link>
+				<ViewTransition name="site-name" share="vt-morph">
+					<Link
+						href="/"
+						className="font-mono text-sm text-accent-bright hover:text-accent"
+						transitionTypes={["navigate"]}
+					>
+						kage1020
+					</Link>
+				</ViewTransition>
 				<span className="font-mono text-sm text-text-muted">:</span>
 				<span className="font-mono text-sm text-text-secondary">{pathname}</span>
 				<span className="font-mono text-sm text-text-muted">$</span>
