@@ -1,12 +1,17 @@
 {
+  "prettier.enable": false,
+  "biome.enabled": true,
+  "cSpell.words": ["opennextjs"],
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "never"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "files.associations": {
     "wrangler.json": "jsonc"
-  },
-  "biome.enabled": true,
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
   }
 }
