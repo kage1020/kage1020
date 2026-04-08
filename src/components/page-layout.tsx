@@ -1,3 +1,4 @@
+import { cn } from "@/lib/cn"
 import { ShellPrompt } from "./shell-prompt"
 
 export function PageLayout({
@@ -10,7 +11,7 @@ export function PageLayout({
 	return (
 		<>
 			<ShellPrompt />
-			<main className={`mx-auto max-w-4xl px-6 py-12 ${className ?? ""}`}>{children}</main>
+			<main className={cn("mx-auto max-w-4xl px-6 py-12", className)}>{children}</main>
 		</>
 	)
 }

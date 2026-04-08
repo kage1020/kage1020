@@ -1,6 +1,6 @@
-import { lazy } from "react"
+import dynamic from "next/dynamic"
 
-export const appComponents: Record<string, React.LazyExoticComponent<() => React.JSX.Element>> = {
-	timezone: lazy(() => import("@/apps/timezone")),
-	"lorem-text": lazy(() => import("@/apps/lorem-text")),
+export const appComponents: Record<string, React.ComponentType> = {
+	timezone: dynamic(() => import("@/apps/timezone")),
+	"lorem-text": dynamic(() => import("@/apps/lorem-text")),
 }
