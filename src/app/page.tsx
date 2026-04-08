@@ -14,15 +14,17 @@ export default function Home() {
 	return (
 		<main className="flex min-h-dvh flex-col items-center justify-center px-6">
 			<div className="w-full max-w-lg space-y-8">
-				{/* Logo / Name — shared element with header on other pages */}
-				<ViewTransition name="site-name">
-					<div className="space-y-2">
+				{/* Logo / Name */}
+				<div className="space-y-2">
+					<ViewTransition name="site-name" share="vt-morph">
 						<h1 className="font-mono text-2xl font-bold tracking-tight">kage1020</h1>
+					</ViewTransition>
+					<ViewTransition enter="vt-fade-in" exit="vt-fade-in">
 						<p className="font-mono text-sm text-text-secondary">
 							Software Engineer — builds things for the web.
 						</p>
-					</div>
-				</ViewTransition>
+					</ViewTransition>
+				</div>
 
 				{/* Shell output: ls */}
 				<ViewTransition enter="vt-slide-up">

@@ -92,12 +92,13 @@ body {
 	}
 }
 
+/* Shared element morph: let the browser handle position/size interpolation */
 .vt-morph {
-	::view-transition-new(*) {
-		animation: none;
-	}
 	::view-transition-old(*) {
-		animation: none;
+		animation: vt-fade 200ms ease-out reverse;
+	}
+	::view-transition-new(*) {
+		animation: vt-fade 200ms ease-in;
 	}
 }
 
