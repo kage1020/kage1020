@@ -92,13 +92,15 @@ body {
 	}
 }
 
-/* Shared element morph: let the browser handle position/size interpolation */
+/* Shared element morph: hide old snapshot, show new only.
+   The ::view-transition-group handles position/size interpolation. */
 .vt-morph {
 	::view-transition-old(*) {
-		animation: vt-fade 200ms ease-out reverse;
+		animation: none;
+		opacity: 0;
 	}
 	::view-transition-new(*) {
-		animation: vt-fade 200ms ease-in;
+		animation: none;
 	}
 }
 
