@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { HomeShell } from "./home-shell"
 
 const routes = [
 	{ command: "whoami", path: "/whoami", description: "who is kage1020?" },
@@ -39,11 +40,8 @@ export default function Home() {
 					</nav>
 				</div>
 
-				{/* Blinking cursor */}
-				<div className="font-mono text-sm text-text-muted">
-					<span>$ </span>
-					<span className="inline-block w-2 animate-pulse bg-text-primary">&nbsp;</span>
-				</div>
+				{/* Interactive command input */}
+				<HomeShell />
 			</div>
 		</main>
 	)
