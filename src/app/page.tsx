@@ -17,7 +17,7 @@ export default function Home() {
 				{/* Logo / Name */}
 				<div className="space-y-2">
 					<ViewTransition name="site-name" share="vt-morph">
-						<h1 className="font-mono text-2xl font-bold tracking-tight">kage1020</h1>
+						<h1 className="inline-block font-mono text-sm text-accent-bright">kage1020</h1>
 					</ViewTransition>
 					<ViewTransition enter="vt-fade-in" exit="vt-fade-in">
 						<p className="font-mono text-sm text-text-secondary">

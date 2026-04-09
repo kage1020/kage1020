@@ -93,46 +93,27 @@ body {
 }
 
 /* Shared element morph for "site-name":
-   - Default object-fit: fill so both snapshots track the morphing
-     group's size at every frame, then cross-fade between them.
-   - Old stays visible until ~60%, new fades in from ~40%.
-     The brief 40-60% overlap happens after the group has nearly
-     reached the new size, minimising visual stretching of the new
-     snapshot during its appearance.
-   - ::view-transition-group handles position+size morphing. */
-::view-transition-old(site-name) {
-	animation: vt-morph-old 350ms ease-out forwards;
-}
-
+   - Force both snapshots to fill the morphing image-pair container
+     so they always overlap at the same position and dimensions
+     during the cross-fade (UA default leaves them at source size).
+   - mix-blend-mode: normal replaces the UA "plus-lighter" blend
+     which causes additive ghosting between text glyphs of
+     different source sizes.
+   - Override only duration/timing, NOT the full animation shorthand
+     (which would remove the UA fade animations and size morph). */
+::view-transition-old(site-name),
 ::view-transition-new(site-name) {
-	animation: vt-morph-new 350ms ease-out forwards;
+	width: 100%;
+	height: 100%;
+	mix-blend-mode: normal;
 }
 
-::view-transition-group(site-name) {
+::view-transition-group(site-name),
+::view-transition-image-pair(site-name),
+::view-transition-old(site-name),
+::view-transition-new(site-name) {
 	animation-duration: 350ms;
 	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-@keyframes vt-morph-old {
-	0%,
-	40% {
-		opacity: 1;
-	}
-	60%,
-	100% {
-		opacity: 0;
-	}
-}
-
-@keyframes vt-morph-new {
-	0%,
-	40% {
-		opacity: 0;
-	}
-	60%,
-	100% {
-		opacity: 1;
-	}
 }
 
 @keyframes vt-fade {
