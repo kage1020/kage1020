@@ -93,23 +93,46 @@ body {
 }
 
 /* Shared element morph for "site-name":
-   - Hide old snapshot (text styles differ too much for clean cross-fade)
-   - Show new snapshot at its natural size (no stretching from object-fit: fill)
-   - The ::view-transition-group still morphs position/size organically */
+   - Default object-fit: fill so both snapshots track the morphing
+     group's size at every frame, then cross-fade between them.
+   - Old stays visible until ~60%, new fades in from ~40%.
+     The brief 40-60% overlap happens after the group has nearly
+     reached the new size, minimising visual stretching of the new
+     snapshot during its appearance.
+   - ::view-transition-group handles position+size morphing. */
 ::view-transition-old(site-name) {
-	animation: none;
-	opacity: 0;
+	animation: vt-morph-old 350ms ease-out forwards;
 }
 
 ::view-transition-new(site-name) {
-	animation: none;
-	object-fit: none;
-	object-position: top left;
+	animation: vt-morph-new 350ms ease-out forwards;
 }
 
 ::view-transition-group(site-name) {
 	animation-duration: 350ms;
 	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes vt-morph-old {
+	0%,
+	40% {
+		opacity: 1;
+	}
+	60%,
+	100% {
+		opacity: 0;
+	}
+}
+
+@keyframes vt-morph-new {
+	0%,
+	40% {
+		opacity: 0;
+	}
+	60%,
+	100% {
+		opacity: 1;
+	}
 }
 
 @keyframes vt-fade {
