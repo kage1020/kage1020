@@ -92,16 +92,24 @@ body {
 	}
 }
 
-/* Shared element morph: hide old snapshot, show new only.
-   The ::view-transition-group handles position/size interpolation. */
-.vt-morph {
-	::view-transition-old(*) {
-		animation: none;
-		opacity: 0;
-	}
-	::view-transition-new(*) {
-		animation: none;
-	}
+/* Shared element morph for "site-name":
+   - Hide old snapshot (text styles differ too much for clean cross-fade)
+   - Show new snapshot at its natural size (no stretching from object-fit: fill)
+   - The ::view-transition-group still morphs position/size organically */
+::view-transition-old(site-name) {
+	animation: none;
+	opacity: 0;
+}
+
+::view-transition-new(site-name) {
+	animation: none;
+	object-fit: none;
+	object-position: top left;
+}
+
+::view-transition-group(site-name) {
+	animation-duration: 350ms;
+	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @keyframes vt-fade {
