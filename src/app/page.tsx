@@ -1,58 +1,100 @@
 import Link from "next/link"
 import { ViewTransition } from "react"
-import { HomeShell } from "./home-shell"
+import { CommandInput } from "@/components/command-input"
+import { Block, BlockStream } from "@/components/tui/block"
+import { Caret } from "@/components/tui/primitives"
 
 const routes = [
-	{ command: "whoami", path: "/whoami", description: "who is kage1020?" },
-	{ command: "cat philosophy", path: "/philosophy", description: "6 principles" },
-	{ command: "ls apps", path: "/apps", description: "utility apps" },
-	{ command: "cat prompts", path: "/prompts", description: "for AI agents" },
-	{ command: "cat colophon", path: "/colophon", description: "how this site was built" },
+  { command: "whoami", path: "/whoami", description: "who is kage1020?" },
+  {
+    command: "cat philosophy",
+    path: "/philosophy",
+    description: "6 principles",
+  },
+  { command: "ls apps", path: "/apps", description: "utility apps" },
 ] as const
 
+const now = new Date().toISOString().replace("T", " ").slice(0, 19)
+
 export default function Home() {
-	return (
-		<main className="flex min-h-dvh flex-col items-center justify-center px-6">
-			<div className="w-full max-w-lg space-y-8">
-				{/* Logo / Name */}
-				<div className="space-y-2">
-					<ViewTransition name="site-name" share="vt-morph">
-						<h1 className="inline-block font-mono text-sm text-accent-bright">kage1020</h1>
-					</ViewTransition>
-					<ViewTransition enter="vt-fade-in" exit="vt-fade-in">
-						<p className="font-mono text-sm text-text-secondary">
-							Software Engineer — builds things for the web.
-						</p>
-					</ViewTransition>
-				</div>
+  return (
+    <main className="mx-auto max-w-3xl px-6 py-12 sm:py-20">
+      <header className="mb-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono">
+        <ViewTransition name="site-name" share="vt-morph">
+          <h1 className="inline-block font-mono text-accent-bright">
+            kage1020
+          </h1>
+        </ViewTransition>
+        <span className="text-text-muted">@ kage1020.com</span>
+        <span className="hidden text-text-muted sm:inline">·</span>
+        <span className="text-text-muted">{now} UTC</span>
+      </header>
 
-				{/* Shell output: ls */}
-				<ViewTransition enter="vt-slide-up">
-					<div className="space-y-1 font-mono text-sm">
-						<p className="text-text-muted">$ ls</p>
-						<nav className="grid gap-1">
-							{routes.map((route) => (
-								<Link
-									key={route.path}
-									href={route.path}
-									className="group flex items-baseline gap-3 rounded px-2 py-1 transition-colors hover:bg-surface-1"
-									transitionTypes={["navigate"]}
-								>
-									<span className="text-accent-bright">{route.command}</span>
-									<span className="text-text-muted opacity-0 transition-opacity group-hover:opacity-100">
-										# {route.description}
-									</span>
-								</Link>
-							))}
-						</nav>
-					</div>
-				</ViewTransition>
+      <BlockStream>
+        <Block
+          command="login --user kage1020"
+          duration="0ms"
+          timestamp="welcome"
+        >
+          <p className="text-text-secondary">
+            Last login: <span className="text-text-primary">just now</span>{" "}
+            <span className="text-text-muted">from a curious browser</span>
+          </p>
+          <p className="mt-2 text-text-secondary">
+            Software Engineer —{" "}
+            <span className="text-text-primary">
+              builds things for the web.
+            </span>{" "}
+            <span className="text-text-muted">
+              Breaks things too, but less often now.
+            </span>
+          </p>
+        </Block>
 
-				{/* Interactive command input */}
-				<ViewTransition enter="vt-fade-in">
-					<HomeShell />
-				</ViewTransition>
-			</div>
-		</main>
-	)
+        <Block
+          command="ls"
+          duration={`${routes.length} entries`}
+          timestamp="navigate by clicking or typing below"
+        >
+          <nav>
+            <ul className="space-y-1">
+              {routes.map((route) => (
+                <li key={route.path}>
+                  <Link
+                    href={route.path}
+                    className="group grid grid-cols-[max-content_1fr] items-baseline gap-4 rounded-sm px-1 py-0.5 hover:bg-surface-1"
+                    transitionTypes={["navigate"]}
+                  >
+                    <span className="text-accent-bright">{route.command}</span>
+                    <span className="text-text-muted">
+                      <span className="opacity-60 group-hover:opacity-100">
+                        # {route.description}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </Block>
+
+        <Block command="hint" status="info" duration="press / or type" flush>
+          <p className="text-text-secondary">
+            Type a command below.{" "}
+            <span className="text-text-muted">
+              Tab to autocomplete · Enter to navigate · / to focus
+            </span>
+          </p>
+        </Block>
+      </BlockStream>
+
+      {/* Interactive REPL */}
+      <div className="mt-10 flex items-center gap-3 font-mono">
+        <Caret />
+        <div className="flex-1">
+          <CommandInput autoFocus />
+        </div>
+      </div>
+    </main>
+  )
 }

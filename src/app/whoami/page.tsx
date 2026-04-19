@@ -1,93 +1,91 @@
 import type { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
-import { dependencies, pkg, timeline } from "@/data/whoami"
+import { Block, BlockStream } from "@/components/tui/block"
+import { Json } from "@/components/tui/json"
+import { KV, Tag } from "@/components/tui/primitives"
+import { pkg, socials, timeline } from "@/data/whoami"
 
 export const metadata: Metadata = {
-	title: "whoami",
-	description: "Who is kage1020? A software engineer who builds things for the web.",
+  title: "whoami",
+  description:
+    "Who is kage1020? A software engineer who builds things for the web.",
 }
 
 export default function WhoamiPage() {
-	return (
-		<PageLayout>
-			<div className="space-y-12">
-				{/* package.json style intro */}
-				<section>
-					<h1 className="mb-6 font-mono text-lg text-text-muted">$ cat package.json</h1>
-					<div className="rounded-lg border border-surface-2 bg-surface-1 p-6 font-mono text-sm">
-						<pre className="overflow-x-auto whitespace-pre text-text-secondary">
-							<span className="text-text-muted">{"{"}</span>
-							{"\n"}
-							{"  "}
-							<span className="text-accent-bright">"name"</span>:{" "}
-							<span className="text-success">"{pkg.name}"</span>,{"\n"}
-							{"  "}
-							<span className="text-accent-bright">"version"</span>:{" "}
-							<span className="text-success">"{pkg.version}"</span>,{"\n"}
-							{"  "}
-							<span className="text-accent-bright">"description"</span>:{" "}
-							<span className="text-success">"{pkg.description}"</span>,{"\n"}
-							{"  "}
-							<span className="text-accent-bright">"keywords"</span>: [
-							{pkg.keywords.map((kw, i) => (
-								<span key={kw}>
-									{"\n    "}
-									<span className="text-success">"{kw}"</span>
-									{i < pkg.keywords.length - 1 ? "," : ""}
-								</span>
-							))}
-							{"\n  "}],{"\n"}
-							{"  "}
-							<span className="text-accent-bright">"license"</span>:{" "}
-							<span className="text-success">"{pkg.license}"</span>
-							{"\n"}
-							<span className="text-text-muted">{"}"}</span>
-						</pre>
-					</div>
-				</section>
+  return (
+    <PageLayout>
+      <BlockStream>
+        <Block
+          command="whoami"
+          duration="0ms"
+          timestamp="kage1020 — software engineer"
+        >
+          <p className="text-text-secondary">
+            Software engineer. Builds things for the web.{" "}
+            <span className="text-text-muted">
+              Breaks things too, but less often now.
+            </span>
+          </p>
+        </Block>
 
-				{/* git log style timeline */}
-				<section>
-					<h2 className="mb-6 font-mono text-lg text-text-muted">$ git log --oneline --reverse</h2>
-					<div className="space-y-0.5 font-mono text-sm">
-						{timeline.map((entry) => (
-							<div
-								key={entry.hash}
-								className="group flex gap-3 rounded px-2 py-1.5 hover:bg-surface-1"
-							>
-								<span className="shrink-0 text-warning">{entry.hash}</span>
-								<span className="shrink-0 text-text-muted">{entry.date}</span>
-								<span className="text-text-secondary">{entry.message}</span>
-								{entry.tag && (
-									<span className="shrink-0 rounded-full border border-accent/30 px-2 text-xs text-accent-bright">
-										{entry.tag}
-									</span>
-								)}
-							</div>
-						))}
-					</div>
-				</section>
+        <Block
+          command="cat package.json"
+          duration="2ms"
+          timestamp={`${pkg.name}@${pkg.version}`}
+        >
+          <Json
+            value={{
+              name: pkg.name,
+              version: pkg.version,
+              description: pkg.description,
+              keywords: [...pkg.keywords],
+              author: pkg.author,
+            }}
+          />
+        </Block>
 
-				{/* dependencies as personality traits */}
-				<section>
-					<h2 className="mb-6 font-mono text-lg text-text-muted">$ cat dependencies</h2>
-					<div className="rounded-lg border border-surface-2 bg-surface-1 p-6 font-mono text-sm">
-						<pre className="whitespace-pre text-text-secondary">
-							<span className="text-text-muted">{"{"}</span>
-							{Object.entries(dependencies).map(([key, value], i, arr) => (
-								<span key={key}>
-									{"\n  "}
-									<span className="text-accent-bright">"{key}"</span>:{" "}
-									<span className="text-success">"{value}"</span>
-									{i < arr.length - 1 ? "," : ""}
-								</span>
-							))}
-							{"\n"}
-							<span className="text-text-muted">{"}"}</span>
-						</pre>
-					</div>
-				</section>
-			</div>
-		</PageLayout>
-	)
+        <Block
+          command="git log --oneline --reverse"
+          duration={`${timeline.length} commits`}
+          timestamp={`HEAD → main`}
+        >
+          <ol className="space-y-1">
+            {timeline.map((entry) => (
+              <li
+                key={entry.hash}
+                className="grid grid-cols-[7ch_8ch_1fr_auto] items-baseline gap-3"
+              >
+                <span className="text-warning">{entry.hash.slice(0, 7)}</span>
+                <span className="text-text-muted">{entry.date}</span>
+                <span className="text-text-secondary">{entry.message}</span>
+                {entry.tag ? <Tag tone="accent">{entry.tag}</Tag> : <span />}
+              </li>
+            ))}
+          </ol>
+        </Block>
+
+        <Block
+          command="cat .socials"
+          duration={`${socials.length} links`}
+          timestamp="find me"
+        >
+          <KV
+            rows={socials.map((s) => ({
+              key: s.label,
+              value: (
+                <a
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-bright hover:text-accent"
+                >
+                  {s.handle}
+                </a>
+              ),
+            }))}
+          />
+        </Block>
+      </BlockStream>
+    </PageLayout>
+  )
 }

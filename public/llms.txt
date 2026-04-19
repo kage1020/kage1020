@@ -9,11 +9,10 @@
 - GitHub: https://github.com/kage1020
 
 ## Documentation
-- [Philosophy (JSON)](https://kage1020.com/api/philosophy): Machine-readable engineering principles
-- [Philosophy (Human)](https://kage1020.com/philosophy): Interactive demos of each principle
+- [Philosophy (JSON API)](https://kage1020.com/api/philosophy): Canonical machine-readable spec. Versioned, CORS-enabled.
+- [Philosophy (Page)](https://kage1020.com/philosophy): Spec, per-principle detail, system prompt template, review checklist — all in one page.
 - [Full Spec](https://kage1020.com/llms-full.txt): Complete site specification for AI agents
 - [Apps](https://kage1020.com/apps): Hosted utility applications
-- [Prompts](https://kage1020.com/prompts): AI agent instructions and system prompt templates
 
 ## Key Principles
 
