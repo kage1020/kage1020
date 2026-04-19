@@ -10,7 +10,7 @@ export type Principle = {
 }
 
 export const philosophyMeta = {
-  $schema: "https://kage1020.com/api/philosophy",
+  $schema: "https://kage1020.com/llms-full.txt",
   version: "1.0.0",
   authority: "kage1020",
   source: "https://github.com/kage1020/kage1020",

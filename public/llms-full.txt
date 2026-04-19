@@ -122,4 +122,4 @@ For each change, verify:
 
 - Site: https://kage1020.com
 - GitHub: https://github.com/kage1020
-- Philosophy API: https://kage1020.com/api/philosophy
+- Philosophy: https://kage1020.com/philosophy

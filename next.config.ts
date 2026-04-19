@@ -16,7 +16,10 @@ const nextConfig: NextConfig = {
 
 export default nextConfig
 
-if (process.env.VERCEL !== "1" && process.env.NODE_ENV !== "development") {
+// Initialise OpenNext's Cloudflare bindings shim for local `next dev` so code
+// using `getCloudflareContext()` works in development. Skipped on Vercel CI
+// because wrangler isn't available there.
+if (process.env.VERCEL !== "1") {
   import("@opennextjs/cloudflare").then(({ initOpenNextCloudflareForDev }) =>
     initOpenNextCloudflareForDev(),
   )

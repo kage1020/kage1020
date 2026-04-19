@@ -20,8 +20,8 @@ export const metadata: Metadata = {
 }
 
 const cliSnippet = `# Quick reference for an AI agent
-curl https://kage1020.com/api/philosophy | jq .principles
-curl https://kage1020.com/llms-full.txt`
+curl https://kage1020.com/llms-full.txt
+curl https://kage1020.com/llms.txt`
 
 export default function PhilosophyPage() {
   return (

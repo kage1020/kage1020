@@ -13,11 +13,7 @@ const TEXT_SECONDARY = "#a0a0a0"
 const TEXT_MUTED = "#525252"
 const ACCENT_BRIGHT = "#5b9bd5"
 
-export default async function OGImage({
-  params,
-}: {
-  params: Promise<{ appId: string }>
-}) {
+export default async function OGImage({ params }: PageProps<"/apps/[appId]">) {
   const { appId } = await params
   const app = apps.find((a) => a.id === appId)
 

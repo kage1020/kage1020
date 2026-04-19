@@ -14,9 +14,13 @@ const routes = [
   { command: "ls apps", path: "/apps", description: "utility apps" },
 ] as const
 
-const now = new Date().toISOString().replace("T", " ").slice(0, 19)
+// Render per-request so the header timestamp reflects "now" on each visit
+// instead of being frozen at build time.
+export const dynamic = "force-dynamic"
 
 export default function Home() {
+  const now = new Date().toISOString().replace("T", " ").slice(0, 19)
+
   return (
     <main className="mx-auto max-w-3xl px-6 py-12 sm:py-20">
       <header className="mb-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono">

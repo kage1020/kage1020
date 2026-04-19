@@ -66,11 +66,7 @@ const statusTone: Record<string, "success" | "warn" | "default"> = {
   archived: "default",
 }
 
-export default async function AppPage({
-  params,
-}: {
-  params: Promise<{ appId: string }>
-}) {
+export default async function AppPage({ params }: PageProps<"/apps/[appId]">) {
   const { appId } = await params
   const app = apps.find((a) => a.id === appId)
   if (!app) notFound()
