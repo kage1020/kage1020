@@ -9,7 +9,11 @@ export const metadata: Metadata = {
   },
   description:
     "Builds things for the web. Breaks things too, but less often now.",
-  metadataBase: new URL("https://kage1020.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_BASE_URL ??
+      process.env.CF_PAGES_URL ??
+      "https://kage1020.com",
+  ),
   openGraph: {
     type: "website",
     locale: "ja_JP",

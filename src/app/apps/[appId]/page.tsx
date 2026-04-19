@@ -101,11 +101,7 @@ export default async function AppPage({
           <p className="mt-2 text-text-secondary">{app.description}</p>
         </Block>
 
-        <Block
-          command={`./${app.id}`}
-          duration="running"
-          timestamp="output"
-        >
+        <Block command={`./${app.id}`} duration="running" timestamp="output">
           <Suspense fallback={null}>
             <AppComponent />
           </Suspense>
