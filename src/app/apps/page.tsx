@@ -1,152 +1,76 @@
-import Image from "next/image"
+import type { Metadata } from "next"
 import Link from "next/link"
-import { ViewTransition } from "react"
-import { FaNewspaper } from "react-icons/fa"
-import PageLayout from "@/components/page-layout"
-import appsData from "@/data/apps.json"
-import type { App } from "@/types"
-import { cn } from "@/utils"
-import { getTechColor, getTechIcon } from "@/utils/techColors"
+import { PageLayout } from "@/components/page-layout"
+import { Block, BlockStream } from "@/components/tui/block"
+import { Tag } from "@/components/tui/primitives"
+import { apps } from "@/data/apps"
 
-const apps = appsData as App[]
-
-const getStatusColor = (status: string) => {
-  switch (status) {
-    case "active":
-      return "bg-green-600 text-white"
-    case "maintenance":
-      return "bg-yellow-600 text-white"
-    case "development":
-      return "bg-blue-600 text-white"
-    default:
-      return "bg-gray-600 text-white"
-  }
+export const metadata: Metadata = {
+  title: "apps",
+  description: "Utility apps built by kage1020. Simple tools that just work.",
 }
 
-const getStatusLabel = (status: string) => {
-  switch (status) {
-    case "active":
-      return "Active"
-    case "maintenance":
-      return "Maintenance"
-    case "development":
-      return "In Development"
-    default:
-      return "Unknown"
-  }
-}
-
-const isExternalUrl = (url: string) => {
-  return url.startsWith("http://") || url.startsWith("https://")
-}
-
-interface AppCardProps {
-  app: App
-}
-
-function AppCard({ app }: AppCardProps) {
-  const CardContent = (
-    <div className="bg-[#111111] rounded-lg overflow-hidden hover:bg-[#1a1a1a] transition-colors h-full cursor-pointer grid grid-rows-[auto_1fr]">
-      <div className="relative aspect-video">
-        <Image
-          src={app.screenshot}
-          alt={`${app.title} screenshot`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
-      </div>
-
-      <div className="p-4 grid grid-rows-subgrid row-span-1">
-        <div className="grid grid-rows-[auto_1fr_auto_auto] gap-3 h-full">
-          <div className="flex items-start justify-between">
-            <div className="flex items-center gap-2">
-              <h3 className="text-lg font-bold">{app.title}</h3>
-              {app.articles && app.articles.length > 0 && (
-                <div
-                  className="flex items-center gap-1 text-xs text-gray-400"
-                  title={`${app.articles.length} article${
-                    app.articles.length > 1 ? "s" : ""
-                  }`}
-                >
-                  <FaNewspaper size={12} />
-                  <span>{app.articles.length}</span>
-                </div>
-              )}
-            </div>
-            <span
-              className={cn(
-                "px-2 py-1 text-xs rounded-full",
-                getStatusColor(app.status),
-              )}
-            >
-              {getStatusLabel(app.status)}
-            </span>
-          </div>
-
-          <p className="text-gray-400 text-sm line-clamp-2">
-            {app.description}
-          </p>
-
-          <div className="flex flex-wrap gap-1">
-            {app.technologies.map((tech) => {
-              const Icon = getTechIcon(tech)
-              return (
-                <span
-                  key={tech}
-                  className={cn(
-                    "px-2 py-1 text-xs rounded-full flex items-center gap-1",
-                    getTechColor(tech),
-                  )}
-                >
-                  {Icon && <Icon size={10} />}
-                  {tech}
-                </span>
-              )
-            })}
-          </div>
-
-          <div className="flex items-center justify-between text-xs text-gray-500">
-            <span>{app.category}</span>
-            <span>{app.lastUpdated}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-
-  if (isExternalUrl(app.url)) {
-    return (
-      <a
-        href={app.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block"
-      >
-        {CardContent}
-      </a>
-    )
-  }
-
-  return (
-    <Link href={app.url} className="block">
-      {CardContent}
-    </Link>
-  )
+const statusTone: Record<string, "success" | "warn" | "default"> = {
+  active: "success",
+  beta: "warn",
+  archived: "default",
 }
 
 export default function AppsPage() {
   return (
     <PageLayout>
-      <ViewTransition>
-        <h2 className="text-4xl font-bold mb-8">Apps</h2>
-      </ViewTransition>
+      <BlockStream>
+        <Block
+          command="ls -la apps/"
+          duration={`${apps.length} entries`}
+          timestamp="utility apps"
+        >
+          <p className="max-w-2xl text-text-secondary">
+            Small utility apps. Not big enough for their own domain, useful
+            enough to share.
+          </p>
+        </Block>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {apps.map((app) => (
-          <AppCard key={app.id} app={app} />
-        ))}
-      </div>
+        <Block
+          command="cat apps/index.json"
+          duration={`${apps.length} entries`}
+        >
+          <ul className="space-y-4">
+            {apps.map((app) => (
+              <li key={app.id}>
+                <Link
+                  href={`/apps/${app.id}`}
+                  className="group block"
+                  transitionTypes={["navigate"]}
+                >
+                  <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                    <span className="text-text-muted group-hover:text-accent-bright">
+                      →
+                    </span>
+                    <span className="text-text-primary group-hover:text-accent-bright">
+                      {app.title}
+                    </span>
+                    <Tag tone={statusTone[app.status] ?? "default"}>
+                      {app.status}
+                    </Tag>
+                    <span className="text-text-muted">{app.category}</span>
+                  </div>
+                  <p className="ml-6 mt-1 text-text-secondary">
+                    {app.description}
+                  </p>
+                  <div className="ml-6 mt-2 flex flex-wrap gap-2">
+                    {app.technologies.map((tech) => (
+                      <span key={tech} className="font-mono text-text-muted">
+                        #{tech}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Block>
+      </BlockStream>
     </PageLayout>
   )
 }

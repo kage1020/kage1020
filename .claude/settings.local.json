@@ -1,15 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:random.kage1020.com)",
-      "WebFetch(domain:react.dev)",
-      "mcp__context7__*",
-      "WebSearch"
+      "Bash(bun:*)",
+      "Bash(curl -sS https://random.kage1020.com/)",
+      "Bash(curl *)"
     ],
     "deny": [
-      "Bash(npm:*)",
-      "Bash(yarn:*)",
-      "Bash(bun:*)"
+      "Bash(pnpm:*)"
     ]
   }
 }

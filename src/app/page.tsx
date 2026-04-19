@@ -1,108 +1,104 @@
 import Link from "next/link"
 import { ViewTransition } from "react"
-import { FaArrowRight, FaCode, FaGithub, FaPen, FaRocket } from "react-icons/fa"
-import { FaXTwitter } from "react-icons/fa6"
-import { Logo } from "@/components/logo"
+import { CommandInput } from "@/components/command-input"
+import { Block, BlockStream } from "@/components/tui/block"
+import { Caret } from "@/components/tui/primitives"
+
+const routes = [
+  { command: "whoami", path: "/whoami", description: "who is kage1020?" },
+  {
+    command: "cat philosophy",
+    path: "/philosophy",
+    description: "6 principles",
+  },
+  { command: "ls apps", path: "/apps", description: "utility apps" },
+] as const
+
+// Render per-request so the header timestamp reflects "now" on each visit
+// instead of being frozen at build time.
+export const dynamic = "force-dynamic"
 
 export default function Home() {
+  const now = new Date().toISOString().replace("T", " ").slice(0, 19)
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-8">
-      <main className="max-w-5xl w-full">
-        <div className="text-center mb-20">
-          <Link
-            href="/"
-            className="flex flex-col items-center gap-6 text-gray-400 hover:text-white transition-colors"
-          >
-            <div className="relative transition-transform hover:scale-110">
-              <Logo />
-            </div>
-            <ViewTransition name="name">
-              <h1 className="text-6xl font-bold">kage1020</h1>
-            </ViewTransition>
-          </Link>
+    <main className="mx-auto max-w-3xl px-6 py-12 sm:py-20">
+      <header className="mb-8 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono">
+        <ViewTransition name="site-name" share="vt-morph">
+          <h1 className="inline-block font-mono text-accent-bright">
+            kage1020
+          </h1>
+        </ViewTransition>
+        <span className="text-text-muted">@ kage1020.com</span>
+        <span className="hidden text-text-muted sm:inline">·</span>
+        <span className="text-text-muted">{now} UTC</span>
+      </header>
+
+      <BlockStream>
+        <Block
+          command="login --user kage1020"
+          duration="0ms"
+          timestamp="welcome"
+        >
+          <p className="text-text-secondary">
+            Last login: <span className="text-text-primary">just now</span>{" "}
+            <span className="text-text-muted">from a curious browser</span>
+          </p>
+          <p className="mt-2 text-text-secondary">
+            Software Engineer —{" "}
+            <span className="text-text-primary">
+              builds things for the web.
+            </span>{" "}
+            <span className="text-text-muted">
+              Breaks things too, but less often now.
+            </span>
+          </p>
+        </Block>
+
+        <Block
+          command="ls"
+          duration={`${routes.length} entries`}
+          timestamp="navigate by clicking or typing below"
+        >
+          <nav>
+            <ul className="space-y-1">
+              {routes.map((route) => (
+                <li key={route.path}>
+                  <Link
+                    href={route.path}
+                    className="group grid grid-cols-[max-content_1fr] items-baseline gap-4 rounded-sm px-1 py-0.5 hover:bg-surface-1"
+                    transitionTypes={["navigate"]}
+                  >
+                    <span className="text-accent-bright">{route.command}</span>
+                    <span className="text-text-muted">
+                      <span className="opacity-60 group-hover:opacity-100">
+                        # {route.description}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </Block>
+
+        <Block command="hint" status="info" duration="press / or type" flush>
+          <p className="text-text-secondary">
+            Type a command below.{" "}
+            <span className="text-text-muted">
+              Tab to autocomplete · Enter to navigate · / to focus
+            </span>
+          </p>
+        </Block>
+      </BlockStream>
+
+      {/* Interactive REPL */}
+      <div className="mt-10 flex items-center gap-3 font-mono">
+        <Caret />
+        <div className="flex-1">
+          <CommandInput autoFocus />
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <Link
-            href="/gallery"
-            className="group bg-[#111111] border border-gray-800 hover:border-blue-500/50 rounded-xl p-12 text-center transition-colors duration-300"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-blue-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-blue-500/20">
-                <FaCode className="text-blue-400 text-2xl" />
-              </div>
-              <ViewTransition>
-                <h2 className="text-xl font-bold mb-2">Gallery</h2>
-              </ViewTransition>
-              <div className="flex items-center text-gray-400 group-hover:text-blue-400">
-                <span className="text-sm">View Projects</span>
-                <FaArrowRight className="ml-2 text-xs" />
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/apps"
-            className="group bg-[#111111] border border-gray-800 hover:border-green-500/50 rounded-xl p-12 text-center transition-colors duration-300"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-green-500/20">
-                <FaRocket className="text-green-400 text-2xl" />
-              </div>
-              <ViewTransition>
-                <h2 className="text-xl font-bold mb-2">Apps</h2>
-              </ViewTransition>
-              <div className="flex items-center text-gray-400 group-hover:text-green-400">
-                <span className="text-sm">Try Live Apps</span>
-                <FaArrowRight className="ml-2 text-xs" />
-              </div>
-            </div>
-          </Link>
-
-          <Link
-            href="/blogs"
-            className="group bg-[#111111] border border-gray-800 hover:border-purple-500/50 rounded-xl p-12 text-center transition-colors duration-300"
-          >
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-purple-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-purple-500/20">
-                <FaPen className="text-purple-400 text-2xl" />
-              </div>
-              <ViewTransition>
-                <h2 className="text-xl font-bold mb-2">Blogs</h2>
-              </ViewTransition>
-              <div className="flex items-center text-gray-400 group-hover:text-purple-400">
-                <span className="text-sm">Read Articles</span>
-                <FaArrowRight className="ml-2 text-xs" />
-              </div>
-            </div>
-          </Link>
-        </div>
-
-        <div className="flex justify-center gap-8">
-          <a
-            href="https://github.com/kage1020"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300"
-          >
-            <div className="w-12 h-12 bg-gray-800 group-hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors duration-300">
-              <FaGithub size={20} />
-            </div>
-            <span className="text-sm font-medium">GitHub</span>
-          </a>
-          <a
-            href="https://twitter.com/kage1020"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300"
-          >
-            <div className="w-12 h-12 bg-gray-800 group-hover:bg-gray-700 rounded-full flex items-center justify-center transition-colors duration-300">
-              <FaXTwitter size={20} />
-            </div>
-            <span className="text-sm font-medium">X</span>
-          </a>
-        </div>
-      </main>
-    </div>
+      </div>
+    </main>
   )
 }

@@ -1,50 +1,42 @@
 import type { MetadataRoute } from "next"
-import appsData from "@/data/apps.json"
-import galleryData from "@/data/gallery.json"
+import { apps } from "@/data/apps"
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://kage1020.com"
+  const base = "https://kage1020.com"
 
-  const staticPages = [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: baseUrl,
+      url: base,
       lastModified: new Date(),
       changeFrequency: "monthly",
-      priority: 1,
+      priority: 1.0,
     },
     {
-      url: `${baseUrl}/gallery`,
+      url: `${base}/whoami`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${base}/philosophy`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${base}/apps`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
-    {
-      url: `${baseUrl}/apps`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blogs`,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 0.6,
-    },
-  ] satisfies MetadataRoute.Sitemap
+  ]
 
-  const galleryPages = galleryData.map((project) => ({
-    url: `${baseUrl}/gallery/${project.id}`,
-    lastModified: new Date(project.date),
+  const appRoutes: MetadataRoute.Sitemap = apps.map((app) => ({
+    url: `${base}/apps/${app.id}`,
+    lastModified: new Date(),
     changeFrequency: "monthly",
-    priority: 0.7,
-  })) satisfies MetadataRoute.Sitemap
+    priority: 0.6,
+  }))
 
-  const appPages = appsData.map((app) => ({
-    url: `${baseUrl}${app.url}`,
-    lastModified: new Date(app.lastUpdated),
-    changeFrequency: "weekly",
-    priority: 0.9,
-  })) satisfies MetadataRoute.Sitemap
-
-  return [...staticPages, ...galleryPages, ...appPages]
+  return [...staticRoutes, ...appRoutes]
 }

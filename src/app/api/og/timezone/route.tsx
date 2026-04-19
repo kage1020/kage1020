@@ -1,182 +1,261 @@
 import { ImageResponse } from "next/og"
-import type { NextRequest } from "next/server"
-import {
-  formatDate,
-  formatTime,
-  getTimeDifference,
-  timezones,
-} from "@/utils/timezone"
+import { parseCitySlugs, type TimezoneCity } from "@/data/timezone-cities"
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url)
-  const from = searchParams.get("from") || "Asia/Tokyo"
-  const to = searchParams.get("to") || "America/New_York"
-  const format24 = searchParams.get("format24")
-  const is24Hour = format24 !== "false"
+export const runtime = "edge"
 
-  const fromTimezone =
-    timezones.find((tz) => tz.timezone === from) || timezones[0]
-  const toTimezone = timezones.find((tz) => tz.timezone === to) || timezones[1]
+const SIZE = { width: 1200, height: 630 } as const
 
-  if (!fromTimezone || !toTimezone) {
-    throw new Error("Invalid timezone configuration")
-  }
+const BG = "#0a0a0a"
+const SURFACE_1 = "#141414"
+const SURFACE_2 = "#1f1f1f"
+const TEXT_PRIMARY = "#e6e6e6"
+const TEXT_SECONDARY = "#a0a0a0"
+const TEXT_MUTED = "#525252"
+const ACCENT_BRIGHT = "#5b9bd5"
 
+function getTimezoneOffsetMinutes(date: Date, timezone: string): number {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: timezone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  }).formatToParts(date)
+  const v: Record<string, string> = {}
+  for (const p of parts) v[p.type] = p.value
+  const asUTC = Date.UTC(
+    Number(v.year),
+    Number(v.month) - 1,
+    Number(v.day),
+    Number(v.hour) % 24,
+    Number(v.minute),
+    Number(v.second),
+  )
+  return Math.round((asUTC - date.getTime()) / 60000)
+}
+
+function isDST(timezone: string): boolean {
   const now = new Date()
-  const fromTime = formatTime(now, fromTimezone.timezone, is24Hour)
-  const fromDate = formatDate(now, fromTimezone.timezone)
-  const toTime = formatTime(now, toTimezone.timezone, is24Hour)
-  const toDate = formatDate(now, toTimezone.timezone)
+  const jan = new Date(now.getFullYear(), 0, 1)
+  const jul = new Date(now.getFullYear(), 6, 1)
+  const a = getTimezoneOffsetMinutes(jan, timezone)
+  const b = getTimezoneOffsetMinutes(jul, timezone)
+  if (a === b) return false
+  return getTimezoneOffsetMinutes(now, timezone) === Math.max(a, b)
+}
 
-  const timeDiff = getTimeDifference(toTimezone.timezone, fromTimezone.timezone)
-  const diffText =
-    timeDiff === 0 ? "Same time" : `${timeDiff > 0 ? "+" : ""}${timeDiff}h`
+function formatTime(timezone: string): string {
+  return new Date().toLocaleTimeString("en-US", {
+    timeZone: timezone,
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  })
+}
 
-  return new ImageResponse(
+function formatOffset(timezone: string): string {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: timezone,
+    timeZoneName: "shortOffset",
+  }).formatToParts(new Date())
+  return parts.find((p) => p.type === "timeZoneName")?.value ?? ""
+}
+
+type Scale = {
+  headerFontSize: number
+  headerCodeOffsetFontSize: number
+  timeFontSize: number
+  flagWidth: number
+  flagHeight: number
+  padding: number
+  gap: number
+  cardGap: number
+  /** If true, stack the city name above the code+offset to avoid horizontal
+   *  truncation on narrow cards. */
+  stackHeader: boolean
+}
+
+function scaleFor(count: number): Scale {
+  // Flag aspect is 3:2 (the most common international convention) — matches
+  // flagcdn's flat `w{N}` URL format which preserves natural proportions.
+  if (count <= 2) {
+    return {
+      headerFontSize: 36,
+      headerCodeOffsetFontSize: 28,
+      timeFontSize: 140,
+      flagWidth: 48,
+      flagHeight: 32,
+      padding: 40,
+      gap: 24,
+      cardGap: 32,
+      stackHeader: false,
+    }
+  }
+  if (count === 3) {
+    return {
+      headerFontSize: 28,
+      headerCodeOffsetFontSize: 22,
+      timeFontSize: 96,
+      flagWidth: 40,
+      flagHeight: 27,
+      padding: 32,
+      gap: 20,
+      cardGap: 24,
+      stackHeader: true,
+    }
+  }
+  // 4 cards
+  return {
+    headerFontSize: 24,
+    headerCodeOffsetFontSize: 18,
+    timeFontSize: 76,
+    flagWidth: 32,
+    flagHeight: 22,
+    padding: 24,
+    gap: 16,
+    cardGap: 20,
+    stackHeader: true,
+  }
+}
+
+function TimezoneCard({ city, scale }: { city: TimezoneCity; scale: Scale }) {
+  const code =
+    city.code.daylight && isDST(city.timezone)
+      ? city.code.daylight
+      : city.code.standard
+
+  return (
     <div
       style={{
-        background: "#000000",
-        width: "100%",
-        height: "100%",
+        flex: 1,
+        minWidth: 0,
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        fontFamily: "system-ui",
-        color: "white",
+        background: SURFACE_1,
+        border: `1px solid ${SURFACE_2}`,
+        borderRadius: 16,
+        padding: scale.padding,
+        gap: scale.gap,
       }}
     >
       <div
         style={{
           display: "flex",
+          flexDirection: scale.stackHeader ? "column" : "row",
+          alignItems: scale.stackHeader ? "flex-start" : "center",
           justifyContent: "space-between",
-          width: "90%",
+          gap: scale.stackHeader ? 8 : 12,
+          fontSize: scale.headerFontSize,
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: 50,
-            minWidth: 400,
-          }}
-        >
-          <div
-            style={{
-              fontSize: 64,
-              marginBottom: 20,
-            }}
-          >
-            {fromTimezone.flag}
-          </div>
-          <div
-            style={{
-              fontSize: 48,
-              fontWeight: "bold",
-              marginBottom: 16,
-            }}
-          >
-            {fromTimezone.name}
-          </div>
-          <div
-            style={{
-              fontSize: 100,
-              fontWeight: "bold",
-              fontFamily: "monospace",
-              marginBottom: 12,
-            }}
-          >
-            {fromTime}
-          </div>
-          <div
-            style={{
-              fontSize: 40,
-              color: "#ffffff",
-              opacity: 0.5,
-            }}
-          >
-            {fromDate}
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <img
+            src={`https://flagcdn.com/w160/${city.country}.png`}
+            width={scale.flagWidth}
+            height={scale.flagHeight}
+            alt=""
+            style={{ borderRadius: 4, objectFit: "contain" }}
+          />
+          <span style={{ color: TEXT_SECONDARY }}>{city.name}</span>
         </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            minWidth: 240,
-          }}
-        >
-          <div
+        <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
+          <span
             style={{
-              fontSize: 72,
-              fontWeight: "bold",
-              color:
-                timeDiff === 0
-                  ? "#10b981"
-                  : timeDiff > 0
-                    ? "#f59e0b"
-                    : "#3b82f6",
-              textShadow: "0 0 40px rgba(0,0,0,0.3)",
+              color: TEXT_SECONDARY,
+              fontSize: scale.headerCodeOffsetFontSize,
             }}
           >
-            {diffText}
-          </div>
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            padding: 50,
-            minWidth: 400,
-          }}
-        >
-          <div
+            {code}
+          </span>
+          <span
             style={{
-              fontSize: 64,
-              marginBottom: 20,
+              color: TEXT_MUTED,
+              fontSize: scale.headerCodeOffsetFontSize,
             }}
           >
-            {toTimezone.flag}
-          </div>
-          <div
-            style={{
-              fontSize: 48,
-              fontWeight: "bold",
-              marginBottom: 16,
-            }}
-          >
-            {toTimezone.name}
-          </div>
-          <div
-            style={{
-              fontSize: 100,
-              fontWeight: "bold",
-              fontFamily: "monospace",
-              marginBottom: 12,
-            }}
-          >
-            {toTime}
-          </div>
-          <div
-            style={{
-              fontSize: 40,
-              color: "#ffffff",
-              opacity: 0.5,
-            }}
-          >
-            {toDate}
-          </div>
+            {formatOffset(city.timezone)}
+          </span>
         </div>
       </div>
+      <div
+        style={{
+          display: "flex",
+          fontSize: scale.timeFontSize,
+          fontWeight: 700,
+          color: TEXT_PRIMARY,
+          lineHeight: 1,
+          letterSpacing: -2,
+        }}
+      >
+        {formatTime(city.timezone)}
+      </div>
+    </div>
+  )
+}
+
+export function GET(request: Request): ImageResponse {
+  const url = new URL(request.url)
+  // Cap at 4 cards so the 1200×630 canvas stays legible; anything beyond
+  // that gets crammed for an OGP at typical share-preview sizes.
+  const cities = parseCitySlugs(url.searchParams.get("cities")).slice(0, 4)
+  const scale = scaleFor(cities.length)
+
+  return new ImageResponse(
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        background: BG,
+        fontFamily: "monospace",
+        padding: 56,
+        gap: 40,
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          gap: 12,
+          fontSize: 28,
+          color: TEXT_MUTED,
+        }}
+      >
+        <span style={{ color: ACCENT_BRIGHT }}>kage1020</span>
+        <span>@ web :</span>
+        <span style={{ color: TEXT_SECONDARY }}>/apps/timezone</span>
+        <span style={{ color: ACCENT_BRIGHT }}>$</span>
+        <span>./timezone</span>
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          gap: scale.cardGap,
+          flex: 1,
+        }}
+      >
+        {cities.map((city) => (
+          <TimezoneCard key={city.slug} city={city} scale={scale} />
+        ))}
+      </div>
+
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          fontSize: 24,
+          color: TEXT_MUTED,
+        }}
+      >
+        <span>kage1020.com</span>
+        <span>{cities.map((c) => c.slug).join(" · ")}</span>
+      </div>
     </div>,
-    {
-      width: 1200,
-      height: 630,
-    },
+    SIZE,
   )
 }

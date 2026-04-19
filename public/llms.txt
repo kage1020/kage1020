@@ -1,0 +1,26 @@
+# kage1020.com
+
+> An engineer's site that embodies 6 principles of software engineering.
+
+## About
+- Name: kage1020
+- Role: Software Engineer
+- Site: https://kage1020.com
+- GitHub: https://github.com/kage1020
+
+## Documentation
+- [Philosophy](https://kage1020.com/philosophy): Spec, per-principle detail, system prompt template, and review checklist — all in one page. The page exposes a copyable markdown block for direct use.
+- [Full Spec](https://kage1020.com/llms-full.txt): Complete site specification for AI agents
+- [Apps](https://kage1020.com/apps): Hosted utility applications
+
+## Key Principles
+
+### UX Constraints
+1. Don't betray user intent — interfaces must match intuitive expectations
+2. Don't interrupt user operations — no modals, no toasts, no disabled buttons
+3. Don't force technical constraints on users — DB/API limits are your problem
+
+### Engineer Principles
+4. Build it if it's missing (足らぬなら作ってしまえホトトギス) — don't accept library limits
+5. Question conventions (当たり前を疑う) — prior assumptions aren't always optimal
+6. Dev intuition ≠ User intuition — technical optimization ≠ great UX

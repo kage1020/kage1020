@@ -1,13 +1,16 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.5/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.4.10/schema.json",
   "vcs": {
-    "enabled": false,
+    "enabled": true,
     "clientKind": "git",
-    "useIgnoreFile": false
+    "useIgnoreFile": true
   },
-  "files": {
-    "ignoreUnknown": false,
-    "includes": ["src/**/*.{ts,tsx}"]
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
   },
   "formatter": {
     "enabled": true,
@@ -16,33 +19,37 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "a11y": {
-        "useKeyWithClickEvents": "off",
-        "noStaticElementInteractions": "off"
-      },
-      "correctness": {
-        "useUniqueElementIds": {
-          "level": "error",
-          "options": {
-            "excludedComponents": ["clipPath", "marker", "path", "g"]
+      "recommended": true
+    }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "src/app/**/opengraph-image.tsx",
+        "src/app/api/og/**/route.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "performance": {
+            "noImgElement": "off"
           }
         }
       }
+    }
+  ],
+  "css": {
+    "parser": {
+      "cssModules": false,
+      "tailwindDirectives": true
+    },
+    "linter": {
+      "enabled": true
     }
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "double",
       "semicolons": "asNeeded"
-    }
-  },
-  "assist": {
-    "enabled": true,
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
     }
   }
 }
