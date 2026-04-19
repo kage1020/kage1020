@@ -61,7 +61,7 @@ const statusEasterEggs: Record<number, string> = {
   511: "Network Authentication Required. The client needs to authenticate to gain network access.",
 }
 
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const q = request.nextUrl.searchParams.get("q")
   if (q && statusEasterEggs[Number(q)]) {
     const code = Number(q)
