@@ -14,7 +14,7 @@ export const works: Work[] = [
     id: "icon-collection",
     title: "Icon Collection",
     description:
-      "VS Code extension to search icon libraries and copy SVG/Draw.io data quickly.",
+      "VS Code extension for exploring icon libraries inside the editor. Search by keyword, then copy SVG snippets or Draw.io-ready diagram data directly to the clipboard for fast prototyping and documentation.",
     platform: "vscode-marketplace",
     kind: "extension",
     url: "https://marketplace.visualstudio.com/items?itemName=kage1020.icon-collection",
@@ -24,10 +24,11 @@ export const works: Work[] = [
   {
     id: "vut",
     title: "vut",
-    description: "Python package published on PyPI.",
+    description:
+      "Video Understanding Toolkit (Python). A modular library for video understanding tasks such as video classification and action recognition, designed to be extensible for additional models and datasets.",
     platform: "pypi",
     kind: "package",
-    url: "https://pypi.org/project/vut/0.1.7/",
+    url: "https://pypi.org/project/vut/",
     status: "published",
     technologies: ["Python", "PyPI"],
   },
@@ -35,7 +36,7 @@ export const works: Work[] = [
     id: "react-component-color",
     title: "React Component Color",
     description:
-      "VS Code extension that color-codes React Server/Client components.",
+      "VS Code extension that visually distinguishes React Server and Client Components in JSX/TSX. It detects `use client` boundaries and client-only usage patterns so component roles are easier to understand in large codebases.",
     platform: "vscode-marketplace",
     kind: "extension",
     url: "https://marketplace.visualstudio.com/items?itemName=kage1020.react-component-color",
