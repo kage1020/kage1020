@@ -29,6 +29,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${base}/works`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.7,
+    },
+    {
+      url: `${base}/writing`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.7,
+    },
   ]
 
   const appRoutes: MetadataRoute.Sitemap = apps.map((app) => ({

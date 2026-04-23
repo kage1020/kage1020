@@ -3,6 +3,24 @@ import type { NextConfig } from "next"
 const nextConfig: NextConfig = {
   typedRoutes: true,
   reactCompiler: true,
+  async headers() {
+    return [
+      {
+        source: "/llms.txt",
+        headers: [
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+          { key: "Content-Disposition", value: "inline" },
+        ],
+      },
+      {
+        source: "/llms-full.txt",
+        headers: [
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+          { key: "Content-Disposition", value: "inline" },
+        ],
+      },
+    ]
+  },
   experimental: {
     viewTransition: true,
     typedEnv: true,

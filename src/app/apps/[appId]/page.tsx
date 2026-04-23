@@ -9,6 +9,7 @@ import { Tag } from "@/components/tui/primitives"
 import { apps } from "@/data/apps"
 
 export const appComponents: Record<string, React.ComponentType> = {
+  fontlens: dynamic(() => import("@/apps/fontlens")),
   timezone: dynamic(() => import("@/apps/timezone")),
   "lorem-text": dynamic(() => import("@/apps/lorem-text")),
 }
