@@ -10,12 +10,22 @@ const commands: Record<string, string> = {
   philosophy: "/philosophy",
   "ls apps": "/apps",
   apps: "/apps",
+  "ls works": "/works",
+  works: "/works",
+  "ls writing": "/writing",
+  writing: "/writing",
   home: "/",
   cd: "/",
   "cd ~": "/",
 }
 
-const suggestions = ["whoami", "cat philosophy", "ls apps"]
+const suggestions = [
+  "whoami",
+  "cat philosophy",
+  "ls apps",
+  "ls works",
+  "ls writing",
+]
 
 export function CommandInput({
   autoFocus = false,

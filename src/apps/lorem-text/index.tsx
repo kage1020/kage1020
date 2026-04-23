@@ -337,6 +337,15 @@ export default function LoremTextApp() {
 
   return (
     <div className="space-y-6">
+      <a
+        href={UPSTREAM}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center rounded border border-surface-2 bg-surface-1 px-3 py-1.5 font-mono text-xs text-text-muted transition-colors hover:border-accent hover:text-accent-bright"
+      >
+        open {UPSTREAM} ↗
+      </a>
+
       {/* Category + endpoint picker */}
       <div className="space-y-4 sm:space-y-3">
         {categories.map((category) => (

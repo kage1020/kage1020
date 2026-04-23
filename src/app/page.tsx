@@ -12,6 +12,16 @@ const routes = [
     description: "6 principles",
   },
   { command: "ls apps", path: "/apps", description: "utility apps" },
+  {
+    command: "ls works",
+    path: "/works",
+    description: "published products",
+  },
+  {
+    command: "ls writing",
+    path: "/writing",
+    description: "technical articles",
+  },
 ] as const
 
 // Render per-request so the header timestamp reflects "now" on each visit

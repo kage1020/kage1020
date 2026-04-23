@@ -9,6 +9,15 @@ type App = {
 
 export const apps: App[] = [
   {
+    id: "fontlens",
+    title: "Font Lens",
+    description:
+      "Compare Google Fonts, custom CDN fonts, and system fonts side-by-side across body, headings, UI, and code contexts.",
+    status: "active",
+    technologies: ["React", "TypeScript", "Cloudflare", "Web Fonts"],
+    category: "Developer Tool",
+  },
+  {
     id: "timezone",
     title: "World Timezone",
     description:
@@ -23,7 +32,7 @@ export const apps: App[] = [
     description:
       "UI for random.kage1020.com — generate identifiers (CUID, UUID, ULID), random strings, Japanese text, and Lorem Ipsum.",
     status: "active",
-    technologies: ["React", "TypeScript", "random.kage1020.com"],
+    technologies: ["React", "TypeScript", "Cloudflare", "Hono"],
     category: "Developer Tool",
   },
 ]
