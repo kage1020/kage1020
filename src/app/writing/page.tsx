@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Technical writing from Qiita and Zenn.",
 }
 
-export const revalidate = 60 * 60
+export const revalidate = 3600
 
 function formatDate(isoDate: string) {
   return new Date(isoDate).toLocaleDateString("ja-JP", {
