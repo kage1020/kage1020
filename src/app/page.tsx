@@ -24,8 +24,6 @@ const routes = [
   },
 ] as const
 
-// Render per-request so the header timestamp reflects "now" on each visit
-// instead of being frozen at build time.
 export const dynamic = "force-dynamic"
 
 export default function Home() {
@@ -49,6 +47,9 @@ export default function Home() {
           command="login --user kage1020"
           duration="0ms"
           timestamp="welcome"
+          copyText={`Last login: just now from a curious browser
+Software Engineer — builds things for the web. Breaks things too, but less often now.
+`}
         >
           <p className="text-text-secondary">
             Last login: <span className="text-text-primary">just now</span>{" "}
@@ -69,6 +70,7 @@ export default function Home() {
           command="ls"
           duration={`${routes.length} entries`}
           timestamp="navigate by clicking or typing below"
+          copyText={`${routes.map((route) => route.command).join("\n")}`}
         >
           <nav>
             <ul className="space-y-1">

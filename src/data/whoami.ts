@@ -78,7 +78,7 @@ export const timeline: TimelineEntry[] = [
     date: "2026-01",
     message:
       "refactor: Update my philosophy to be more concise and focused on core principles",
-    tag: "philosophy",
+    tag: "v2.0.0",
   },
 ]
 

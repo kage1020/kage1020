@@ -21,7 +21,7 @@ export default function AppsPage() {
     <PageLayout>
       <BlockStream>
         <Block
-          command="ls -la apps/"
+          command="cd apps/"
           duration={`${apps.length} entries`}
           timestamp="utility apps"
         >
@@ -32,8 +32,9 @@ export default function AppsPage() {
         </Block>
 
         <Block
-          command="cat apps/index.json"
+          command="ls -la apps/"
           duration={`${apps.length} entries`}
+          copyText={`${apps.map((app) => `${app.title}: ${app.description}`).join("\n")}`}
         >
           <ul className="space-y-4">
             {apps.map((app) => (

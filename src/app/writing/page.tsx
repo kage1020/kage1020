@@ -26,7 +26,7 @@ export default async function WritingPage() {
     <PageLayout>
       <BlockStream>
         <Block
-          command="fetch writing --source qiita,zenn"
+          command="cd writing/"
           duration={`${articles.length} entries`}
           timestamp="API sync"
         >
@@ -35,7 +35,7 @@ export default async function WritingPage() {
           </p>
         </Block>
 
-        <Block command="cat writing/index.kv" duration={`${articles.length} entries`}>
+        <Block command="ls -la writing/" duration={`${articles.length} entries`} copyText={`${articles.map((article) => `${article.title}: ${article.url}`).join("\n")}`}>
           {articles.length === 0 ? (
             <p className="text-text-secondary">
               Failed to fetch articles right now. Please try again later.
