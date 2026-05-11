@@ -10,15 +10,15 @@ export function KV({
   return (
     <dl
       className={cn(
-        "grid grid-cols-[max-content_1fr] gap-x-6 gap-y-1",
+        "grid grid-cols-[max-content_minmax(0,1fr)] gap-x-6 gap-y-1",
         className,
       )}
     >
       {rows.map((row) => (
         <div key={row.key} className="contents">
           <dt className="text-text-muted">{row.key}</dt>
-          <dd className="flex items-baseline gap-3 text-text-primary">
-            <span className="min-w-0">{row.value}</span>
+          <dd className="flex min-w-0 items-baseline gap-3 text-text-primary">
+            <span className="min-w-0 wrap-break-word">{row.value}</span>
             {row.hint && <span className="text-text-muted">{row.hint}</span>}
           </dd>
         </div>

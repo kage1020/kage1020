@@ -19,10 +19,6 @@ export const metadata: Metadata = {
     "kage1020's 6 engineering principles — specification, system prompts, and review checklist. Machine-readable, human-applicable.",
 }
 
-const cliSnippet = `# Quick reference for an AI agent
-curl https://kage1020.com/llms-full.txt
-curl https://kage1020.com/llms.txt`
-
 export default function PhilosophyPage() {
   return (
     <PageLayout>
@@ -113,6 +109,7 @@ export default function PhilosophyPage() {
           command="cat review-checklist.txt"
           duration={`${checklist.length} items`}
           timestamp="for code review"
+          copyText={`${checklist.map((item) => `[ ] #${item.principle} ${item.text}`).join("\n")}`}
         >
           <ul className="space-y-1 font-mono">
             {checklist.map((item) => (
@@ -132,12 +129,11 @@ export default function PhilosophyPage() {
           </ul>
         </Block>
 
-        {/* --- Discovery section --- */}
-
         <Block
           command="man philosophy"
           duration={`${endpoints.length} sources`}
           timestamp="discovery"
+          copyText={`${endpoints.map((e) => `${e.path}: ${e.description}`).join("\n")}`}
         >
           <KV
             rows={endpoints.map((e) => ({
@@ -152,17 +148,6 @@ export default function PhilosophyPage() {
               ),
             }))}
           />
-        </Block>
-
-        <Block
-          command="echo $PHILOSOPHY_LICENSE"
-          duration={philosophyMeta.license}
-          timestamp="reuse encouraged"
-          flush
-        >
-          <pre className="whitespace-pre-wrap break-all font-mono leading-relaxed text-text-secondary">
-            {cliSnippet}
-          </pre>
         </Block>
       </BlockStream>
     </PageLayout>

@@ -245,7 +245,7 @@ export default function TimezoneApp() {
             {selectedCities.map((city) => {
               const hour = now ? getHour(now, city.timezone) : -1
               return (
-                <div key={city.timezone} className="flex items-center gap-3">
+                <div key={city.timezone} className="md:flex items-center gap-3">
                   <span className="inline-flex w-28 shrink-0 items-center gap-2 font-mono text-text-secondary">
                     <Flag country={city.country} label={city.name} />
                     {city.name}
@@ -255,7 +255,7 @@ export default function TimezoneApp() {
               )
             })}
             <div className="flex items-center gap-3">
-              <span className="w-28 shrink-0" />
+              <span className="md:w-28 shrink-0 hidden md:block" />
               <div className="flex flex-1 justify-between font-mono text-text-muted">
                 <span>0</span>
                 <span>6</span>

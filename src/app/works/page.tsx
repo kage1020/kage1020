@@ -25,7 +25,7 @@ export default function WorksPage() {
     <PageLayout>
       <BlockStream>
         <Block
-          command="ls -la works/"
+          command="cd works/"
           duration={`${works.length} entries`}
           timestamp="published products"
         >
@@ -35,8 +35,9 @@ export default function WorksPage() {
         </Block>
 
         <Block
-          command="cat works/index.json"
+          command="ls -la works/"
           duration={`${works.length} entries`}
+          copyText={`${works.map((work) => `${work.title}: ${work.description}`).join("\n")}`}
         >
           <ul className="space-y-4">
             {works.map((work) => (

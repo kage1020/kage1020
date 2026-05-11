@@ -82,6 +82,7 @@ export default async function AppPage({ params }: PageProps<"/apps/[appId]">) {
           command={`cd apps/${app.id}`}
           duration="0ms"
           timestamp={app.category}
+          copyText={app.description}
         >
           <div className="flex items-baseline gap-3">
             <Link
@@ -102,6 +103,17 @@ export default async function AppPage({ params }: PageProps<"/apps/[appId]">) {
           <Suspense fallback={null}>
             <AppComponent />
           </Suspense>
+        </Block>
+
+        {/* Back to apps */}
+        <Block command="cd .." duration="0ms" timestamp="back to apps" copyText="cd ..">
+          <Link
+            href="/apps"
+            className="font-mono text-text-muted hover:text-accent-bright"
+            transitionTypes={["navigate"]}
+          >
+            → apps
+          </Link>
         </Block>
       </BlockStream>
     </PageLayout>
