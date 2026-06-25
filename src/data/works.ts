@@ -2,7 +2,7 @@ export type Work = {
   id: string
   title: string
   description: string
-  platform: "vscode-marketplace" | "pypi"
+  platform: "vscode-marketplace" | "pypi" | "npm"
   kind: "extension" | "package"
   url: string
   status: "published" | "active"
@@ -10,6 +10,26 @@ export type Work = {
 }
 
 export const works: Work[] = [
+  {
+    id: "kumiki",
+    title: "Kumiki",
+    description: "A web framework of AI, by AI, for AI",
+    platform: "npm",
+    kind: "package",
+    url: "https://kumikijs.dev",
+    status: "published",
+    technologies: ["DSL", "AI", "CLI", "Web Framework"],
+  },
+  {
+    id: "google-ads-query-language",
+    title: "npm library for Google Ads Query Language",
+    description: "TypeScript autocomplete and CLI tools for Google Ads Query Language (GAQL).",
+    platform: "npm",
+    kind: "package",
+    url: "https://www.npmjs.com/package/@gaql/cli",
+    status: "published",
+    technologies: ["TypeScript", "CLI", "Node.js"],
+  },
   {
     id: "icon-collection",
     title: "Icon Collection",
