@@ -9,6 +9,14 @@ type App = {
 
 export const apps: App[] = [
   {
+    id: "land",
+    title: "Land",
+    description: "Land is a next-generation knowledge management tool where AI automatically organizes your files. Visualize relationships on a canvas, and what you need naturally finds you.",
+    status: "active",
+    technologies: ["React", "TypeScript", "Hono", "Cloudflare", "AI", "RAG"],
+    category: "File System",
+  },
+  {
     id: "fontlens",
     title: "Font Lens",
     description:
