@@ -12,6 +12,7 @@ export const appComponents: Record<string, React.ComponentType> = {
   fontlens: dynamic(() => import("@/apps/fontlens")),
   timezone: dynamic(() => import("@/apps/timezone")),
   "lorem-text": dynamic(() => import("@/apps/lorem-text")),
+  land: dynamic(() => import("@/apps/land")),
 }
 
 export function generateStaticParams() {
