@@ -108,7 +108,7 @@ Software Engineer — builds things for the web. Breaks things too, but less oft
       <div className="mt-10 flex items-center gap-3 font-mono">
         <Caret />
         <div className="flex-1">
-          <CommandInput autoFocus />
+          <CommandInput />
         </div>
       </div>
     </main>
