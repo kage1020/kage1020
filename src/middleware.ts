@@ -61,13 +61,37 @@ const statusEasterEggs: Record<number, string> = {
   511: "Network Authentication Required. The client needs to authenticate to gain network access.",
 }
 
+const REDIRECT_CODES = new Set([300, 301, 302, 307, 308])
+
+function resolveLocation(request: NextRequest): string {
+  const fallback = new URL("/", request.url)
+  const to = request.nextUrl.searchParams.get("to")
+  if (!to) return fallback.toString()
+
+  try {
+    const target = new URL(to, request.url)
+    // オープンリダイレクト対策：同一オリジンのみ許可
+    return target.origin === request.nextUrl.origin
+      ? target.toString()
+      : fallback.toString()
+  } catch {
+    return fallback.toString()
+  }
+}
+
 export function middleware(request: NextRequest) {
   const q = request.nextUrl.searchParams.get("q")
   if (q && statusEasterEggs[Number(q)]) {
     const code = Number(q)
+    const headers = new Headers({ "content-type": "text/plain; charset=utf-8" })
+
+    if (REDIRECT_CODES.has(code)) {
+      headers.set("Location", resolveLocation(request))
+    }
+    
     return new NextResponse(statusEasterEggs[code], {
       status: code,
-      headers: { "content-type": "application/json" },
+      headers,
     })
   }
 
