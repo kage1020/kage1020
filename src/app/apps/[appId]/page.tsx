@@ -107,7 +107,12 @@ export default async function AppPage({ params }: PageProps<"/apps/[appId]">) {
         </Block>
 
         {/* Back to apps */}
-        <Block command="cd .." duration="0ms" timestamp="back to apps" copyText="cd ..">
+        <Block
+          command="cd .."
+          duration="0ms"
+          timestamp="back to apps"
+          copyText="cd .."
+        >
           <Link
             href="/apps"
             className="font-mono text-text-muted hover:text-accent-bright"

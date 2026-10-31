@@ -35,7 +35,11 @@ export default async function WritingPage() {
           </p>
         </Block>
 
-        <Block command="ls -la writing/" duration={`${articles.length} entries`} copyText={`${articles.map((article) => `${article.title}: ${article.url}`).join("\n")}`}>
+        <Block
+          command="ls -la writing/"
+          duration={`${articles.length} entries`}
+          copyText={`${articles.map((article) => `${article.title}: ${article.url}`).join("\n")}`}
+        >
           {articles.length === 0 ? (
             <p className="text-text-secondary">
               Failed to fetch articles right now. Please try again later.
@@ -72,13 +76,21 @@ export default async function WritingPage() {
                         </a>
                       ),
                     },
-                    { key: "platform", value: <Tag tone="accent">{article.platform}</Tag> },
-                    { key: "published", value: formatDate(article.publishedAt) },
+                    {
+                      key: "platform",
+                      value: <Tag tone="accent">{article.platform}</Tag>,
+                    },
+                    {
+                      key: "published",
+                      value: formatDate(article.publishedAt),
+                    },
                     { key: "likes", value: article.likes },
                     {
                       key: "tags",
                       value:
-                        article.tags.length > 0 ? article.tags.join(", ") : "(none)",
+                        article.tags.length > 0
+                          ? article.tags.join(", ")
+                          : "(none)",
                     },
                   ]}
                 />

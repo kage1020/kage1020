@@ -58,11 +58,23 @@ export default function WhoamiPage() {
               >
                 <div className="flex flex-col">
                   <span className="text-warning">{entry.hash.slice(0, 7)}</span>
-                  {entry.tag ? <Tag tone="accent" className="block md:hidden min-w-fit">{entry.tag}</Tag> : <span className="block md:hidden min-w-fit" />}
+                  {entry.tag ? (
+                    <Tag tone="accent" className="block md:hidden min-w-fit">
+                      {entry.tag}
+                    </Tag>
+                  ) : (
+                    <span className="block md:hidden min-w-fit" />
+                  )}
                 </div>
                 <span className="text-text-muted">{entry.date}</span>
                 <span className="text-text-secondary">{entry.message}</span>
-                {entry.tag ? <Tag tone="accent" className="hidden md:inline">{entry.tag}</Tag> : <span className="hidden md:inline" />}
+                {entry.tag ? (
+                  <Tag tone="accent" className="hidden md:inline">
+                    {entry.tag}
+                  </Tag>
+                ) : (
+                  <span className="hidden md:inline" />
+                )}
               </li>
             ))}
           </ol>
