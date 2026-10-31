@@ -2,7 +2,7 @@ export type Work = {
   id: string
   title: string
   description: string
-  platform: "vscode-marketplace" | "pypi" | "npm"
+  platform: "vscode-marketplace" | "pypi" | "npm" | "crates-io"
   kind: "extension" | "package"
   url: string
   status: "published" | "active"
@@ -10,6 +10,34 @@ export type Work = {
 }
 
 export const works: Work[] = [
+  {
+    id: "cairn",
+    title: "Cairn",
+    description:
+      "A description language for Minecraft builds. Declare intent such as walls, roofs, windows, symmetry, and redstone, and the compiler resolves every block, emitting structure files for both Java and Bedrock editions from a single source.",
+    platform: "crates-io",
+    kind: "package",
+    url: "https://cairn.kage1020.com",
+    status: "published",
+    technologies: ["Rust", "DSL", "Compiler", "LSP", "Minecraft"],
+  },
+  {
+    id: "aburi",
+    title: "Aburi",
+    description:
+      "Static analysis CLI that reads a pull request and reports what the change actually did: new endpoints, new database writes, removed validation guards. The deterministic Markdown report lets CI fail the build on any category it counts.",
+    platform: "npm",
+    kind: "package",
+    url: "https://aburi.kage1020.com",
+    status: "published",
+    technologies: [
+      "TypeScript",
+      "CLI",
+      "Static Analysis",
+      "tree-sitter",
+      "GitHub Actions",
+    ],
+  },
   {
     id: "kumiki",
     title: "Kumiki",
@@ -23,7 +51,8 @@ export const works: Work[] = [
   {
     id: "google-ads-query-language",
     title: "npm library for Google Ads Query Language",
-    description: "TypeScript autocomplete and CLI tools for Google Ads Query Language (GAQL).",
+    description:
+      "TypeScript autocomplete and CLI tools for Google Ads Query Language (GAQL).",
     platform: "npm",
     kind: "package",
     url: "https://www.npmjs.com/package/@gaql/cli",
