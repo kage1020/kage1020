@@ -88,7 +88,7 @@ export function middleware(request: NextRequest) {
     if (REDIRECT_CODES.has(code)) {
       headers.set("Location", resolveLocation(request))
     }
-    
+
     return new NextResponse(statusEasterEggs[code], {
       status: code,
       headers,

@@ -1,5 +1,5 @@
+import { GoogleTagManager } from "@next/third-parties/google"
 import type { Metadata, Viewport } from "next"
-import { GoogleTagManager } from '@next/third-parties/google'
 import { SiteFooter } from "@/components/site-footer"
 import "./globals.css"
 
@@ -40,7 +40,9 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ja">
-      {process.env.NEXT_PUBLIC_GOOGLE_TAG_ID && <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID} />}
+      {process.env.NEXT_PUBLIC_GOOGLE_TAG_ID && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_ID} />
+      )}
       <body className="flex min-h-dvh flex-col">
         <div className="flex-1">{children}</div>
         <SiteFooter />

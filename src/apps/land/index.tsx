@@ -6,7 +6,9 @@ export default function LandApp() {
   return (
     <div className="space-y-5">
       <p className="text-text-secondary">
-        Land is a next-generation knowledge management tool where AI automatically organizes your files. Visualize relationships on a canvas, and what you need naturally finds you.
+        Land is a next-generation knowledge management tool where AI
+        automatically organizes your files. Visualize relationships on a canvas,
+        and what you need naturally finds you.
       </p>
       <ul className="space-y-1.5 font-mono text-sm text-text-secondary">
         <li>• Manage information in 4 dimensions</li>

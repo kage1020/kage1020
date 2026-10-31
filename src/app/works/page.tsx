@@ -2,22 +2,24 @@ import type { Metadata } from "next"
 import { PageLayout } from "@/components/page-layout"
 import { Block, BlockStream } from "@/components/tui/block"
 import { Tag } from "@/components/tui/primitives"
-import { works } from "@/data/works"
+import { type Work, works } from "@/data/works"
 
 export const metadata: Metadata = {
   title: "works",
   description:
-    "Published products and tools by kage1020 across VS Code Marketplace and PyPI.",
+    "Published products and tools by kage1020 across VS Code Marketplace, npm, PyPI, and crates.io.",
 }
 
-const statusTone: Record<string, "success" | "warn" | "default"> = {
+const statusTone: Record<Work["status"], "success" | "warn"> = {
   published: "success",
   active: "warn",
 }
 
-const platformLabel: Record<string, string> = {
+const platformLabel: Record<Work["platform"], string> = {
   "vscode-marketplace": "VS Marketplace",
+  npm: "npm",
   pypi: "PyPI",
+  "crates-io": "crates.io",
 }
 
 export default function WorksPage() {
@@ -55,12 +57,8 @@ export default function WorksPage() {
                     <span className="text-text-primary group-hover:text-accent-bright">
                       {work.title}
                     </span>
-                    <Tag tone={statusTone[work.status] ?? "default"}>
-                      {work.status}
-                    </Tag>
-                    <Tag tone="accent">
-                      {platformLabel[work.platform] ?? work.platform}
-                    </Tag>
+                    <Tag tone={statusTone[work.status]}>{work.status}</Tag>
+                    <Tag tone="accent">{platformLabel[work.platform]}</Tag>
                     <span className="text-text-muted">{work.kind}</span>
                   </div>
                   <p className="ml-6 mt-1 text-text-secondary">
